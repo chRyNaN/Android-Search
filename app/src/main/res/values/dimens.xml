@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="spacing_xsmall">8dp</dimen>
+    <dimen name="spacing_small">16dp</dimen>
+    <dimen name="spacing_medium">24dp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+
+    <dimen name="default_screen_margin">@dimen/spacing_small</dimen>
+
+    <dimen name="app_list_item_icon_size">32dp</dimen>
+
+</resources>

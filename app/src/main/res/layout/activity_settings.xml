@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settingsScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:showDividers="none">
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchAppsToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_apps"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchAudioFilesToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_audio_files"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchImageFilesToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_image_files"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchVideoToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_video_files"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchContactsToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_contacts"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchCalendarEventsToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_calendar_events"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchTextMessagesToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_text_messages"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchEmailLinksToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_email_links"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchUrlLinksToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_url_links"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchPhoneNumbersToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_phone_numbers"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchInstantAnswersToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_instant_answers"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchSuggestionsToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/settings_toggle_title_suggestions"/>
+
+        <com.chrynan.androidsearch.ui.widget.ToggleCell
+            android:id="@+id/searchHistoryToggleCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="@string/auto_complete_description_title_search_history"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
