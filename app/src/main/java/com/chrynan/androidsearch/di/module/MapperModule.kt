@@ -8,7 +8,6 @@ val MAPPER_MODULE = module {
     single { AppMapper(context = androidContext()) }
     single { ContactMapper(context = androidContext()) }
     single { EmailMapper(context = androidContext()) }
-    single { FileMapper(context = androidContext()) }
     single { PhoneNumberMapper(context = androidContext()) }
     single { SearchHistoryMapper(context = androidContext()) }
     single { TypeAheadMapper(context = androidContext()) }
