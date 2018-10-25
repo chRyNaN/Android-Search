@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="icon" format="reference"/>
+    <attr name="titleText" format="string"/>
+    <attr name="descriptionText" format="string"/>
+    <attr name="toggleOn" format="boolean"/>
+
     <declare-styleable name="SearchWidget">
         <attr name="style" format="enum">
             <enum name="round" value="0"/>
@@ -12,9 +17,16 @@
     </declare-styleable>
 
     <declare-styleable name="ToggleCell">
-        <attr name="titleText" format="string"/>
-        <attr name="descriptionText" format="string"/>
-        <attr name="toggleOn" format="boolean"/>
+        <attr name="titleText"/>
+        <attr name="descriptionText"/>
+        <attr name="toggleOn"/>
+    </declare-styleable>
+
+    <declare-styleable name="RadioButtonCell">
+        <attr name="icon"/>
+        <attr name="titleText"/>
+        <attr name="descriptionText"/>
+        <attr name="isChecked"/>
     </declare-styleable>
 
 </resources>

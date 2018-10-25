@@ -34,11 +34,23 @@
     <string name="settings_toggle_title_contacts">Contacts</string>
     <string name="settings_toggle_title_calendar_events">Calendar</string>
     <string name="settings_toggle_title_text_messages">Text Messages</string>
-    <string name="settings_toggle_title_email_links">Links</string>
+    <string name="settings_toggle_title_email_links">Email Addresses</string>
     <string name="settings_toggle_title_url_links">Web Addresses</string>
     <string name="settings_toggle_title_phone_numbers">Phone Numbers</string>
     <string name="settings_toggle_title_instant_answers">Instant Answers</string>
     <string name="settings_toggle_title_suggestions">Suggestions</string>
     <string name="settings_toggle_title_history">History</string>
+
+    <string name="settings_radio_button_title_search_app">Default Search Application</string>
+    <string name="settings_radio_button_title_web_view">WebView</string>
+    <string name="settings_radio_button_title_chrome_custom_tabs">Chrome Custom Tab</string>
+    <string name="settings_radio_button_title_browser_app">Browser Application</string>
+    <string name="settings_radio_button_title_bing">Bing</string>
+    <string name="settings_radio_button_title_contextual_web_search">Contextual Web Search</string>
+    <string name="settings_radio_button_title_duck_duck_go">DuckDuckGo</string>
+    <string name="settings_radio_button_title_google">Google</string>
+    <string name="settings_radio_button_title_custom">Custom URL</string>
+
+    <string name="settings_custom_url_hint">Enter Search URL</string>
 
 </resources>
