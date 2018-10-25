@@ -3,8 +3,8 @@ package com.chrynan.androidsearch.mapper
 import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Contact
-import com.chrynan.androidsearch.ui.ContactThumbnailDrawableFunction
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
+import com.chrynan.glidedrawable.ContactThumbnailDrawableFunction
 import com.chrynan.mapper.UniDirectionalMapper
 
 class ContactMapper(private val context: Context) : UniDirectionalMapper<Contact, AutoCompleteResultViewModel.Contact> {

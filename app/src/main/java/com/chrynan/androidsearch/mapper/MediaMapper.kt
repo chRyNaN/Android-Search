@@ -3,8 +3,8 @@ package com.chrynan.androidsearch.mapper
 import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Media
-import com.chrynan.androidsearch.ui.ImageVideoThumbnailDrawableFunction
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
+import com.chrynan.glidedrawable.ImageVideoThumbnailDrawableFunction
 import com.chrynan.mapper.UniDirectionalMapper
 
 class MediaMapper(private val context: Context) : UniDirectionalMapper<Media, AutoCompleteResultViewModel.Media> {
