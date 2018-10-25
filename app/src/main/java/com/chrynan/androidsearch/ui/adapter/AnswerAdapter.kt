@@ -13,8 +13,6 @@ class AnswerAdapter : AnotherAdapter<InstantAnswerViewModel.Answer>() {
 
     override val viewType = AdapterViewTypes.ANSWER
 
-    override fun onHandlesItem(item: Any) = item is InstantAnswerViewModel.Answer
-
     override fun onCreateView(parent: ViewGroup, viewType: ViewType): View =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_instant_answer_detailed, parent, false)
 

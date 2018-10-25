@@ -13,8 +13,6 @@ class TopicAdapter : AnotherAdapter<TopicViewModel>() {
 
     override val viewType = AdapterViewTypes.TOPIC
 
-    override fun onHandlesItem(item: Any) = item is TopicViewModel
-
     override fun onCreateView(parent: ViewGroup, viewType: ViewType): View =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_topic, parent, false)
 

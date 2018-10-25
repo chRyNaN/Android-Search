@@ -15,8 +15,6 @@ class AutoCompleteResultViewModelAdapter(private val listener: AutoCompleteResul
 
     override val viewType = AdapterViewTypes.AUTO_COMPLETE_RESULT
 
-    override fun onHandlesItem(item: Any) = item is AutoCompleteResultViewModel
-
     override fun onCreateView(parent: ViewGroup, viewType: ViewType): View =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_auto_complete_result_view_model, parent, false)
 
