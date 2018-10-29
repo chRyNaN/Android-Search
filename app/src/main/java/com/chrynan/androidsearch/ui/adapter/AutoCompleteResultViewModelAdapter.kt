@@ -13,7 +13,9 @@ import kotlinx.android.synthetic.main.adapter_auto_complete_result_view_model.vi
 
 class AutoCompleteResultViewModelAdapter(private val listener: AutoCompleteResultSelectedListener) : AnotherAdapter<AutoCompleteResultViewModel>() {
 
-    override val viewType = AdapterViewTypes.AUTO_COMPLETE_RESULT
+    override val viewType = AdapterViewTypes2.AUTO_COMPLETE_RESULT
+
+    override fun onHandlesItem(item: Any) = item is AutoCompleteResultViewModel
 
     override fun onCreateView(parent: ViewGroup, viewType: ViewType): View =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_auto_complete_result_view_model, parent, false)

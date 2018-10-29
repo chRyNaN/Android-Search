@@ -39,6 +39,8 @@ class SearchActivity : BaseActivity(),
             onEnterAction { presenter.performSearch(this@SearchActivity, it ?: "") }
         }
 
+        settingsButton?.setOnClickListener { startActivity(SettingsActivity.newIntent(this)) }
+
         // There's this odd thing happening with android extensions. This was working normally before but not anymore
         // and I'm not sure why. Pretty much the nested view extension (here searchWidget) isn't available in the
         // listener function anymore. So, initialize a variable here and access it that way.

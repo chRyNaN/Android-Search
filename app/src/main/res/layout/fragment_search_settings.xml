@@ -90,79 +90,11 @@
             android:layout_height="wrap_content"
             app:titleText="@string/auto_complete_description_title_search_history"/>
 
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/openSearchAppRadioButton"
+        <com.chrynan.androidsearch.ui.widget.DefaultCell
+            android:id="@+id/searchApproachDefaultCell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isChecked="true"
-            app:titleText="@string/settings_radio_button_title_search_app"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/openSearchWebViewRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="@string/settings_radio_button_title_web_view"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/openSearchChromeCustomTabRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="@string/settings_radio_button_title_chrome_custom_tabs"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/openSearchBrowserAppRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="@string/settings_radio_button_title_browser_app"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/bingUrlRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isChecked="true"
-            app:titleText="@string/settings_radio_button_title_bing"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/contextualWebSearchUrlRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="@string/settings_radio_button_title_contextual_web_search"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/duckDuckGoUrlRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="@string/settings_radio_button_title_duck_duck_go"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/googleUrlRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="@string/settings_radio_button_title_google"/>
-
-        <com.chrynan.androidsearch.ui.widget.RadioButtonCell
-            android:id="@+id/customUrlRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="@string/settings_radio_button_title_custom"/>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/customUrlTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/default_screen_margin"
-            android:paddingTop="@dimen/spacing_xsmall"
-            android:paddingEnd="@dimen/default_screen_margin"
-            android:paddingBottom="@dimen/spacing_xsmall"
-            android:visibility="gone">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/customUrlTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/settings_custom_url_hint"/>
-
-        </android.support.design.widget.TextInputLayout>
+            app:titleText="@string/settings_search_approach_cell_title"/>
 
     </LinearLayout>
 

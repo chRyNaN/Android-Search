@@ -39,7 +39,9 @@ class TopicListAdapter(
 
     private val linkMovementMethod by lazy { LinkMovementMethod.getInstance() }
 
-    override val viewType = AdapterViewTypes.TOPIC_LIST
+    override val viewType = AdapterViewTypes2.TOPIC_LIST
+
+    override fun onHandlesItem(item: Any) = item is InstantAnswerViewModel.TopicList
 
     override fun onCreateView(parent: ViewGroup, viewType: ViewType): View =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_topic_list, parent, false)

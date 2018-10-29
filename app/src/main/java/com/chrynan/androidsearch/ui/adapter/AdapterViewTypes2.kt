@@ -1,6 +1,6 @@
 package com.chrynan.androidsearch.ui.adapter
 
-object AdapterViewTypes {
+object AdapterViewTypes2 {
 
     const val AUTO_COMPLETE_RESULT = 0
     const val ANSWER = 1

@@ -29,4 +29,11 @@
         <attr name="isChecked"/>
     </declare-styleable>
 
+    <declare-styleable name="DefaultCell">
+        <attr name="icon"/>
+        <attr name="titleText"/>
+        <attr name="descriptionText"/>
+        <attr name="endText" format="string"/>
+    </declare-styleable>
+
 </resources>

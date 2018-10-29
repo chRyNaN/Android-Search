@@ -41,10 +41,17 @@
     <string name="settings_toggle_title_suggestions">Suggestions</string>
     <string name="settings_toggle_title_history">History</string>
 
-    <string name="settings_radio_button_title_search_app">Default Search Application</string>
-    <string name="settings_radio_button_title_web_view">WebView</string>
-    <string name="settings_radio_button_title_chrome_custom_tabs">Chrome Custom Tab</string>
-    <string name="settings_radio_button_title_browser_app">Browser Application</string>
+    <string name="settings_search_approach_cell_title">Search Approach</string>
+
+    <string name="search_approach_default_app">Default Search App</string>
+    <string name="search_approach_web_view">WebView</string>
+    <string name="search_approach_chrome_custom_tabs">Chrome Custom Tabs</string>
+    <string name="search_approach_browser">Browser</string>
+
+    <string name="settings_radio_button_title_search_app">@string/search_approach_default_app</string>
+    <string name="settings_radio_button_title_web_view">@string/search_approach_web_view</string>
+    <string name="settings_radio_button_title_chrome_custom_tabs">@string/search_approach_chrome_custom_tabs</string>
+    <string name="settings_radio_button_title_browser_app">@string/search_approach_browser</string>
     <string name="settings_radio_button_title_bing">Bing</string>
     <string name="settings_radio_button_title_contextual_web_search">Contextual Web Search</string>
     <string name="settings_radio_button_title_duck_duck_go">DuckDuckGo</string>

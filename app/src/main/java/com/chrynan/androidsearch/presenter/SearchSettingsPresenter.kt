@@ -1,12 +1,20 @@
 package com.chrynan.androidsearch.presenter
 
+import android.content.Context
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.preference.SearchPreferences
-import com.chrynan.androidsearch.ui.view.SettingsView
+import com.chrynan.androidsearch.ui.view.SearchSettingsView
 
 class SearchSettingsPresenter(
-        private val view: SettingsView,
+        private val context: Context,
+        private val view: SearchSettingsView,
         private val preferences: SearchPreferences
 ) : Presenter {
+
+    private val searchApp by lazy { context.getString(R.string.search_approach_default_app) }
+    private val webView by lazy { context.getString(R.string.search_approach_web_view) }
+    private val chromeCustomTabs by lazy { context.getString(R.string.search_approach_chrome_custom_tabs) }
+    private val browser by lazy { context.getString(R.string.search_approach_browser) }
 
     override fun detachView() {}
 
@@ -25,6 +33,7 @@ class SearchSettingsPresenter(
             updateInstantAnswerToggle(preferences.instantAnswers)
             updateSuggestionToggle(preferences.typeAhead)
             updateHistoryToggle(preferences.history)
+            showSearchApproach(getSearchApproach())
         }
     }
 
@@ -44,6 +53,15 @@ class SearchSettingsPresenter(
                 SearchToggleItem.INSTANT_ANSWER -> preferences.instantAnswers = toggledOn
                 SearchToggleItem.SUGGESTION -> preferences.typeAhead = toggledOn
                 SearchToggleItem.HISTORY -> preferences.history = toggledOn
+            }
+
+    private fun getSearchApproach(): String? =
+            when {
+                preferences.searchApp -> searchApp
+                preferences.webView -> webView
+                preferences.chromeCustomTab -> chromeCustomTabs
+                preferences.browser -> browser
+                else -> null
             }
 
     fun toggleSearchApproach(item: SearchCheckedItem, toggledOn: Boolean) =

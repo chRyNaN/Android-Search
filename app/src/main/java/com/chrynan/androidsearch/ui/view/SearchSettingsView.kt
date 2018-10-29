@@ -1,6 +1,6 @@
 package com.chrynan.androidsearch.ui.view
 
-interface SettingsView {
+interface SearchSettingsView {
 
     fun updateApplicationsToggle(toggledOn: Boolean)
 
@@ -27,4 +27,6 @@ interface SettingsView {
     fun updateSuggestionToggle(toggledOn: Boolean)
 
     fun updateHistoryToggle(toggledOn: Boolean)
+
+    fun showSearchApproach(searchApproach: String?)
 }

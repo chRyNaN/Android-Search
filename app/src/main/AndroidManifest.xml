@@ -21,18 +21,16 @@
         <activity
             android:name="com.chrynan.androidsearch.ui.activity.SearchActivity"
             android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity
-            android:name=".ui.activity.SearchSettingsActivity"
-            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
