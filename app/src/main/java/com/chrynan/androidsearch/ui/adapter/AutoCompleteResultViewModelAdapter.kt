@@ -3,17 +3,17 @@ package com.chrynan.androidsearch.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.aaaah.AnotherAdapter
-import com.chrynan.aaaah.ViewType
+import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.util.GlideApp
 import com.chrynan.androidsearch.util.loadImageAsync
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.android.synthetic.main.adapter_auto_complete_result_view_model.view.*
 
+@Adapter
 class AutoCompleteResultViewModelAdapter(private val listener: AutoCompleteResultSelectedListener) : AnotherAdapter<AutoCompleteResultViewModel>() {
 
-    override val viewType = AdapterViewTypes2.AUTO_COMPLETE_RESULT
+    override val viewType = AdapterViewType.from(this::class.java)
 
     override fun onHandlesItem(item: Any) = item is AutoCompleteResultViewModel
 

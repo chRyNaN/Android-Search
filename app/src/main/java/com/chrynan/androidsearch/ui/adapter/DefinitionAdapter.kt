@@ -3,15 +3,15 @@ package com.chrynan.androidsearch.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.aaaah.AnotherAdapter
-import com.chrynan.aaaah.ViewType
+import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.viewmodel.InstantAnswerViewModel
 import kotlinx.android.synthetic.main.adapter_instant_answer_detailed.view.*
 
+@Adapter
 class DefinitionAdapter : AnotherAdapter<InstantAnswerViewModel.Definition>() {
 
-    override val viewType = AdapterViewTypes2.DEFINITION
+    override val viewType = AdapterViewType.from(this::class.java)
 
     override fun onHandlesItem(item: Any) = item is InstantAnswerViewModel.Definition
 

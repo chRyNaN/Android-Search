@@ -9,14 +9,13 @@ import android.text.style.URLSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.aaaah.AnotherAdapter
-import com.chrynan.aaaah.ManagerRecyclerViewAdapter
-import com.chrynan.aaaah.ViewType
+import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.viewmodel.InstantAnswerViewModel
 import com.chrynan.androidsearch.viewmodel.TopicViewModel
 import kotlinx.android.synthetic.main.adapter_topic_list.view.*
 
+@Adapter
 class TopicListAdapter(
         private val context: Context,
         private val topicAdapter: TopicAdapter
@@ -39,7 +38,7 @@ class TopicListAdapter(
 
     private val linkMovementMethod by lazy { LinkMovementMethod.getInstance() }
 
-    override val viewType = AdapterViewTypes2.TOPIC_LIST
+    override val viewType = AdapterViewType.from(this::class.java)
 
     override fun onHandlesItem(item: Any) = item is InstantAnswerViewModel.TopicList
 

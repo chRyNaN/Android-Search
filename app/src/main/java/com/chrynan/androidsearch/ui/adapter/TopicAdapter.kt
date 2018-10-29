@@ -3,15 +3,15 @@ package com.chrynan.androidsearch.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chrynan.aaaah.AnotherAdapter
-import com.chrynan.aaaah.ViewType
+import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.viewmodel.TopicViewModel
 import kotlinx.android.synthetic.main.adapter_topic.view.*
 
+@Adapter
 class TopicAdapter : AnotherAdapter<TopicViewModel>() {
 
-    override val viewType = AdapterViewTypes2.TOPIC
+    override val viewType = AdapterViewType.from(this::class.java)
 
     override fun onHandlesItem(item: Any) = item is TopicViewModel
 
