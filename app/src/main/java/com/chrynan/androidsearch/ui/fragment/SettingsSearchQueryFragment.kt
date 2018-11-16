@@ -10,11 +10,11 @@ import com.chrynan.androidsearch.ui.widget.RadioButtonCellGroup
 import com.chrynan.androidsearch.util.isVisible
 import kotlinx.android.synthetic.main.fragment_search_query_settings.*
 
-class SearchQuerySettingsFragment : BaseFragment() {
+class SettingsSearchQueryFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance() = SearchQuerySettingsFragment()
+        fun newInstance() = SettingsSearchQueryFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

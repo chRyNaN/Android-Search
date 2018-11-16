@@ -1,8 +1,10 @@
+@file:Suppress("EXPERIMENTAL_API_USAGE")
+
 package com.chrynan.androidsearch.provider
 
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.androidsearch.preference.SearchPreferences
-import kotlinx.coroutines.experimental.channels.produce
+import kotlinx.coroutines.coroutineScope
 
 class SearchProvider(
         private val appProvider: AppProvider,
@@ -26,21 +28,20 @@ class SearchProvider(
     private var providers: Set<ResultProvider<UniqueAdapterItem>> = getUpdatedProviders()
 
     @Suppress("ConvertCallChainIntoSequence")
-    suspend fun query(query: String?) = produce {
+    suspend fun query(query: String?, onUpdate: (Sequence<UniqueAdapterItem>) -> Unit) = coroutineScope {
         var sequence = emptySequence<UniqueAdapterItem>()
 
         if (query.isNullOrBlank()) {
-            send(sequence)
+            onUpdate(sequence)
         } else {
-            val nonNullQuery = query!!
-
             providers
-                    .filter { it.handlesQuery(nonNullQuery) }
-                    .map { it.query(nonNullQuery) }
+                    .filter { it.handlesQuery(query) }
+                    .map { it.query(query) }
                     .forEach {
                         sequence += it.await()
-                        send(sequence)
+                        onUpdate(sequence)
                     }
+            onUpdate(instantAnswerProvider.query(query).await())
         }
     }
 
@@ -52,7 +53,7 @@ class SearchProvider(
         val newProviders = mutableSetOf<ResultProvider<UniqueAdapterItem>>()
 
         with(searchPreferences) {
-            if (instantAnswers) newProviders += instantAnswerProvider
+            //if (instantAnswers) newProviders += instantAnswerProvider
             if (typeAhead) newProviders += typeAheadProvider
             if (history) newProviders += searchHistoryProvider
             if (apps) newProviders += appProvider

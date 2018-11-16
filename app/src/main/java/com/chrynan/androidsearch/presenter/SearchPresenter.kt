@@ -6,11 +6,11 @@ import android.util.Log
 import com.chrynan.aaaah.DiffProcessor
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.accore.runOnAndroidUI
 import com.chrynan.androidsearch.action.AutoCompleteAction
 import com.chrynan.androidsearch.action.SearchAction
 import com.chrynan.androidsearch.provider.SearchProvider
 import com.chrynan.androidsearch.util.measureTimeMillisWithResult
-import com.chrynan.androidsearch.util.runOnAndroidUI
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlin.system.measureTimeMillis
 
@@ -21,14 +21,13 @@ class SearchPresenter(
         private val updateCallback: ListUpdateCallback,
         private val searchAction: SearchAction,
         private val autoCompleteAction: AutoCompleteAction
-) : Presenter {
+) : CoroutinePresenter() {
 
     override fun detachView() {}
 
     suspend fun performQuery(query: String?) {
         val time = measureTimeMillis {
-            val channel = autoCompleteProvider.query(query)
-            for (results in channel) {
+            autoCompleteProvider.query(query) { results ->
                 val queryPair = measureTimeMillisWithResult {
                     results.toList()
                 }
@@ -37,7 +36,7 @@ class SearchPresenter(
                     diffProcessor.calculateDiff(resultList)
                 }
                 val diffResult = diffPair.first
-                Log.d("TimeCount", "queryTime = ${queryPair.second}; diffTime = ${diffPair.second}")
+
                 runOnAndroidUI {
                     adapter.items = resultList
                     diffResult.dispatchUpdatesTo(updateCallback)

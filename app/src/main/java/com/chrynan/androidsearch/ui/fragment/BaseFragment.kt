@@ -1,15 +1,15 @@
 package com.chrynan.androidsearch.ui.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import com.chrynan.aclifecycle.CoroutineAppCompatFragment
 import org.koin.android.scope.ext.android.bindScope
-import org.koin.android.scope.ext.android.createScope
+import org.koin.android.scope.ext.android.getOrCreateScope
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : CoroutineAppCompatFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        bindScope(createScope(this.javaClass.name))
+        bindScope(getOrCreateScope(this.javaClass.name))
     }
 }

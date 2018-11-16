@@ -9,7 +9,7 @@ class SearchSettingsPresenter(
         private val context: Context,
         private val view: SearchSettingsView,
         private val preferences: SearchPreferences
-) : Presenter {
+) : CoroutinePresenter() {
 
     private val searchApp by lazy { context.getString(R.string.search_approach_default_app) }
     private val webView by lazy { context.getString(R.string.search_approach_web_view) }

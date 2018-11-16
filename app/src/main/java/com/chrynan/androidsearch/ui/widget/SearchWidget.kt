@@ -23,7 +23,7 @@ class SearchWidget : AppCompatEditText {
             invalidate()
         }
 
-    private val customOutlineProvider by lazy {
+    private val customOutlineProvider: ViewOutlineProvider by lazy {
         object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {
                 when (style) {

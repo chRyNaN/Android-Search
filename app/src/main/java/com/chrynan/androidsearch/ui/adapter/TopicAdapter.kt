@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
+import com.chrynan.androidsearch.util.htmlFormattedText
 import com.chrynan.androidsearch.viewmodel.TopicViewModel
 import kotlinx.android.synthetic.main.adapter_topic.view.*
 
@@ -20,7 +21,7 @@ class TopicAdapter : AnotherAdapter<TopicViewModel>() {
 
     override fun onBindItem(view: View, item: TopicViewModel) {
         view.apply {
-            topicTextView?.text = item.text
+            topicTextView?.htmlFormattedText(item.text)
             // TODO I fucked up and accidently deleted this shit when I wasn't using version control, so fix it
         }
     }

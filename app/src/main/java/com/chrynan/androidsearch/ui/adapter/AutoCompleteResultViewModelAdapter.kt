@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.util.GlideApp
-import com.chrynan.androidsearch.util.loadImageAsync
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.android.synthetic.main.adapter_auto_complete_result_view_model.view.*
 
@@ -33,7 +32,6 @@ class AutoCompleteResultViewModelAdapter(private val listener: AutoCompleteResul
                         .fallback(item.defaultIconResId)
                         .into(this)
             }
-            item.iconFetcher?.let { iconImageView?.loadImageAsync(it) }
             actionImageView?.setImageDrawable(item.actionIcon)
             actionImageView?.visibility = if (item.actionIcon == null) View.GONE else View.VISIBLE
         }

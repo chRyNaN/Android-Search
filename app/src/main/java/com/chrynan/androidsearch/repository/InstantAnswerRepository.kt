@@ -1,6 +1,6 @@
 package com.chrynan.androidsearch.repository
 
-import com.chrynan.androidsearch.model.answer.InstantAnswer
+import com.chrynan.instantanswer.api.InstantAnswer
 
 interface InstantAnswerRepository {
 

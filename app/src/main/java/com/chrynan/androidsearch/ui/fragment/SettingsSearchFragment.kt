@@ -11,12 +11,12 @@ import kotlinx.android.synthetic.main.fragment_search_settings.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class SearchSettingsFragment : BaseFragment(),
+class SettingsSearchFragment : BaseFragment(),
         SearchSettingsView {
 
     companion object {
 
-        fun newInstance() = SearchSettingsFragment()
+        fun newInstance() = SettingsSearchFragment()
     }
 
     private val presenter: SearchSettingsPresenter by inject { parametersOf(this) }

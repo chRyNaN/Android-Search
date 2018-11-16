@@ -2,6 +2,8 @@
 
     <string name="app_name">android-search</string>
 
+    <string name="search_hint">Search</string>
+
     <string name="auto_complete_description">from your %s</string>
     <string name="auto_complete_description_title_search_history">Search History</string>
     <string name="auto_complete_description_title_contacts">Contacts</string>
@@ -59,5 +61,7 @@
     <string name="settings_radio_button_title_custom">Custom URL</string>
 
     <string name="settings_custom_url_hint">Enter Search URL</string>
+
+    <string name="cd_search_app_widget">Search App Widget</string>
 
 </resources>

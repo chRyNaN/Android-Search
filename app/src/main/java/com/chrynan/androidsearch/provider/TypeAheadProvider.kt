@@ -3,8 +3,8 @@ package com.chrynan.androidsearch.provider
 import com.chrynan.androidsearch.mapper.TypeAheadMapper
 import com.chrynan.androidsearch.repository.TypeAheadRepository
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.coroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 class TypeAheadProvider(
         private val repository: TypeAheadRepository,

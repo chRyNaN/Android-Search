@@ -3,8 +3,8 @@ package com.chrynan.androidsearch.provider
 import android.util.Patterns
 import com.chrynan.androidsearch.mapper.EmailMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.coroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 class EmailProvider(private val mapper: EmailMapper) : ResultProvider<AutoCompleteResultViewModel.Email> {
 

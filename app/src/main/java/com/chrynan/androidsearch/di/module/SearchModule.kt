@@ -5,12 +5,12 @@ import com.chrynan.aaaah.DiffProcessor
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.androidsearch.presenter.SearchPresenter
-import com.chrynan.androidsearch.ui.activity.SearchActivity
 import com.chrynan.androidsearch.ui.adapter.*
+import com.chrynan.androidsearch.ui.fragment.SearchFragment
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module.module
 
-private val SEARCH_SCOPE_NAME = SearchActivity::class.java.name
+private val SEARCH_SCOPE_NAME = SearchFragment::class.java.name
 
 val SEARCH_MODULE = module {
     scope(SEARCH_SCOPE_NAME) {
@@ -31,7 +31,7 @@ val SEARCH_MODULE = module {
                 searchAction = get(),
                 autoCompleteAction = get())
     }
-    scope(SEARCH_SCOPE_NAME) { (activity: SearchActivity) -> activity as AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener }
+    scope(SEARCH_SCOPE_NAME) { (fragment: SearchFragment) -> fragment as AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener }
     scope(SEARCH_SCOPE_NAME) { AutoCompleteResultViewModelAdapter(listener = get(parameters = { it })) }
     scope(SEARCH_SCOPE_NAME) { AnswerAdapter() }
     scope(SEARCH_SCOPE_NAME) { DefinitionAdapter() }

@@ -3,8 +3,8 @@ package com.chrynan.androidsearch.provider
 import android.telephony.PhoneNumberUtils
 import com.chrynan.androidsearch.mapper.PhoneNumberMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.coroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 class PhoneNumberProvider(private val mapper: PhoneNumberMapper) : ResultProvider<AutoCompleteResultViewModel.PhoneNumber> {
 

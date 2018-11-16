@@ -3,8 +3,8 @@ package com.chrynan.androidsearch.provider
 import android.util.Patterns
 import com.chrynan.androidsearch.mapper.WebAddressMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.coroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 class WebAddressProvider(private val mapper: WebAddressMapper) : ResultProvider<AutoCompleteResultViewModel.WebAddress> {
 

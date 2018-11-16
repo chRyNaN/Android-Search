@@ -1,6 +1,6 @@
 package com.chrynan.androidsearch.provider
 
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.Deferred
 
 interface ResultProvider<out T> {
 

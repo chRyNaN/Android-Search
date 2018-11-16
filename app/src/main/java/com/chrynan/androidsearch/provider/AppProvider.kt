@@ -4,8 +4,8 @@ import com.chrynan.androidsearch.mapper.AppMapper
 import com.chrynan.androidsearch.repository.ApplicationInfoRepository
 import com.chrynan.androidsearch.util.containsQueryIgnoreCase
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.coroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 class AppProvider(
         private val repository: ApplicationInfoRepository,

@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.ui.fragment.SearchSettingsFragment
+import com.chrynan.androidsearch.ui.fragment.SettingsSearchFragment
 
 class SettingsActivity : BaseActivity() {
 
@@ -15,8 +15,8 @@ class SettingsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(R.layout.layout_fragment_container)
 
-        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, SearchSettingsFragment.newInstance()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, SettingsSearchFragment.newInstance()).commit()
     }
 }

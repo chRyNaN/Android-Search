@@ -3,8 +3,8 @@ package com.chrynan.androidsearch.provider
 import com.chrynan.androidsearch.mapper.MediaMapper
 import com.chrynan.androidsearch.repository.ImageMediaRepository
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.coroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 class ImageProvider(
         private val repository: ImageMediaRepository,
