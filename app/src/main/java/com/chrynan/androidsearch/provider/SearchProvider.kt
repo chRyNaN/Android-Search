@@ -42,7 +42,6 @@ class SearchProvider @Inject constructor(
                         sequence += it.await()
                         onUpdate(sequence)
                     }
-            onUpdate(instantAnswerProvider.query(query).await())
         }
     }
 
