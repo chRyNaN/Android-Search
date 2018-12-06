@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.repository.InstantAnswerRepository
 import com.chrynan.androidsearch.viewmodel.InstantAnswerViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class InstantAnswerProvider(
+class InstantAnswerProvider @Inject constructor(
         private val repository: InstantAnswerRepository,
         private val mapper: InstantAnswerMapper
 ) : ResultProvider<InstantAnswerViewModel> {

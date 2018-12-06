@@ -5,8 +5,12 @@ import android.graphics.Outline
 import android.support.v7.widget.AppCompatEditText
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import com.chrynan.androidsearch.R
+import com.chrynan.androidviews.builder.LayoutBuilder
+import com.chrynan.androidviews.builder.addViewBuilderFor
+import com.chrynan.androidviews.builder.viewBuilderFor
 
 class SearchWidget : AppCompatEditText {
 
@@ -47,6 +51,7 @@ class SearchWidget : AppCompatEditText {
 
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, android.R.attr.editTextStyle)
 
+    @Suppress("VARIABLE_WITH_REDUNDANT_INITIALIZER")
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         var backgroundColor = defaultBackgroundColor
 
@@ -78,3 +83,9 @@ class SearchWidget : AppCompatEditText {
         }
     }
 }
+
+fun searchWidget(context: Context, block: (SearchWidget.() -> Unit)? = null) =
+        viewBuilderFor(SearchWidget(context), block)
+
+fun <V : ViewGroup, P : ViewGroup.LayoutParams> LayoutBuilder<V, P>.searchWidget(block: (SearchWidget.() -> Unit)? = null) =
+        addViewBuilderFor(SearchWidget(viewGroup.context), block)

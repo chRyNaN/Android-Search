@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.repository.ContactRepository
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class ContactProvider(
+class ContactProvider @Inject constructor(
         private val repository: ContactRepository,
         private val mapper: ContactMapper
 ) : ResultProvider<AutoCompleteResultViewModel.Contact> {

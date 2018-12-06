@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.chrynan.androidsearch.ui.widget
 
 import android.content.Context
@@ -5,8 +7,12 @@ import android.graphics.drawable.Drawable
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.util.isVisible
+import com.chrynan.androidviews.builder.LayoutBuilder
+import com.chrynan.androidviews.builder.addViewBuilderFor
+import com.chrynan.androidviews.builder.viewBuilderFor
 import kotlinx.android.synthetic.main.widget_default_cell.view.*
 
 class DefaultCell : ConstraintLayout {
@@ -54,3 +60,9 @@ class DefaultCell : ConstraintLayout {
         }
     }
 }
+
+fun defaultCell(context: Context, block: (DefaultCell.() -> Unit)? = null) =
+        viewBuilderFor(DefaultCell(context), block)
+
+fun <V : ViewGroup, P : ViewGroup.LayoutParams> LayoutBuilder<V, P>.defaultCell(block: (DefaultCell.() -> Unit)? = null) =
+        addViewBuilderFor(DefaultCell(viewGroup.context), block)

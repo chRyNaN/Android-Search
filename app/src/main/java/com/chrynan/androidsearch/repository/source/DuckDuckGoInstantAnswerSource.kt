@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.repository.InstantAnswerRepository
 import com.chrynan.androidsearch.web.DuckDuckGoInstantAnswerWebService
 import com.chrynan.instantanswer.api.InstantAnswer
 import com.chrynan.instantanswer.containsValidFields
+import javax.inject.Inject
 
-class DuckDuckGoInstantAnswerSource(private val webService: DuckDuckGoInstantAnswerWebService) : InstantAnswerRepository {
+class DuckDuckGoInstantAnswerSource @Inject constructor(private val webService: DuckDuckGoInstantAnswerWebService) : InstantAnswerRepository {
 
     override suspend fun getBy(query: String): InstantAnswer {
         try {

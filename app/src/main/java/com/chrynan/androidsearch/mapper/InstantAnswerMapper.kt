@@ -4,8 +4,9 @@ import com.chrynan.androidsearch.viewmodel.InstantAnswerViewModel
 import com.chrynan.instantanswer.*
 import com.chrynan.instantanswer.api.InstantAnswer
 import com.chrynan.mapper.UniDirectionalMapper
+import javax.inject.Inject
 
-class InstantAnswerMapper(private val topicMapper: TopicMapper) : UniDirectionalMapper<InstantAnswer, InstantAnswerViewModel?> {
+class InstantAnswerMapper @Inject constructor(private val topicMapper: TopicMapper) : UniDirectionalMapper<InstantAnswer, InstantAnswerViewModel?> {
 
     override fun map(value: InstantAnswer) =
             when {

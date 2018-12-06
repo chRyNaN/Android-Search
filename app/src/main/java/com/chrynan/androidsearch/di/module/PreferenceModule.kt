@@ -1,10 +1,17 @@
+@file:Suppress("unused")
+
 package com.chrynan.androidsearch.di.module
 
 import com.chrynan.androidsearch.preference.SearchPreferences
 import com.chrynan.androidsearch.preference.source.SearchPreferencesSource
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module.module
+import dagger.Binds
+import dagger.Module
+import javax.inject.Singleton
 
-val PREFERENCE_MODULE = module {
-    single { SearchPreferencesSource(context = androidContext()) as SearchPreferences }
+@Module
+internal abstract class PreferenceModule {
+
+    @Binds
+    @Singleton
+    abstract fun bindSearchPreferences(source: SearchPreferencesSource): SearchPreferences
 }

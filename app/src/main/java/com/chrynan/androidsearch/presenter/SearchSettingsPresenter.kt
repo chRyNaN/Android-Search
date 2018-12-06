@@ -4,8 +4,9 @@ import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.preference.SearchPreferences
 import com.chrynan.androidsearch.ui.view.SearchSettingsView
+import javax.inject.Inject
 
-class SearchSettingsPresenter(
+class SearchSettingsPresenter @Inject constructor(
         private val context: Context,
         private val view: SearchSettingsView,
         private val preferences: SearchPreferences

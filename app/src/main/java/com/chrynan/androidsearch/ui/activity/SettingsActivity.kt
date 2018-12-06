@@ -3,8 +3,11 @@ package com.chrynan.androidsearch.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.ui.fragment.SettingsSearchFragment
+import com.chrynan.androidsearch.di.Injector
+import com.chrynan.androidsearch.ui.layout.SearchQuerySettingsLayout
+import com.chrynan.androidsearch.ui.layout.SearchSettingsLayout
+import com.chrynan.androidviews.layout.AndroidLayoutProvider
+import javax.inject.Inject
 
 class SettingsActivity : BaseActivity() {
 
@@ -13,10 +16,17 @@ class SettingsActivity : BaseActivity() {
         fun newIntent(context: Context) = Intent(context, SettingsActivity::class.java)
     }
 
+    @Inject
+    lateinit var searchQuerySettingsLayout: SearchQuerySettingsLayout
+
+    @Inject
+    lateinit var searchSettingsLayout: SearchSettingsLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_fragment_container)
 
-        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, SettingsSearchFragment.newInstance()).commit()
+        AndroidLayoutProvider.layout(this, searchSettingsLayout)
     }
+
+    override fun setupDependencies() = Injector.inject(this)
 }

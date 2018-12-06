@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.repository.SearchHistoryRepository
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class SearchHistoryProvider(
+class SearchHistoryProvider @Inject constructor(
         private val repository: SearchHistoryRepository,
         private val mapper: SearchHistoryMapper
 ) : ResultProvider<AutoCompleteResultViewModel.SearchHistory> {

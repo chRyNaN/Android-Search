@@ -1,17 +1,21 @@
 package com.chrynan.androidsearch.ui.activity
 
 import android.os.Bundle
-import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.ui.fragment.SearchFragment
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.chrynan.androidsearch.di.Injector
+import com.chrynan.androidsearch.ui.layout.SearchLayout
+import com.chrynan.androidviews.layout.AndroidLayoutProvider
+import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 class SearchActivity : BaseActivity() {
+
+    @Inject
+    lateinit var layout: SearchLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_fragment_container)
 
-        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, SearchFragment.newInstance()).commit()
+        AndroidLayoutProvider.layout(this, layout)
     }
+
+    override fun setupDependencies() = Injector.inject(this)
 }

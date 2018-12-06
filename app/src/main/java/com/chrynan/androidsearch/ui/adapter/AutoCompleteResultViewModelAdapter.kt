@@ -8,9 +8,10 @@ import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.util.GlideApp
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.android.synthetic.main.adapter_auto_complete_result_view_model.view.*
+import javax.inject.Inject
 
 @Adapter
-class AutoCompleteResultViewModelAdapter(private val listener: AutoCompleteResultSelectedListener) : AnotherAdapter<AutoCompleteResultViewModel>() {
+class AutoCompleteResultViewModelAdapter @Inject constructor(private val listener: AutoCompleteResultSelectedListener) : AnotherAdapter<AutoCompleteResultViewModel>() {
 
     override val viewType = AdapterViewType.from(this::class.java)
 

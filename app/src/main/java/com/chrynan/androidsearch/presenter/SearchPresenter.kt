@@ -12,9 +12,10 @@ import com.chrynan.androidsearch.action.SearchAction
 import com.chrynan.androidsearch.provider.SearchProvider
 import com.chrynan.androidsearch.util.measureTimeMillisWithResult
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
+import javax.inject.Inject
 import kotlin.system.measureTimeMillis
 
-class SearchPresenter(
+class SearchPresenter @Inject constructor(
         private val autoCompleteProvider: SearchProvider,
         private val adapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>,
         private val diffProcessor: DiffProcessor<UniqueAdapterItem>,

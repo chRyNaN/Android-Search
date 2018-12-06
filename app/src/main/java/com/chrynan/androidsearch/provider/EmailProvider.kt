@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.mapper.EmailMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class EmailProvider(private val mapper: EmailMapper) : ResultProvider<AutoCompleteResultViewModel.Email> {
+class EmailProvider @Inject constructor(private val mapper: EmailMapper) : ResultProvider<AutoCompleteResultViewModel.Email> {
 
     companion object {
 

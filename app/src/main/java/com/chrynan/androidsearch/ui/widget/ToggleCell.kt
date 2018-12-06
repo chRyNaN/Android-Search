@@ -1,12 +1,18 @@
+@file:Suppress("unused")
+
 package com.chrynan.androidsearch.ui.widget
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.CompoundButton
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.util.isVisible
+import com.chrynan.androidviews.builder.LayoutBuilder
+import com.chrynan.androidviews.builder.addViewBuilderFor
+import com.chrynan.androidviews.builder.viewBuilderFor
 import kotlinx.android.synthetic.main.widget_toggle_cell.view.*
 
 class ToggleCell : ConstraintLayout {
@@ -62,3 +68,9 @@ class ToggleCell : ConstraintLayout {
         }
     }
 }
+
+fun toggleCell(context: Context, block: (ToggleCell.() -> Unit)? = null) =
+        viewBuilderFor(ToggleCell(context), block)
+
+fun <V : ViewGroup, P : ViewGroup.LayoutParams> LayoutBuilder<V, P>.toggleCell(block: (ToggleCell.() -> Unit)? = null) =
+        addViewBuilderFor(ToggleCell(viewGroup.context), block)

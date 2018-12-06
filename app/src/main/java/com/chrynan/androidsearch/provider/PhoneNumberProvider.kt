@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.mapper.PhoneNumberMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class PhoneNumberProvider(private val mapper: PhoneNumberMapper) : ResultProvider<AutoCompleteResultViewModel.PhoneNumber> {
+class PhoneNumberProvider @Inject constructor(private val mapper: PhoneNumberMapper) : ResultProvider<AutoCompleteResultViewModel.PhoneNumber> {
 
     companion object {
 

@@ -4,8 +4,9 @@ import android.content.Context
 import android.provider.MediaStore
 import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.repository.ImageMediaRepository
+import javax.inject.Inject
 
-class ImageMediaSource(private val context: Context) : ImageMediaRepository {
+class ImageMediaSource @Inject constructor(private val context: Context) : ImageMediaRepository {
 
     private val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
     private val projection = arrayOf(Projection.TITLE.columnName, Projection.MIME_TYPE.columnName,

@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.mapper.WebAddressMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class WebAddressProvider(private val mapper: WebAddressMapper) : ResultProvider<AutoCompleteResultViewModel.WebAddress> {
+class WebAddressProvider @Inject constructor(private val mapper: WebAddressMapper) : ResultProvider<AutoCompleteResultViewModel.WebAddress> {
 
     companion object {
 

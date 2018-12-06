@@ -5,8 +5,9 @@ import com.chrynan.androidsearch.repository.TypeAheadRepository
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class TypeAheadProvider(
+class TypeAheadProvider @Inject constructor(
         private val repository: TypeAheadRepository,
         private val mapper: TypeAheadMapper
 ) : ResultProvider<AutoCompleteResultViewModel.TypeAheadSearch> {

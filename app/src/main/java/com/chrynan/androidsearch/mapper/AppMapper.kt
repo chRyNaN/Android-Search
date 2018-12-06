@@ -6,8 +6,9 @@ import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.glidedrawable.ApplicationIconDrawableFunction
 import com.chrynan.mapper.UniDirectionalMapper
+import javax.inject.Inject
 
-class AppMapper(private val context: Context) : UniDirectionalMapper<ApplicationInfo, AutoCompleteResultViewModel.App> {
+class AppMapper @Inject constructor(private val context: Context) : UniDirectionalMapper<ApplicationInfo, AutoCompleteResultViewModel.App> {
 
     private val appDescriptionTitle by lazy { context.getString(R.string.auto_complete_description_title_apps) }
     private val descriptionTextFormatter: (String) -> String = { context.getString(R.string.auto_complete_description, it) }

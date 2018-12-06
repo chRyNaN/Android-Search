@@ -4,8 +4,9 @@ import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.mapper.UniDirectionalMapper
+import javax.inject.Inject
 
-class EmailMapper(private val context: Context) : UniDirectionalMapper<String, AutoCompleteResultViewModel.Email> {
+class EmailMapper @Inject constructor(private val context: Context) : UniDirectionalMapper<String, AutoCompleteResultViewModel.Email> {
 
     private val emailDescription by lazy { context.getString(R.string.auto_complete_description_email) }
 

@@ -14,9 +14,10 @@ import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.viewmodel.InstantAnswerViewModel
 import com.chrynan.androidsearch.viewmodel.TopicViewModel
 import kotlinx.android.synthetic.main.adapter_topic_list.view.*
+import javax.inject.Inject
 
 @Adapter
-class TopicListAdapter(
+class TopicListAdapter @Inject constructor(
         private val context: Context,
         private val topicAdapter: TopicAdapter
 ) : AnotherAdapter<InstantAnswerViewModel.TopicList>() {

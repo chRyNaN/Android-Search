@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.chrynan.androidsearch.ui.widget
 
 import android.content.Context
@@ -5,9 +7,13 @@ import android.graphics.drawable.Drawable
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.CompoundButton
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.util.isVisible
+import com.chrynan.androidviews.builder.LayoutBuilder
+import com.chrynan.androidviews.builder.addViewBuilderFor
+import com.chrynan.androidviews.builder.viewBuilderFor
 import kotlinx.android.synthetic.main.widget_radio_button_cell.view.*
 
 class RadioButtonCell : ConstraintLayout {
@@ -80,3 +86,9 @@ class RadioButtonCell : ConstraintLayout {
         iconImageView?.isEnabled = enabled
     }
 }
+
+fun radioButtonCell(context: Context, block: (RadioButtonCell.() -> Unit)? = null) =
+        viewBuilderFor(RadioButtonCell(context), block)
+
+fun <V : ViewGroup, P : ViewGroup.LayoutParams> LayoutBuilder<V, P>.radioButtonCell(block: (RadioButtonCell.() -> Unit)? = null) =
+        addViewBuilderFor(RadioButtonCell(viewGroup.context), block)

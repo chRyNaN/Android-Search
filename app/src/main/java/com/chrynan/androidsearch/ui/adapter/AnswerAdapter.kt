@@ -7,9 +7,10 @@ import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.viewmodel.InstantAnswerViewModel
 import kotlinx.android.synthetic.main.adapter_instant_answer_detailed.view.*
+import javax.inject.Inject
 
 @Adapter
-class AnswerAdapter : AnotherAdapter<InstantAnswerViewModel.Answer>() {
+class AnswerAdapter @Inject constructor() : AnotherAdapter<InstantAnswerViewModel.Answer>() {
 
     override val viewType = AdapterViewType.from(this::class.java)
 

@@ -5,9 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import com.chrynan.androidsearch.util.startIntentIfItExists
 import java.net.URLConnection
+import javax.inject.Inject
 
 
-class OpenFileAction {
+class OpenFileAction @Inject constructor() {
 
     fun perform(context: Context, fileLocation: String): Boolean {
         val intent = Intent(Intent.ACTION_VIEW).apply {

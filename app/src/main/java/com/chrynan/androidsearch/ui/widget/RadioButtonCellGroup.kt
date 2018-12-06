@@ -1,6 +1,9 @@
+@file:Suppress("unused")
+
 package com.chrynan.androidsearch.ui.widget
 
 import com.chrynan.androidsearch.util.isVisible
+import com.chrynan.androidviews.builder.LayoutBuilder
 
 class RadioButtonCellGroup<K : Any>(private val radioButtonCells: Map<K, RadioButtonCell?>) {
 
@@ -38,4 +41,23 @@ class RadioButtonCellGroup<K : Any>(private val radioButtonCells: Map<K, RadioBu
             radioButtonCells.values
                     .forEach { it?.isVisible = value }
         }
+}
+
+fun <K : Any> LayoutBuilder<*, *>.radioButtonCellGroup(block: RadioButtonCellGroupBuilder<K>.() -> Unit): RadioButtonCellGroup<K> {
+    val builder = RadioButtonCellGroupBuilder<K>(this)
+    block(builder)
+    return builder.build()
+}
+
+class RadioButtonCellGroupBuilder<K : Any>(private val layoutBuilder: LayoutBuilder<*, *>) {
+
+    private val map = mutableMapOf<K, RadioButtonCell>()
+
+    fun radioButtonCell(key: K, block: (RadioButtonCell.() -> Unit)? = null): RadioButtonCell {
+        val cell = layoutBuilder.radioButtonCell(block)
+        map[key] = cell
+        return cell
+    }
+
+    fun build() = RadioButtonCellGroup(map)
 }

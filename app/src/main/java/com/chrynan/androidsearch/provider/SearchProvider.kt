@@ -5,8 +5,9 @@ package com.chrynan.androidsearch.provider
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.androidsearch.preference.SearchPreferences
 import kotlinx.coroutines.coroutineScope
+import javax.inject.Inject
 
-class SearchProvider(
+class SearchProvider @Inject constructor(
         private val appProvider: AppProvider,
         private val audioProvider: AudioProvider,
         private val imageProvider: ImageProvider,

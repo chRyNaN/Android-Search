@@ -4,8 +4,9 @@ import com.chrynan.androidsearch.viewmodel.TopicViewModel
 import com.chrynan.instantanswer.api.Result
 import com.chrynan.instantanswer.api.TopicResult
 import com.chrynan.mapper.UniDirectionalMapper
+import javax.inject.Inject
 
-class TopicMapper : UniDirectionalMapper<Result, TopicViewModel> {
+class TopicMapper @Inject constructor() : UniDirectionalMapper<Result, TopicViewModel> {
 
     override fun map(value: Result) =
             when (value) {

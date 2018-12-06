@@ -1,8 +1,9 @@
 package com.chrynan.androidsearch.action
 
 import android.content.Context
+import javax.inject.Inject
 
-class SearchAction(
+class SearchAction @Inject constructor(
         private val openSearchAppAction: OpenSearchAppAction,
         private val openSearchUrlInBrowserAction: OpenSearchUrlInBrowserAction
 ) {

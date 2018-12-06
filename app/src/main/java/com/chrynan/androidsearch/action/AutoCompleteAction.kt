@@ -2,8 +2,9 @@ package com.chrynan.androidsearch.action
 
 import android.content.Context
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
+import javax.inject.Inject
 
-class AutoCompleteAction(
+class AutoCompleteAction @Inject constructor(
         private val openAppAction: OpenAppAction,
         private val openContactAction: OpenContactAction,
         private val openDialerAction: OpenDialerAction,

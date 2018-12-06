@@ -5,8 +5,9 @@ import android.net.Uri
 import android.provider.ContactsContract
 import com.chrynan.androidsearch.model.Contact
 import com.chrynan.androidsearch.repository.ContactRepository
+import javax.inject.Inject
 
-class ContactSource(private val context: Context) : ContactRepository {
+class ContactSource @Inject constructor(private val context: Context) : ContactRepository {
 
     private val projection = arrayOf(
             Projection.ID.columnName,

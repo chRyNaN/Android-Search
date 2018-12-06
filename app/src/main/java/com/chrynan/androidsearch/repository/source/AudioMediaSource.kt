@@ -4,8 +4,9 @@ import android.content.Context
 import android.provider.MediaStore
 import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.repository.AudioMediaRepository
+import javax.inject.Inject
 
-class AudioMediaSource(private val context: Context) : AudioMediaRepository {
+class AudioMediaSource @Inject constructor(private val context: Context) : AudioMediaRepository {
 
     private val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
     private val projection = arrayOf(Projection.TITLE.columnName, Projection.MIME_TYPE.columnName,

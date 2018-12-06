@@ -8,9 +8,10 @@ import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.util.htmlFormattedText
 import com.chrynan.androidsearch.viewmodel.TopicViewModel
 import kotlinx.android.synthetic.main.adapter_topic.view.*
+import javax.inject.Inject
 
 @Adapter
-class TopicAdapter : AnotherAdapter<TopicViewModel>() {
+class TopicAdapter @Inject constructor() : AnotherAdapter<TopicViewModel>() {
 
     override val viewType = AdapterViewType.from(this::class.java)
 

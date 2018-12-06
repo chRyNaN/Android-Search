@@ -6,8 +6,9 @@ import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.glidedrawable.ImageVideoThumbnailDrawableFunction
 import com.chrynan.mapper.UniDirectionalMapper
+import javax.inject.Inject
 
-class MediaMapper(private val context: Context) : UniDirectionalMapper<Media, AutoCompleteResultViewModel.Media> {
+class MediaMapper @Inject constructor(private val context: Context) : UniDirectionalMapper<Media, AutoCompleteResultViewModel.Media> {
 
     private val descriptionFormatter: (String) -> String = { context.getString(R.string.auto_complete_description, it) }
 

@@ -4,8 +4,9 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.chrynan.androidsearch.preference.SearchPreferences
+import javax.inject.Inject
 
-class SearchPreferencesSource(private val context: Context) : SearchPreferences {
+class SearchPreferencesSource @Inject constructor(private val context: Context) : SearchPreferences {
 
     companion object {
 

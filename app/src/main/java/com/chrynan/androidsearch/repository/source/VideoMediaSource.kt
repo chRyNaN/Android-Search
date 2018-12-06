@@ -4,8 +4,9 @@ import android.content.Context
 import android.provider.MediaStore
 import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.repository.VideoMediaRepository
+import javax.inject.Inject
 
-class VideoMediaSource(private val context: Context) : VideoMediaRepository {
+class VideoMediaSource @Inject constructor(private val context: Context) : VideoMediaRepository {
 
     private val uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
     private val projection = arrayOf(Projection.TITLE.columnName, Projection.MIME_TYPE.columnName,
