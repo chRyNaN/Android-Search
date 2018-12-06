@@ -7,7 +7,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 
-class PhoneNumberProvider @Inject constructor(private val mapper: PhoneNumberMapper) : ResultProvider<AutoCompleteResultViewModel.PhoneNumber> {
+class PhoneNumberProvider @Inject constructor(private val mapper: PhoneNumberMapper) : QueryResultProvider<AutoCompleteResultViewModel.PhoneNumber> {
 
     companion object {
 

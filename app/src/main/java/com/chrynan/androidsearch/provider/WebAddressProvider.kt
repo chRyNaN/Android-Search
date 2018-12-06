@@ -7,7 +7,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 
-class WebAddressProvider @Inject constructor(private val mapper: WebAddressMapper) : ResultProvider<AutoCompleteResultViewModel.WebAddress> {
+class WebAddressProvider @Inject constructor(private val mapper: WebAddressMapper) : QueryResultProvider<AutoCompleteResultViewModel.WebAddress> {
 
     companion object {
 

@@ -10,7 +10,7 @@ import javax.inject.Inject
 class AudioProvider @Inject constructor(
         private val repository: AudioMediaRepository,
         private val mapper: MediaMapper
-) : ResultProvider<AutoCompleteResultViewModel.Media> {
+) : QueryResultProvider<AutoCompleteResultViewModel.Media> {
 
     override suspend fun query(query: String) = coroutineScope {
         async {

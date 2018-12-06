@@ -26,7 +26,7 @@ class SearchProvider @Inject constructor(
         searchPreferences.addSearchPreferenceChangedListener(this)
     }
 
-    private var providers: Set<ResultProvider<UniqueAdapterItem>> = getUpdatedProviders()
+    private var providers: Set<QueryResultProvider<UniqueAdapterItem>> = getUpdatedProviders()
 
     @Suppress("ConvertCallChainIntoSequence")
     suspend fun query(query: String?, onUpdate: (Sequence<UniqueAdapterItem>) -> Unit) = coroutineScope {
@@ -50,8 +50,8 @@ class SearchProvider @Inject constructor(
         providers = getUpdatedProviders()
     }
 
-    private fun getUpdatedProviders(): Set<ResultProvider<UniqueAdapterItem>> {
-        val newProviders = mutableSetOf<ResultProvider<UniqueAdapterItem>>()
+    private fun getUpdatedProviders(): Set<QueryResultProvider<UniqueAdapterItem>> {
+        val newProviders = mutableSetOf<QueryResultProvider<UniqueAdapterItem>>()
 
         with(searchPreferences) {
             //if (instantAnswers) newProviders += instantAnswerProvider

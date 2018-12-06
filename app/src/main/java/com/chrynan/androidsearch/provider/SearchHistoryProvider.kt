@@ -10,7 +10,7 @@ import javax.inject.Inject
 class SearchHistoryProvider @Inject constructor(
         private val repository: SearchHistoryRepository,
         private val mapper: SearchHistoryMapper
-) : ResultProvider<AutoCompleteResultViewModel.SearchHistory> {
+) : QueryResultProvider<AutoCompleteResultViewModel.SearchHistory> {
 
     override fun handlesQuery(query: String) = false
 

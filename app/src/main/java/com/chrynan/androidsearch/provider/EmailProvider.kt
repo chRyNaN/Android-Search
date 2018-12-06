@@ -7,7 +7,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 
-class EmailProvider @Inject constructor(private val mapper: EmailMapper) : ResultProvider<AutoCompleteResultViewModel.Email> {
+class EmailProvider @Inject constructor(private val mapper: EmailMapper) : QueryResultProvider<AutoCompleteResultViewModel.Email> {
 
     companion object {
 

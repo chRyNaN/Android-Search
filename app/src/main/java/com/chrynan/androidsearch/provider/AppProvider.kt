@@ -11,7 +11,7 @@ import javax.inject.Inject
 class AppProvider @Inject constructor(
         private val repository: ApplicationInfoRepository,
         private val mapper: AppMapper
-) : ResultProvider<AutoCompleteResultViewModel.App> {
+) : QueryResultProvider<AutoCompleteResultViewModel.App> {
 
     private var applications: Sequence<AutoCompleteResultViewModel.App>? = null
 

@@ -10,7 +10,7 @@ import javax.inject.Inject
 class InstantAnswerProvider @Inject constructor(
         private val repository: InstantAnswerRepository,
         private val mapper: InstantAnswerMapper
-) : ResultProvider<InstantAnswerViewModel> {
+) : QueryResultProvider<InstantAnswerViewModel> {
 
     override suspend fun query(query: String) = coroutineScope {
         async {

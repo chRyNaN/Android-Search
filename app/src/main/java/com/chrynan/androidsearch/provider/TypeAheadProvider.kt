@@ -10,7 +10,7 @@ import javax.inject.Inject
 class TypeAheadProvider @Inject constructor(
         private val repository: TypeAheadRepository,
         private val mapper: TypeAheadMapper
-) : ResultProvider<AutoCompleteResultViewModel.TypeAheadSearch> {
+) : QueryResultProvider<AutoCompleteResultViewModel.TypeAheadSearch> {
 
     override suspend fun query(query: String) = coroutineScope {
         async {

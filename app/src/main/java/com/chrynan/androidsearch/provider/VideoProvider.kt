@@ -10,7 +10,7 @@ import javax.inject.Inject
 class VideoProvider @Inject constructor(
         private val repository: VideoMediaRepository,
         private val mapper: MediaMapper
-) : ResultProvider<AutoCompleteResultViewModel.Media> {
+) : QueryResultProvider<AutoCompleteResultViewModel.Media> {
 
     override suspend fun query(query: String) = coroutineScope {
         async {

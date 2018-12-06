@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ContactProvider @Inject constructor(
         private val repository: ContactRepository,
         private val mapper: ContactMapper
-) : ResultProvider<AutoCompleteResultViewModel.Contact> {
+) : QueryResultProvider<AutoCompleteResultViewModel.Contact> {
 
     override suspend fun query(query: String) = coroutineScope {
         async {
