@@ -9,10 +9,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.util.isVisible
 import com.chrynan.androidviews.builder.LayoutBuilder
 import com.chrynan.androidviews.builder.addViewBuilderFor
 import com.chrynan.androidviews.builder.viewBuilderFor
+import com.chrynan.androidviewutils.setVisibleOrGone
 import kotlinx.android.synthetic.main.widget_toggle_cell.view.*
 
 class ToggleCell : ConstraintLayout {
@@ -28,7 +28,7 @@ class ToggleCell : ConstraintLayout {
             field = value
 
             descriptionTextView?.text = value
-            descriptionTextView?.isVisible = !value.isNullOrBlank()
+            descriptionTextView?.setVisibleOrGone(!value.isNullOrBlank())
         }
     var toggleOn = false
         set(value) {

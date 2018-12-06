@@ -2,8 +2,8 @@
 
 package com.chrynan.androidsearch.ui.widget
 
-import com.chrynan.androidsearch.util.isVisible
 import com.chrynan.androidviews.builder.LayoutBuilder
+import com.chrynan.androidviewutils.setVisibleOrGone
 
 class RadioButtonCellGroup<K : Any>(private val radioButtonCells: Map<K, RadioButtonCell?>) {
 
@@ -39,7 +39,7 @@ class RadioButtonCellGroup<K : Any>(private val radioButtonCells: Map<K, RadioBu
             field = value
 
             radioButtonCells.values
-                    .forEach { it?.isVisible = value }
+                    .forEach { it?.setVisibleOrGone(value) }
         }
 }
 

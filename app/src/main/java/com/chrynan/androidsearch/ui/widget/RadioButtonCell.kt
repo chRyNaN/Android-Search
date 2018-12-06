@@ -10,10 +10,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.util.isVisible
 import com.chrynan.androidviews.builder.LayoutBuilder
 import com.chrynan.androidviews.builder.addViewBuilderFor
 import com.chrynan.androidviews.builder.viewBuilderFor
+import com.chrynan.androidviewutils.setVisibleOrGone
 import kotlinx.android.synthetic.main.widget_radio_button_cell.view.*
 
 class RadioButtonCell : ConstraintLayout {
@@ -23,7 +23,7 @@ class RadioButtonCell : ConstraintLayout {
             field = value
 
             iconImageView?.setImageDrawable(value)
-            iconImageView?.isVisible = value != null
+            iconImageView?.setVisibleOrGone(value != null)
         }
     var titleText: String? = null
         set(value) {
@@ -36,7 +36,7 @@ class RadioButtonCell : ConstraintLayout {
             field = value
 
             descriptionTextView?.text = value
-            descriptionTextView?.isVisible = !value.isNullOrBlank()
+            descriptionTextView?.setVisibleOrGone(!value.isNullOrBlank())
         }
     var isChecked = false
         set(value) {

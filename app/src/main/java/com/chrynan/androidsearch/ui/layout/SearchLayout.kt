@@ -15,9 +15,9 @@ import com.chrynan.androidsearch.presenter.SearchPresenter
 import com.chrynan.androidsearch.ui.activity.SettingsActivity
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
 import com.chrynan.androidsearch.ui.widget.searchWidget
-import com.chrynan.androidsearch.util.doOnLayout
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
+import com.chrynan.androidviewutils.doOnLayout
 import com.chrynan.inlinepixel.dip
 import javax.inject.Inject
 

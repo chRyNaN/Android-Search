@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.chrynan.androidsearch.util
 
 import java.text.Collator

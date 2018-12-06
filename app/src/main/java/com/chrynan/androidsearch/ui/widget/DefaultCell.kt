@@ -9,10 +9,10 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.util.isVisible
 import com.chrynan.androidviews.builder.LayoutBuilder
 import com.chrynan.androidviews.builder.addViewBuilderFor
 import com.chrynan.androidviews.builder.viewBuilderFor
+import com.chrynan.androidviewutils.setVisibleOrGone
 import kotlinx.android.synthetic.main.widget_default_cell.view.*
 
 class DefaultCell : ConstraintLayout {
@@ -22,7 +22,7 @@ class DefaultCell : ConstraintLayout {
             field = value
 
             iconImageView?.setImageDrawable(value)
-            iconImageView?.isVisible = value != null
+            iconImageView?.setVisibleOrGone(value != null)
         }
     var titleText: String? = null
         set(value) {
@@ -35,14 +35,14 @@ class DefaultCell : ConstraintLayout {
             field = value
 
             descriptionTextView?.text = value
-            descriptionTextView?.isVisible = !value.isNullOrBlank()
+            descriptionTextView?.setVisibleOrGone(!value.isNullOrBlank())
         }
     var endText: String? = null
         set(value) {
             field = value
 
             endTextView?.text = value
-            endTextView?.isVisible = !value.isNullOrBlank()
+            endTextView?.setVisibleOrGone(!value.isNullOrBlank())
         }
 
     constructor(context: Context) : this(context, null)

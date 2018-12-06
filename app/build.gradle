@@ -91,6 +91,9 @@ dependencies {
     // Kotlin Utilities
     implementation 'com.github.chRyNaN.kotlin-utils:platform-jvm:v0.1.1'
 
+    // Android View Utils
+    implementation 'com.github.chRyNaN:android-view-utils:v0.1.0'
+
     // Android Views DSL
     implementation 'com.github.chRyNaN:android-views:v0.1.9'
     implementation 'com.github.chRyNaN.android-views:constraintlayout:v0.1.9'

@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.chrynan.aaaah.*
 import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.util.htmlFormattedText
 import com.chrynan.androidsearch.viewmodel.TopicViewModel
+import com.chrynan.androidviewutils.htmlFormattedText
 import kotlinx.android.synthetic.main.adapter_topic.view.*
 import javax.inject.Inject
 
