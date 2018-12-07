@@ -20,12 +20,18 @@ import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
 import com.chrynan.androidviewutils.doOnLayout
 import com.chrynan.inlinepixel.dip
-import com.chrynan.inlinepixel.sp
 import javax.inject.Inject
 
 class SearchLayout(private val appContext: Context) : BaseLayout(appContext),
         ComponentCallbacks,
         AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener {
+
+    companion object {
+
+        private const val ID_SEARCH_WIDGET = 1
+        private const val ID_RECYCLER_VIEW = 2
+        private const val ID_IMAGE_BUTTON = 3
+    }
 
     @Inject
     lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
@@ -48,7 +54,7 @@ class SearchLayout(private val appContext: Context) : BaseLayout(appContext),
                 }
 
                 val searchWidget = searchWidget {
-                    id = 1
+                    id = ID_SEARCH_WIDGET
                     inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
                     elevation = dip(8).toPx().value.toFloat()
                     hint = hintText
@@ -77,7 +83,7 @@ class SearchLayout(private val appContext: Context) : BaseLayout(appContext),
                 }
 
                 recyclerView {
-                    id = 2
+                    id = ID_RECYCLER_VIEW
                     clipToPadding = false
                     setHasFixedSize(true)
                     layoutManager = LinearLayoutManager(context)
@@ -102,7 +108,7 @@ class SearchLayout(private val appContext: Context) : BaseLayout(appContext),
                 }
 
                 imageButton {
-                    id = 3
+                    id = ID_IMAGE_BUTTON
                     setBackgroundColor(transparentColor)
                     setImageDrawable(settingsDrawable)
                     elevation = searchWidget.elevation + 1

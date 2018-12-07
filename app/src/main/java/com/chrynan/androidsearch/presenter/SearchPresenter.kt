@@ -9,6 +9,7 @@ import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.accore.runOnAndroidUI
 import com.chrynan.androidsearch.action.AutoCompleteAction
 import com.chrynan.androidsearch.action.SearchAction
+import com.chrynan.androidsearch.model.wrapper.Query
 import com.chrynan.androidsearch.provider.SearchProvider
 import com.chrynan.androidsearch.util.measureTimeMillisWithResult
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
@@ -48,7 +49,7 @@ class SearchPresenter @Inject constructor(
     }
 
     fun performSearch(context: Context, query: String) {
-        searchAction.perform(context, query)
+        searchAction.perform(context, Query(query))
     }
 
     fun handleSelection(context: Context, result: AutoCompleteResultViewModel) {
