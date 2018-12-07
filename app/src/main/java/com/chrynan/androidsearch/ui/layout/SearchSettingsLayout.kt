@@ -18,7 +18,7 @@ import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class SearchSettingsLayout(private val appContext: Context) : BaseLayout(),
+class SearchSettingsLayout(private val appContext: Context) : BaseLayout(appContext),
         ComponentCallbacks,
         SearchSettingsView {
 
@@ -57,7 +57,7 @@ class SearchSettingsLayout(private val appContext: Context) : BaseLayout(),
 
     override fun setupDependencies() = Injector.inject(this)
 
-    override fun layout(context: Context) =
+    override fun onCreateLayout(context: Context) =
             scrollLayout(context) {
 
                 verticalLayout {

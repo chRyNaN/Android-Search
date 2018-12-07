@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.mapper
 import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Contact
+import com.chrynan.androidsearch.model.wrapper.ContactId
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.glidedrawable.ContactThumbnailDrawableFunction
 import com.chrynan.mapper.UniDirectionalMapper
@@ -22,7 +23,7 @@ class ContactMapper @Inject constructor(private val context: Context) : UniDirec
                     iconFetcher = value.photoUri?.let { ContactThumbnailDrawableFunction(context, it) },
                     actionIcon = null,
                     name = value.name,
-                    id = value.id,
+                    id = ContactId(value.id),
                     lookupKey = value.lookupKey,
                     photoUri = value.photoUri)
 }

@@ -4,6 +4,7 @@ import android.content.ComponentCallbacks
 import android.content.Context
 import android.content.res.Configuration
 import android.support.v7.widget.LinearLayoutManager
+import android.text.InputType
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.accore.runOnAndroidUI
@@ -19,9 +20,10 @@ import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
 import com.chrynan.androidviewutils.doOnLayout
 import com.chrynan.inlinepixel.dip
+import com.chrynan.inlinepixel.sp
 import javax.inject.Inject
 
-class SearchLayout(private val appContext: Context) : BaseLayout(),
+class SearchLayout(private val appContext: Context) : BaseLayout(appContext),
         ComponentCallbacks,
         AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener {
 
@@ -34,11 +36,12 @@ class SearchLayout(private val appContext: Context) : BaseLayout(),
     private val hintText by lazy { appContext.getString(R.string.search_hint) }
     private val searchBoxMargin by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.spacing_xsmall) }
     private val searchBoxPadding by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.spacing_small) }
-    private val settingsButtonText by lazy { "Settings" }
+    private val transparentColor by lazy { appContext.getColor(android.R.color.transparent) }
+    private val settingsDrawable by lazy { appContext.resources.getDrawable(R.drawable.ic_settings) }
 
     override fun setupDependencies() = Injector.inject(this)
 
-    override fun layout(context: Context) =
+    override fun onCreateLayout(context: Context) =
             constraintLayout(context) {
                 init {
                     setBackgroundColor(backgroundColor)
@@ -46,11 +49,12 @@ class SearchLayout(private val appContext: Context) : BaseLayout(),
 
                 val searchWidget = searchWidget {
                     id = 1
+                    inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
                     elevation = dip(8).toPx().value.toFloat()
                     hint = hintText
                     maxLines = 1
                     setSingleLine(true)
-                    textSize = dip(18f).toPx().value.toFloat()
+                    textSize = 16 * context.resources.displayMetrics.density //sp(16f).toPx().value.toFloat()
 
                     runOnAndroidUI {
                         onTextChanged { presenter.performQuery(it.charSequence.toString()) }
@@ -97,18 +101,23 @@ class SearchLayout(private val appContext: Context) : BaseLayout(),
                     }
                 }
 
-                button {
+                imageButton {
                     id = 3
-                    text = settingsButtonText
+                    setBackgroundColor(transparentColor)
+                    setImageDrawable(settingsDrawable)
+                    elevation = searchWidget.elevation + 1
+                    bringToFront()
                     setOnClickListener { context.startActivity(SettingsActivity.newIntent(context)) }
 
                     constraints(this@constraintLayout) {
                         width = ConstraintSize.WrapContent
                         height = ConstraintSize.WrapContent
 
-                        startToStartOfParent()
-                        endToEndOfParent()
-                        bottomToBottomOfParent()
+                        endToEndOf(searchWidget)
+                        topToTopOf(searchWidget)
+                        bottomToBottomOf(searchWidget)
+                        marginEnd = searchBoxPadding
+                        marginStart = searchBoxPadding
                     }
                 }
             }

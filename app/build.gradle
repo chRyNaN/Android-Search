@@ -31,6 +31,13 @@ android {
     }
 }
 
+// Allows use of Experimental Kotlin features, such as, Kotlin Contracts
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        freeCompilerArgs = ['-XXLanguage:+InlineClasses']
+    }
+}
+
 kotlin {
     experimental {
         coroutines 'enable'
@@ -93,11 +100,12 @@ dependencies {
 
     // Android View Utils
     implementation 'com.github.chRyNaN:android-view-utils:v0.1.0'
+    //implementation 'com.github.chRyNaN.inline-pixel:android:v0.1.6'
 
     // Android Views DSL
-    implementation 'com.github.chRyNaN:android-views:v0.1.9'
-    implementation 'com.github.chRyNaN.android-views:constraintlayout:v0.1.9'
-    implementation 'com.github.chRyNaN.android-views:design:v0.1.9'
+    implementation 'com.github.chRyNaN:android-views:v0.1.10'
+    implementation 'com.github.chRyNaN.android-views:constraintlayout:v0.1.10'
+    implementation 'com.github.chRyNaN.android-views:design:v0.1.10'
 
     // Coroutine Utilities
     implementation 'com.github.chRyNaN.android-coroutine-utils:core:v0.1.4'

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.chrynan.androidsearch.ui.widget
 
 import android.content.Context

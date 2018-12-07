@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.mapper
 import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Search
+import com.chrynan.androidsearch.model.wrapper.Query
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.mapper.UniDirectionalMapper
 import javax.inject.Inject
@@ -20,5 +21,5 @@ class SearchHistoryMapper @Inject constructor(private val context: Context) : Un
                     defaultIconResId = 0,
                     iconFetcher = null,
                     actionIcon = null,
-                    query = value.query)
+                    query = Query(value.query))
 }

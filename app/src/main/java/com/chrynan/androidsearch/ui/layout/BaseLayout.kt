@@ -1,17 +1,16 @@
 package com.chrynan.androidsearch.ui.layout
 
 import android.content.Context
-import com.chrynan.androidviews.builder.LayoutBuilder
 import com.chrynan.androidviews.layout.AndroidLayout
+import com.chrynan.inlinepixel.ContextScreenDimensionUnitConverter
+import com.chrynan.inlinepixel.ScreenDimensionUnitConverter
 
-abstract class BaseLayout : AndroidLayout {
+abstract class BaseLayout(context: Context) : AndroidLayout,
+        ScreenDimensionUnitConverter by ContextScreenDimensionUnitConverter(context) {
 
-    override fun onCreateLayout(context: Context): LayoutBuilder<*, *> {
+    override fun onBeforeCreateLayout() {
         setupDependencies()
-        return layout(context)
     }
-
-    abstract fun layout(context: Context): LayoutBuilder<*, *>
 
     abstract fun setupDependencies()
 }

@@ -1,6 +1,7 @@
 package com.chrynan.androidsearch.action
 
 import android.content.Context
+import com.chrynan.androidsearch.model.wrapper.Query
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import javax.inject.Inject
 
@@ -13,23 +14,22 @@ class AutoCompleteAction @Inject constructor(
         private val openUrlAction: OpenUrlAction,
         private val openEmailAction: OpenEmailAction,
         private val searchAction: SearchAction
-) {
+) : QueryResultAction<AutoCompleteResultViewModel> {
 
-    fun perform(context: Context, result: AutoCompleteResultViewModel) {
-        when (result) {
-            is AutoCompleteResultViewModel.App -> openAppAction.perform(context, result.packageName)
-            is AutoCompleteResultViewModel.PhoneNumber -> {
-                if (result.callAction) {
-                    openDialerAction.perform(context, result.phoneNumber)
-                } else {
-                    openSmsAppAction.perform(context, result.phoneNumber)
+    override fun perform(context: Context, item: AutoCompleteResultViewModel) =
+            when (item) {
+                is AutoCompleteResultViewModel.App -> openAppAction.perform(context, item.packageName)
+                is AutoCompleteResultViewModel.PhoneNumber -> {
+                    if (item.callAction) {
+                        openDialerAction.perform(context, item.phoneNumber)
+                    } else {
+                        openSmsAppAction.perform(context, item.phoneNumber)
+                    }
                 }
+                is AutoCompleteResultViewModel.File -> openFileAction.perform(context, item.location)
+                is AutoCompleteResultViewModel.WebAddress -> openUrlAction.perform(context, item.url)
+                is AutoCompleteResultViewModel.Email -> openEmailAction.perform(context, item.email)
+                is AutoCompleteResultViewModel.Contact -> openContactAction.perform(context, item.id)
+                else -> searchAction.perform(context, Query(item.title))
             }
-            is AutoCompleteResultViewModel.File -> openFileAction.perform(context, result.location)
-            is AutoCompleteResultViewModel.WebAddress -> openUrlAction.perform(context, result.url)
-            is AutoCompleteResultViewModel.Email -> openEmailAction.perform(context, result.email)
-            is AutoCompleteResultViewModel.Contact -> openContactAction.perform(context, result.id)
-            else -> searchAction.perform(context, result.title)
-        }
-    }
 }

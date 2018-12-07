@@ -2,6 +2,7 @@ package com.chrynan.androidsearch.mapper
 
 import android.content.Context
 import com.chrynan.androidsearch.R
+import com.chrynan.androidsearch.model.wrapper.PhoneNumber
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.mapper.UniDirectionalMapper
 import javax.inject.Inject
@@ -19,7 +20,7 @@ class PhoneNumberMapper @Inject constructor(private val context: Context) : UniD
                             defaultIconResId = 0,
                             iconFetcher = null,
                             actionIcon = null,
-                            phoneNumber = value,
+                            phoneNumber = PhoneNumber(value),
                             callAction = true),
                     AutoCompleteResultViewModel.PhoneNumber(
                             title = value,
@@ -27,6 +28,6 @@ class PhoneNumberMapper @Inject constructor(private val context: Context) : UniD
                             defaultIconResId = 0,
                             iconFetcher = null,
                             actionIcon = null,
-                            phoneNumber = value,
+                            phoneNumber = PhoneNumber(value),
                             callAction = false))
 }

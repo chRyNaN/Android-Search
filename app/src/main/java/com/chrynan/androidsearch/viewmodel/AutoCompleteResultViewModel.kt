@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.viewmodel
 import android.graphics.drawable.Drawable
 import com.chrynan.aaaah.AdapterId
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.androidsearch.model.wrapper.*
 
 sealed class AutoCompleteResultViewModel : ResultViewModel,
         UniqueAdapterItem {
@@ -14,7 +15,7 @@ sealed class AutoCompleteResultViewModel : ResultViewModel,
             override val defaultIconResId: Int,
             override val iconFetcher: (() -> Drawable)? = null,
             override val actionIcon: Drawable? = null,
-            val packageName: String
+            val packageName: PackageName
     ) : AutoCompleteResultViewModel()
 
     data class PhoneNumber(
@@ -24,7 +25,7 @@ sealed class AutoCompleteResultViewModel : ResultViewModel,
             override val defaultIconResId: Int,
             override val iconFetcher: (() -> Drawable)? = null,
             override val actionIcon: Drawable? = null,
-            val phoneNumber: String,
+            val phoneNumber: com.chrynan.androidsearch.model.wrapper.PhoneNumber,
             val callAction: Boolean = true
     ) : AutoCompleteResultViewModel()
 
@@ -35,7 +36,7 @@ sealed class AutoCompleteResultViewModel : ResultViewModel,
             override val defaultIconResId: Int,
             override val iconFetcher: (() -> Drawable)? = null,
             override val actionIcon: Drawable? = null,
-            val location: String
+            val location: FileLocation
     ) : AutoCompleteResultViewModel()
 
     data class WebAddress(
@@ -45,7 +46,7 @@ sealed class AutoCompleteResultViewModel : ResultViewModel,
             override val defaultIconResId: Int,
             override val iconFetcher: (() -> Drawable)? = null,
             override val actionIcon: Drawable? = null,
-            val url: String
+            val url: Url
     ) : AutoCompleteResultViewModel()
 
     data class Email(
@@ -55,7 +56,7 @@ sealed class AutoCompleteResultViewModel : ResultViewModel,
             override val defaultIconResId: Int,
             override val iconFetcher: (() -> Drawable)? = null,
             override val actionIcon: Drawable? = null,
-            val email: String
+            val email: com.chrynan.androidsearch.model.wrapper.Email
     ) : AutoCompleteResultViewModel()
 
     data class SearchHistory(
@@ -65,7 +66,7 @@ sealed class AutoCompleteResultViewModel : ResultViewModel,
             override val defaultIconResId: Int,
             override val iconFetcher: (() -> Drawable)? = null,
             override val actionIcon: Drawable? = null,
-            val query: String
+            val query: Query
     ) : AutoCompleteResultViewModel()
 
     data class Contact(
@@ -76,7 +77,7 @@ sealed class AutoCompleteResultViewModel : ResultViewModel,
             override val iconFetcher: (() -> Drawable)? = null,
             override val actionIcon: Drawable? = null,
             val name: String,
-            val id: String,
+            val id: ContactId,
             val lookupKey: String,
             val photoUri: String? = null
     ) : AutoCompleteResultViewModel()

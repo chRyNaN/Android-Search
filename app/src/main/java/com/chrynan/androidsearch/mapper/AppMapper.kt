@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.mapper
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import com.chrynan.androidsearch.R
+import com.chrynan.androidsearch.model.wrapper.PackageName
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.glidedrawable.ApplicationIconDrawableFunction
 import com.chrynan.mapper.UniDirectionalMapper
@@ -23,6 +24,6 @@ class AppMapper @Inject constructor(private val context: Context) : UniDirection
                         defaultIconResId = R.drawable.ic_launcher_background,
                         iconFetcher = ApplicationIconDrawableFunction(this, value.packageName),
                         actionIcon = null,
-                        packageName = value.packageName)
+                        packageName = PackageName(value.packageName))
             }
 }

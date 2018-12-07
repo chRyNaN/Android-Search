@@ -12,7 +12,7 @@ import com.chrynan.androidviews.builder.textInputEditText
 import com.chrynan.androidviews.builder.textInputLayout
 import com.chrynan.androidviews.builder.verticalLayout
 
-class SearchQuerySettingsLayout(private val appContext: Context) : BaseLayout() {
+class SearchQuerySettingsLayout(private val appContext: Context) : BaseLayout(appContext) {
 
     private val appTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_search_app) }
     private val webTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_web_view) }
@@ -27,7 +27,7 @@ class SearchQuerySettingsLayout(private val appContext: Context) : BaseLayout() 
 
     override fun setupDependencies() = Injector.inject(this)
 
-    override fun layout(context: Context) =
+    override fun onCreateLayout(context: Context) =
             scrollLayout(context) {
                 verticalLayout {
                     radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {

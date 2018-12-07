@@ -2,6 +2,7 @@ package com.chrynan.androidsearch.mapper
 
 import android.content.Context
 import com.chrynan.androidsearch.R
+import com.chrynan.androidsearch.model.wrapper.Url
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.mapper.UniDirectionalMapper
 import javax.inject.Inject
@@ -17,5 +18,5 @@ class WebAddressMapper @Inject constructor(private val context: Context) : UniDi
                     defaultIconResId = 0,
                     iconFetcher = null,
                     actionIcon = null,
-                    url = value)
+                    url = Url(value))
 }
