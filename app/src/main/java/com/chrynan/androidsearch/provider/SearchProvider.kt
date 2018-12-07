@@ -14,7 +14,6 @@ class SearchProvider @Inject constructor(
         private val videoProvider: VideoProvider,
         private val contactProvider: ContactProvider,
         private val emailProvider: EmailProvider,
-        private val instantAnswerProvider: InstantAnswerProvider,
         private val phoneNumberProvider: PhoneNumberProvider,
         private val searchHistoryProvider: SearchHistoryProvider,
         private val typeAheadProvider: TypeAheadProvider,

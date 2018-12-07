@@ -7,10 +7,7 @@ import com.chrynan.aaaah.DiffProcessor
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.androidsearch.di.scope.LayoutScope
-import com.chrynan.androidsearch.ui.adapter.AnswerAdapter
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
-import com.chrynan.androidsearch.ui.adapter.DefinitionAdapter
-import com.chrynan.androidsearch.ui.adapter.TopicListAdapter
 import com.chrynan.androidsearch.ui.layout.SearchLayout
 import dagger.Binds
 import dagger.Module
@@ -25,11 +22,8 @@ abstract class SearchLayoutModule {
         @JvmStatic
         @Provides
         @LayoutScope
-        fun provideAdapter(autoCompleteAdapter: AutoCompleteResultViewModelAdapter,
-                           answerAdapter: AnswerAdapter,
-                           definitionAdapter: DefinitionAdapter,
-                           topicListAdapter: TopicListAdapter) =
-                ManagerRecyclerViewAdapter<UniqueAdapterItem>(setOf(autoCompleteAdapter, answerAdapter, definitionAdapter, topicListAdapter))
+        fun provideAdapter(autoCompleteAdapter: AutoCompleteResultViewModelAdapter) =
+                ManagerRecyclerViewAdapter<UniqueAdapterItem>(setOf(autoCompleteAdapter))
 
         @JvmStatic
         @Provides

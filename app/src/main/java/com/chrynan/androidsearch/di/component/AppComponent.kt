@@ -46,8 +46,6 @@ interface AppComponent {
 
     fun typeAheadRepository(): TypeAheadRepository
 
-    fun instantAnswerRepository(): InstantAnswerRepository
-
     fun searchHistoryRepository(): SearchHistoryRepository
 
     fun searchPreferences(): SearchPreferences

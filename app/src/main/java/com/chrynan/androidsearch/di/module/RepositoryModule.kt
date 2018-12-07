@@ -37,9 +37,5 @@ internal abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindInstantAnswerRepository(source: DuckDuckGoInstantAnswerSource): InstantAnswerRepository
-
-    @Binds
-    @Singleton
     abstract fun bindSearchHistoryRepository(source: SearchHistorySource): SearchHistoryRepository
 }
