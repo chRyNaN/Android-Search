@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:background="?android:attr/selectableItemBackground"
     android:paddingStart="@dimen/default_screen_margin"
-    android:paddingTop="@dimen/spacing_xsmall"
+    android:paddingTop="@dimen/spacing_medium"
     android:paddingEnd="@dimen/default_screen_margin"
-    android:paddingBottom="@dimen/spacing_xsmall">
+    android:paddingBottom="@dimen/spacing_medium">
 
     <ImageView
         android:id="@+id/iconImageView"

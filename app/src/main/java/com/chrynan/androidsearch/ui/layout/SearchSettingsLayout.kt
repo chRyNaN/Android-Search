@@ -63,6 +63,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     appsToggleCell = toggleCell {
                         titleText = appsTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -72,6 +73,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     audioFilesToggleCell = toggleCell {
                         titleText = audioFilesTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.AUDIO, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -81,6 +83,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     imageFilesToggleCell = toggleCell {
                         titleText = imageFilesTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.IMAGE, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -90,6 +93,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     videoFilesToggleCell = toggleCell {
                         titleText = videoFilesTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.VIDEO, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -99,6 +103,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     contactsToggleCell = toggleCell {
                         titleText = contactsTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -108,6 +113,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     calendarToggleCell = toggleCell {
                         titleText = calendarEventsTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CALENDAR, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -117,6 +123,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     textMessagesToggleCell = toggleCell {
                         titleText = textMessagesTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.MESSAGES, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -126,6 +133,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     emailAddressToggleCell = toggleCell {
                         titleText = emailAddressTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -135,6 +143,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     webAddressToggleCell = toggleCell {
                         titleText = webAddressTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.URL, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -144,6 +153,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     phoneNumberToggleCell = toggleCell {
                         titleText = phoneNumberTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.PHONE_NUMBER, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -153,6 +163,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     suggestionsToggleCell = toggleCell {
                         titleText = suggestionsTitleText
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -162,6 +173,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     searchHistoryToggleCell = toggleCell {
                         titleText = searchHistory
+                        setOnClickListener { toggleOn = !toggleOn }
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.HISTORY, it) }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -177,6 +189,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                             height = LinearLayout.LayoutParams.WRAP_CONTENT
                         }
                     }
+
                 }
 
                 viewGroup.post {
