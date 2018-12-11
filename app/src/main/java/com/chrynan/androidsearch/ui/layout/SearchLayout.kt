@@ -10,8 +10,8 @@ import com.chrynan.acview.onEnterAction
 import com.chrynan.acview.onTextChanged
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
+import com.chrynan.androidsearch.navigator.SearchNavigator
 import com.chrynan.androidsearch.presenter.SearchPresenter
-import com.chrynan.androidsearch.ui.activity.SettingsActivity
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
 import com.chrynan.androidsearch.ui.widget.searchWidget
 import com.chrynan.androidsearch.util.AppContext
@@ -35,6 +35,8 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
     lateinit var managerAdapter: ManagerRecyclerViewAdapter<UniqueAdapterItem>
     @Inject
     lateinit var presenter: SearchPresenter
+    @Inject
+    lateinit var navigator: SearchNavigator
 
     private val backgroundColor by lazy { appContext.resources.getColor(R.color.search_background_color, null) }
     private val hintText by lazy { appContext.getString(R.string.search_hint) }
@@ -111,7 +113,7 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
                     setImageDrawable(settingsDrawable)
                     elevation = searchWidget.elevation + 1
                     bringToFront()
-                    setOnClickListener { context.startActivity(SettingsActivity.newIntent(context)) }
+                    setOnClickListener { navigator.goToSettings() }
 
                     constraints(this@constraintLayout) {
                         width = ConstraintSize.WrapContent
@@ -125,6 +127,7 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
                     }
                 }
             }
+
 
     override fun onAutoCompleteResultSelected(result: AutoCompleteResultViewModel) {
         presenter.handleSelection(appContext, result)

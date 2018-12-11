@@ -111,6 +111,9 @@ dependencies {
     implementation 'com.github.chRyNaN.android-views:constraintlayout:v0.1.10'
     implementation 'com.github.chRyNaN.android-views:design:v0.1.10'
 
+    // Stack
+    implementation 'com.github.chRyNaN.queue:queue-jvm:v0.1.2'
+
     // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

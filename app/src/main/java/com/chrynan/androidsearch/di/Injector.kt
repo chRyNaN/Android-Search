@@ -28,6 +28,7 @@ object Injector {
 
     fun inject(activity: SearchActivity) {
         searchActivityComponent = appComponent.searchActivityBuilder()
+                .activity(activity)
                 .build()
 
         searchActivityComponent.inject(activity)
