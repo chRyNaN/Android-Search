@@ -1,8 +1,6 @@
 package com.chrynan.androidsearch.ui.layout
 
-import android.content.ComponentCallbacks
 import android.content.Context
-import android.content.res.Configuration
 import android.widget.LinearLayout
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
@@ -20,7 +18,6 @@ import javax.inject.Inject
 import kotlin.properties.Delegates
 
 class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appContext),
-        ComponentCallbacks,
         SearchSettingsView {
 
     @Inject
@@ -222,11 +219,4 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
     override fun updateHistoryToggle(toggledOn: Boolean) = searchHistoryToggleCell.perform { toggleOn = toggledOn }
 
     override fun showSearchApproach(searchApproach: String?) = searchApproachToggleCell.perform { endText = searchApproach }
-
-    override fun onLowMemory() {
-
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-    }
 }

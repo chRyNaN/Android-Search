@@ -1,8 +1,6 @@
 package com.chrynan.androidsearch.ui.layout
 
-import android.content.ComponentCallbacks
 import android.content.Context
-import android.content.res.Configuration
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
@@ -24,7 +22,6 @@ import com.chrynan.inlinepixel.dip
 import javax.inject.Inject
 
 class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
-        ComponentCallbacks,
         AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener {
 
     companion object {
@@ -128,12 +125,6 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
                     }
                 }
             }
-
-    override fun onLowMemory() {
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-    }
 
     override fun onAutoCompleteResultSelected(result: AutoCompleteResultViewModel) {
         presenter.handleSelection(appContext, result)
