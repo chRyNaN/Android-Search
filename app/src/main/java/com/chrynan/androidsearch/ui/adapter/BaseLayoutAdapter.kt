@@ -4,22 +4,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.chrynan.aaaah.AnotherAdapter
 import com.chrynan.aaaah.ViewType
-import com.chrynan.androidviews.layout.AndroidRenderLayout
+import com.chrynan.androidsearch.util.AppContext
+import com.chrynan.androidviews.layout.AndroidLayout
 
-abstract class BaseLayoutAdapter<M : Any> : AnotherAdapter<M>() {
+abstract class BaseLayoutAdapter<L : AndroidLayout, M : Any>(protected val appContext: AppContext) : AnotherAdapter<M>() {
 
-    abstract val layout: AndroidRenderLayout<M>
+    abstract fun onProvideLayout(): L
 
-    private lateinit var parentViewGroup: ViewGroup
+    abstract fun onBindItem(layout: L, item: M)
 
     override fun onCreateView(parent: ViewGroup, viewType: ViewType): View {
-        parentViewGroup = parent
-        return layout.onCreateLayout(parent.context).viewGroup
+        val layout = onProvideLayout()
+        return layout.onCreateLayout(parent.context).viewGroup.apply {
+            tag = layout
+        }
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun onBindItem(view: View, item: M) {
-        val newView = layout.onRenderLayout(view.context, item).viewGroup
-        parentViewGroup.removeAllViews()
-        parentViewGroup.addView(newView)
+        val layout = view.tag as L
+        onBindItem(layout, item)
     }
 }

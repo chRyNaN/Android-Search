@@ -1,21 +1,15 @@
 package com.chrynan.androidsearch.ui.layout
 
 import android.content.Context
-import android.view.View
+import android.graphics.drawable.StateListDrawable
 import android.widget.ImageView
 import android.widget.TextView
 import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
 import com.chrynan.androidsearch.util.AppContext
-import com.chrynan.androidsearch.util.GlideApp
-import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
 import javax.inject.Inject
 
-class AdapterAutoCompleteResultLayout @Inject constructor(
-        appContext: AppContext,
-        private val listener: AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener
-) : BaseRenderLayout<AutoCompleteResultViewModel>(appContext) {
+class AdapterAutoCompleteResultLayout @Inject constructor(appContext: AppContext) : BaseLayout(appContext) {
 
     companion object {
 
@@ -25,17 +19,17 @@ class AdapterAutoCompleteResultLayout @Inject constructor(
         private const val ID_ACTION_IMAGE_VIEW = 4
     }
 
+    lateinit var layoutBuilder: LayoutBuilder<*, *>
+    lateinit var iconImageView: ImageView
+    lateinit var titleTextView: TextView
+    lateinit var descriptionTextView: TextView
+    lateinit var actionImageView: ImageView
+
     private val horizontalParentPadding by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.default_screen_margin) }
     private val verticalParentPadding by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.spacing_small) }
     private val titleTextStartMargin by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.spacing_small) }
-    private val parentBackground by lazy { appContext.resources.getDrawable(android.R.drawable.list_selector_background, null) }
+    private val parentBackground by lazy { appContext.resources.getDrawable(android.R.drawable.list_selector_background, appContext.theme) as StateListDrawable }
     private val iconSize by lazy { appContext.resources.getDimensionPixelSize(R.dimen.app_list_item_icon_size) }
-
-    private lateinit var layoutBuilder: LayoutBuilder<*, *>
-    private lateinit var iconImageView: ImageView
-    private lateinit var titleTextView: TextView
-    private lateinit var descriptionTextView: TextView
-    private lateinit var actionImageView: ImageView
 
     override fun onCreateLayout(context: Context): LayoutBuilder<*, *> {
         layoutBuilder = constraintLayout(context) {
@@ -91,22 +85,6 @@ class AdapterAutoCompleteResultLayout @Inject constructor(
                 }
             }
         }
-
-        return layoutBuilder
-    }
-
-    override fun onRenderLayout(context: Context, item: AutoCompleteResultViewModel): LayoutBuilder<*, *> {
-        layoutBuilder.viewGroup.setOnClickListener { listener.onAutoCompleteResultSelected(item) }
-        titleTextView.text = item.title
-        descriptionTextView.text = item.description
-        descriptionTextView.visibility = if (item.description == null) View.GONE else View.VISIBLE
-        GlideApp.with(context)
-                .load(item.iconFetcher)
-                .placeholder(item.defaultIconResId)
-                .fallback(item.defaultIconResId)
-                .into(iconImageView)
-        actionImageView.setImageDrawable(item.actionIcon)
-        actionImageView.visibility = if (item.actionIcon == null) View.GONE else View.VISIBLE
 
         return layoutBuilder
     }
