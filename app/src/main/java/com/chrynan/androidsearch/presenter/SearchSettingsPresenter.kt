@@ -31,7 +31,6 @@ class SearchSettingsPresenter @Inject constructor(
             updateEmailToggle(preferences.emailLink)
             updateWebAddressToggle(preferences.webAddressLink)
             updatePhoneNumberToggle(preferences.phoneNumberLink)
-            updateInstantAnswerToggle(preferences.instantAnswers)
             updateSuggestionToggle(preferences.typeAhead)
             updateHistoryToggle(preferences.history)
             showSearchApproach(getSearchApproach())
@@ -51,14 +50,12 @@ class SearchSettingsPresenter @Inject constructor(
                 SearchToggleItem.EMAIL -> preferences.emailLink = toggledOn
                 SearchToggleItem.URL -> preferences.webAddressLink = toggledOn
                 SearchToggleItem.PHONE_NUMBER -> preferences.phoneNumberLink = toggledOn
-                SearchToggleItem.INSTANT_ANSWER -> preferences.instantAnswers = toggledOn
                 SearchToggleItem.SUGGESTION -> preferences.typeAhead = toggledOn
                 SearchToggleItem.HISTORY -> preferences.history = toggledOn
             }
 
     private fun getSearchApproach(): String? =
             when {
-                preferences.searchApp -> searchApp
                 preferences.webView -> webView
                 preferences.chromeCustomTab -> chromeCustomTabs
                 preferences.browser -> browser
@@ -67,7 +64,6 @@ class SearchSettingsPresenter @Inject constructor(
 
     fun toggleSearchApproach(item: SearchCheckedItem, toggledOn: Boolean) =
             when (item) {
-                SearchCheckedItem.APP -> preferences.searchApp = toggledOn
                 SearchCheckedItem.WEB_VIEW -> preferences.webView = toggledOn
                 SearchCheckedItem.CHROME_CUSTOM_TAB -> preferences.chromeCustomTab = toggledOn
                 SearchCheckedItem.BROWSER -> preferences.browser = toggledOn
@@ -89,14 +85,12 @@ class SearchSettingsPresenter @Inject constructor(
         EMAIL,
         URL,
         PHONE_NUMBER,
-        INSTANT_ANSWER,
         SUGGESTION,
         HISTORY
     }
 
     enum class SearchCheckedItem {
 
-        APP,
         WEB_VIEW,
         CHROME_CUSTOM_TAB,
         BROWSER

@@ -22,8 +22,6 @@ interface SearchSettingsView {
 
     fun updatePhoneNumberToggle(toggledOn: Boolean)
 
-    fun updateInstantAnswerToggle(toggledOn: Boolean)
-
     fun updateSuggestionToggle(toggledOn: Boolean)
 
     fun updateHistoryToggle(toggledOn: Boolean)

@@ -14,7 +14,6 @@ import com.chrynan.androidviews.builder.verticalLayout
 
 class SearchQuerySettingsLayout(private val appContext: Context) : BaseLayout(appContext) {
 
-    private val appTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_search_app) }
     private val webTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_web_view) }
     private val chromeCustomTabsTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_chrome_custom_tabs) }
     private val browserTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_browser_app) }
@@ -31,14 +30,6 @@ class SearchQuerySettingsLayout(private val appContext: Context) : BaseLayout(ap
             scrollLayout(context) {
                 verticalLayout {
                     radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {
-                        radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.APP) {
-                            isChecked = true
-                            titleText = appTitleText
-                            layoutParams {
-                                width = LinearLayout.LayoutParams.MATCH_PARENT
-                                height = LinearLayout.LayoutParams.WRAP_CONTENT
-                            }
-                        }
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.WEB_VIEW) {
                             titleText = webTitleText
                             layoutParams {

@@ -39,7 +39,6 @@
     <string name="settings_toggle_title_email_links">Email Addresses</string>
     <string name="settings_toggle_title_url_links">Web Addresses</string>
     <string name="settings_toggle_title_phone_numbers">Phone Numbers</string>
-    <string name="settings_toggle_title_instant_answers">Instant Answers</string>
     <string name="settings_toggle_title_suggestions">Suggestions</string>
     <string name="settings_toggle_title_history">History</string>
 

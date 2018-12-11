@@ -14,8 +14,6 @@ interface SearchPreferences {
 
     var emailLink: Boolean
 
-    var instantAnswers: Boolean
-
     var phoneNumberLink: Boolean
 
     var history: Boolean
@@ -27,8 +25,6 @@ interface SearchPreferences {
     var calendar: Boolean
 
     var webAddressLink: Boolean
-
-    var searchApp: Boolean
 
     var webView: Boolean
 

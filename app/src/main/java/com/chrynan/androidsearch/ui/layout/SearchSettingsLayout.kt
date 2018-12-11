@@ -35,7 +35,6 @@ class SearchSettingsLayout(private val appContext: Context) : BaseLayout(appCont
     private val emailAddressTitleText by lazy { appContext.getString(R.string.settings_toggle_title_email_links) }
     private val webAddressTitleText by lazy { appContext.getString(R.string.settings_toggle_title_url_links) }
     private val phoneNumberTitleText by lazy { appContext.getString(R.string.settings_toggle_title_phone_numbers) }
-    private val instantAnswersTitleText by lazy { appContext.getString(R.string.settings_toggle_title_instant_answers) }
     private val suggestionsTitleText by lazy { appContext.getString(R.string.settings_toggle_title_suggestions) }
     private val searchHistory by lazy { appContext.getString(R.string.auto_complete_description_title_search_history) }
     private val searchApproach by lazy { appContext.getString(R.string.settings_search_approach_cell_title) }
@@ -50,7 +49,6 @@ class SearchSettingsLayout(private val appContext: Context) : BaseLayout(appCont
     private var emailAddressToggleCell by Delegates.notNull<ToggleCell>()
     private var webAddressToggleCell by Delegates.notNull<ToggleCell>()
     private var phoneNumberToggleCell by Delegates.notNull<ToggleCell>()
-    private var instantAnswerToggleCell by Delegates.notNull<ToggleCell>()
     private var suggestionsToggleCell by Delegates.notNull<ToggleCell>()
     private var searchHistoryToggleCell by Delegates.notNull<ToggleCell>()
     private var searchApproachToggleCell by Delegates.notNull<DefaultCell>()
@@ -152,15 +150,6 @@ class SearchSettingsLayout(private val appContext: Context) : BaseLayout(appCont
                         }
                     }
 
-                    instantAnswerToggleCell = toggleCell {
-                        titleText = instantAnswersTitleText
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.INSTANT_ANSWER, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
-                        }
-                    }
-
                     suggestionsToggleCell = toggleCell {
                         titleText = suggestionsTitleText
                         toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it) }
@@ -213,8 +202,6 @@ class SearchSettingsLayout(private val appContext: Context) : BaseLayout(appCont
     override fun updateWebAddressToggle(toggledOn: Boolean) = webAddressToggleCell.perform { toggleOn = toggledOn }
 
     override fun updatePhoneNumberToggle(toggledOn: Boolean) = phoneNumberToggleCell.perform { toggleOn = toggledOn }
-
-    override fun updateInstantAnswerToggle(toggledOn: Boolean) = instantAnswerToggleCell.perform { toggleOn = toggledOn }
 
     override fun updateSuggestionToggle(toggledOn: Boolean) = suggestionsToggleCell.perform { toggleOn = toggledOn }
 

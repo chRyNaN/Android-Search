@@ -18,14 +18,12 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         private const val KEY_VIDEO = "VIDEO"
         private const val KEY_CONTACTS = "CONTACTS"
         private const val KEY_EMAIL = "EMAIL"
-        private const val KEY_INSTANT_ANSWERS = "INSTANT_ANSWERS"
         private const val KEY_PHONE_NUMBER = "PHONE_NUMBER"
         private const val KEY_TYPE_AHEAD = "TYPE_AHEAD"
         private const val KEY_HISTORY = "HISTORY"
         private const val KEY_MESSAGES = "MESSAGES"
         private const val KEY_CALENDAR = "CALENDAR"
         private const val KEY_WEB_ADDRESS = "KEY_WEB_ADDRESS"
-        private const val KEY_SEARCH_APP = "SEARCH_APP"
         private const val KEY_WEB_VIEW = "WEB_VIEW"
         private const val KEY_CHROME_CUSTOM_TABS = "CHROME_CUSTOM_TABS"
         private const val KEY_BROWSER = "BROWSER"
@@ -37,14 +35,12 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         private const val DEFAULT_VIDEO_FILES = false
         private const val DEFAULT_CONTACTS = false
         private const val DEFAULT_EMAIL_LINK = true
-        private const val DEFAULT_INSTANT_ANSWERS = true
         private const val DEFAULT_PHONE_NUMBER_LINK = true
         private const val DEFAULT_HISTORY = false
         private const val DEFAULT_TYPE_AHEAD = true
         private const val DEFAULT_MESSAGES = false
         private const val DEFAULT_CALENDAR = false
         private const val DEFAULT_WEB_ADDRESS_LINK = true
-        private const val DEFAULT_SEARCH_APP = false
         private const val DEFAULT_WEB_VIEW = false
         private const val DEFAULT_CHROME_CUSTOM_TABS = false
         private const val DEFAULT_BROWSER = true
@@ -91,12 +87,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
             sharedPreferences.edit().putBoolean(KEY_EMAIL, value).apply()
         }
 
-    override var instantAnswers: Boolean
-        get() = sharedPreferences.getBoolean(KEY_INSTANT_ANSWERS, DEFAULT_INSTANT_ANSWERS)
-        set(value) {
-            sharedPreferences.edit().putBoolean(KEY_INSTANT_ANSWERS, value).apply()
-        }
-
     override var phoneNumberLink: Boolean
         get() = sharedPreferences.getBoolean(KEY_PHONE_NUMBER, DEFAULT_PHONE_NUMBER_LINK)
         set(value) {
@@ -131,12 +121,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         get() = sharedPreferences.getBoolean(KEY_WEB_ADDRESS, DEFAULT_WEB_ADDRESS_LINK)
         set(value) {
             sharedPreferences.edit().putBoolean(KEY_WEB_ADDRESS, value).apply()
-        }
-
-    override var searchApp: Boolean
-        get() = sharedPreferences.getBoolean(KEY_SEARCH_APP, DEFAULT_SEARCH_APP)
-        set(value) {
-            sharedPreferences.edit().putBoolean(KEY_SEARCH_APP, value).apply()
         }
 
     override var webView: Boolean
