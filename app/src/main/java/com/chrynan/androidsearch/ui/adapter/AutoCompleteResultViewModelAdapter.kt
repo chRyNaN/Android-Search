@@ -1,6 +1,5 @@
 package com.chrynan.androidsearch.ui.adapter
 
-import android.view.View
 import android.view.ViewGroup
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
@@ -9,6 +8,7 @@ import com.chrynan.androidsearch.ui.layout.AdapterAutoCompleteResultLayout
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.util.GlideApp
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
+import com.chrynan.androidviewutils.setVisibleOrGone
 import javax.inject.Inject
 
 @Adapter
@@ -29,14 +29,14 @@ class AutoCompleteResultViewModelAdapter @Inject constructor(
             layoutBuilder.viewGroup.setOnClickListener { listener.onAutoCompleteResultSelected(item) }
             titleTextView.text = item.title
             descriptionTextView.text = item.description
-            descriptionTextView.visibility = if (item.description == null) View.GONE else View.VISIBLE
+            descriptionTextView.setVisibleOrGone(item.description != null)
             GlideApp.with(appContext)
                     .load(item.iconFetcher)
                     .placeholder(item.defaultIconResId)
                     .fallback(item.defaultIconResId)
                     .into(iconImageView)
             actionImageView.setImageDrawable(item.actionIcon)
-            actionImageView.visibility = if (item.actionIcon == null) View.GONE else View.VISIBLE
+            actionImageView.setVisibleOrGone(item.actionIcon == null)
         }
     }
 
