@@ -2,10 +2,10 @@
 
 package com.chrynan.androidsearch.di.module
 
-import android.content.Context
 import android.content.pm.PackageManager
 import com.chrynan.androidsearch.SearchApplication
 import com.chrynan.androidsearch.di.component.activity.SearchActivityComponent
+import com.chrynan.androidsearch.util.AppContext
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,10 +20,10 @@ internal abstract class AppModule {
         @JvmStatic
         @Provides
         @Singleton
-        fun providePackageManager(appContext: Context): PackageManager = appContext.packageManager
+        fun providePackageManager(appContext: AppContext): PackageManager = appContext.packageManager
     }
 
     @Binds
     @Singleton
-    abstract fun bindApplicationContext(application: SearchApplication): Context
+    abstract fun bindApplicationContext(application: SearchApplication): AppContext
 }

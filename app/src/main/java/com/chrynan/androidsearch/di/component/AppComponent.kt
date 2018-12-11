@@ -2,7 +2,6 @@
 
 package com.chrynan.androidsearch.di.component
 
-import android.content.Context
 import android.content.pm.PackageManager
 import com.chrynan.androidsearch.SearchApplication
 import com.chrynan.androidsearch.di.component.activity.SearchActivityComponent
@@ -13,6 +12,7 @@ import com.chrynan.androidsearch.di.module.RepositoryModule
 import com.chrynan.androidsearch.di.module.WebModule
 import com.chrynan.androidsearch.preference.SearchPreferences
 import com.chrynan.androidsearch.repository.*
+import com.chrynan.androidsearch.util.AppContext
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -30,7 +30,7 @@ interface AppComponent {
 
     fun settingsActivityBuilder(): SettingsActivityComponent.Builder
 
-    fun appContext(): Context
+    fun appContext(): AppContext
 
     fun packageManager(): PackageManager
 

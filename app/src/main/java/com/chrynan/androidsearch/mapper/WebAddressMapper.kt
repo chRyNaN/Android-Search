@@ -1,13 +1,13 @@
 package com.chrynan.androidsearch.mapper
 
-import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.wrapper.Url
+import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.mapper.UniDirectionalMapper
 import javax.inject.Inject
 
-class WebAddressMapper @Inject constructor(private val context: Context) : UniDirectionalMapper<String, AutoCompleteResultViewModel.WebAddress> {
+class WebAddressMapper @Inject constructor(private val context: AppContext) : UniDirectionalMapper<String, AutoCompleteResultViewModel.WebAddress> {
 
     private val urlDescription by lazy { context.getString(R.string.auto_complete_description_web_address) }
 

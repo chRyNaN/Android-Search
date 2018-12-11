@@ -12,13 +12,14 @@ import com.chrynan.androidsearch.ui.widget.DefaultCell
 import com.chrynan.androidsearch.ui.widget.ToggleCell
 import com.chrynan.androidsearch.ui.widget.defaultCell
 import com.chrynan.androidsearch.ui.widget.toggleCell
+import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.scrollLayout
 import com.chrynan.androidviews.builder.verticalLayout
 import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class SearchSettingsLayout(private val appContext: Context) : BaseLayout(appContext),
+class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appContext),
         ComponentCallbacks,
         SearchSettingsView {
 

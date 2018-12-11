@@ -1,13 +1,13 @@
 package com.chrynan.androidsearch.repository.source
 
-import android.content.Context
 import android.net.Uri
 import android.provider.ContactsContract
 import com.chrynan.androidsearch.model.Contact
 import com.chrynan.androidsearch.repository.ContactRepository
+import com.chrynan.androidsearch.util.AppContext
 import javax.inject.Inject
 
-class ContactSource @Inject constructor(private val context: Context) : ContactRepository {
+class ContactSource @Inject constructor(private val context: AppContext) : ContactRepository {
 
     private val projection = arrayOf(
             Projection.ID.columnName,

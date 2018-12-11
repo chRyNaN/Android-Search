@@ -16,13 +16,14 @@ import com.chrynan.androidsearch.presenter.SearchPresenter
 import com.chrynan.androidsearch.ui.activity.SettingsActivity
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
 import com.chrynan.androidsearch.ui.widget.searchWidget
+import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
 import com.chrynan.androidviewutils.doOnLayout
 import com.chrynan.inlinepixel.dip
 import javax.inject.Inject
 
-class SearchLayout(private val appContext: Context) : BaseLayout(appContext),
+class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
         ComponentCallbacks,
         AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener {
 

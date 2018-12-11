@@ -2,10 +2,10 @@
 
 package com.chrynan.androidsearch.di.module.activity
 
-import android.content.Context
 import com.chrynan.androidsearch.di.scope.ActivityScope
 import com.chrynan.androidsearch.ui.layout.SearchQuerySettingsLayout
 import com.chrynan.androidsearch.ui.layout.SearchSettingsLayout
+import com.chrynan.androidsearch.util.AppContext
 import dagger.Module
 import dagger.Provides
 
@@ -18,11 +18,11 @@ internal abstract class SettingsActivityModule {
         @JvmStatic
         @ActivityScope
         @Provides
-        fun provideSearchSettingsLayout(appContext: Context) = SearchSettingsLayout(appContext)
+        fun provideSearchSettingsLayout(appContext: AppContext) = SearchSettingsLayout(appContext)
 
         @JvmStatic
         @ActivityScope
         @Provides
-        fun provideSearchQuerySettingsLayout(appContext: Context) = SearchQuerySettingsLayout(appContext)
+        fun provideSearchQuerySettingsLayout(appContext: AppContext) = SearchQuerySettingsLayout(appContext)
     }
 }

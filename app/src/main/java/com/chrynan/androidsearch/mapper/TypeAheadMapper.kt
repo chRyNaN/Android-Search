@@ -1,13 +1,13 @@
 package com.chrynan.androidsearch.mapper
 
-import android.content.Context
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.TypeAhead
+import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.mapper.UniDirectionalMapper
 import javax.inject.Inject
 
-class TypeAheadMapper @Inject constructor(private val context: Context) : UniDirectionalMapper<TypeAhead, AutoCompleteResultViewModel.TypeAheadSearch> {
+class TypeAheadMapper @Inject constructor(private val context: AppContext) : UniDirectionalMapper<TypeAhead, AutoCompleteResultViewModel.TypeAheadSearch> {
 
     private val typeAheadDescription by lazy { context.getString(R.string.auto_complete_description_type_ahead) }
 

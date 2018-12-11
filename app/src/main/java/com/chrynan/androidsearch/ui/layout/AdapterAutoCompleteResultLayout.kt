@@ -6,13 +6,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
+import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.util.GlideApp
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
 import javax.inject.Inject
 
 class AdapterAutoCompleteResultLayout @Inject constructor(
-        appContext: Context,
+        appContext: AppContext,
         private val listener: AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener
 ) : BaseRenderLayout<AutoCompleteResultViewModel>(appContext) {
 

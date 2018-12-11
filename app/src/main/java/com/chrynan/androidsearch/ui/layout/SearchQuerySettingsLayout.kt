@@ -7,12 +7,13 @@ import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
+import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.scrollLayout
 import com.chrynan.androidviews.builder.textInputEditText
 import com.chrynan.androidviews.builder.textInputLayout
 import com.chrynan.androidviews.builder.verticalLayout
 
-class SearchQuerySettingsLayout(private val appContext: Context) : BaseLayout(appContext) {
+class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout(appContext) {
 
     private val webTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_web_view) }
     private val chromeCustomTabsTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_chrome_custom_tabs) }

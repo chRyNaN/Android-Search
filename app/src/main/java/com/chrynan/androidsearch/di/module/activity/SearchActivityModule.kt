@@ -1,9 +1,9 @@
 package com.chrynan.androidsearch.di.module.activity
 
-import android.content.Context
 import com.chrynan.androidsearch.di.component.layout.SearchLayoutComponent
 import com.chrynan.androidsearch.di.scope.ActivityScope
 import com.chrynan.androidsearch.ui.layout.SearchLayout
+import com.chrynan.androidsearch.util.AppContext
 import dagger.Module
 import dagger.Provides
 
@@ -16,6 +16,6 @@ abstract class SearchActivityModule {
         @JvmStatic
         @Provides
         @ActivityScope
-        fun provideSearchLayout(appContext: Context) = SearchLayout(appContext)
+        fun provideSearchLayout(appContext: AppContext) = SearchLayout(appContext)
     }
 }
