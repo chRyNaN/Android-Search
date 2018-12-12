@@ -12,6 +12,7 @@ import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.navigator.SearchNavigator
 import com.chrynan.androidsearch.presenter.SearchPresenter
 import com.chrynan.androidsearch.resource.SearchLayoutResources
+import com.chrynan.androidsearch.resource.source.SearchLayoutResourcesSource
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
 import com.chrynan.androidsearch.ui.widget.searchWidget
 import com.chrynan.androidsearch.util.AppContext
@@ -21,8 +22,12 @@ import com.chrynan.androidviewutils.doOnLayout
 import com.chrynan.inlinepixel.dip
 import javax.inject.Inject
 
-class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
-        AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener {
+class SearchLayout(
+        private val appContext: AppContext,
+        res: SearchLayoutResourcesSource
+) : BaseLayout(appContext),
+        AutoCompleteResultViewModelAdapter.AutoCompleteResultSelectedListener,
+        SearchLayoutResources by res {
 
     companion object {
 
@@ -37,22 +42,20 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
     lateinit var presenter: SearchPresenter
     @Inject
     lateinit var navigator: SearchNavigator
-    @Inject
-    lateinit var res: SearchLayoutResources
 
     override fun setupDependencies() = Injector.inject(this)
 
     override fun onCreateLayout(context: Context) =
             constraintLayout(context) {
                 init {
-                    setBackgroundColor(res.backgroundColor)
+                    setBackgroundColor(backgroundColor)
                 }
 
                 val searchWidget = searchWidget {
                     id = ID_SEARCH_WIDGET
                     inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
                     elevation = dip(8).toPx().value.toFloat()
-                    hint = res.hintText
+                    hint = hintText
                     maxLines = 1
                     setSingleLine(true)
                     textSize = 16 * context.resources.displayMetrics.density //sp(16f).toPx().value.toFloat()
@@ -66,10 +69,10 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
                         width = ConstraintSize.MatchConstraint
                         height = ConstraintSize.WrapContent
 
-                        margin(ConstraintSide.START, res.searchBoxMargin)
-                        margin(ConstraintSide.END, res.searchBoxMargin)
-                        margin(ConstraintSide.TOP, res.searchBoxMargin)
-                        setPadding(res.searchBoxPadding, 0, res.searchBoxPadding, 0)
+                        margin(ConstraintSide.START, searchBoxMargin)
+                        margin(ConstraintSide.END, searchBoxMargin)
+                        margin(ConstraintSide.TOP, searchBoxMargin)
+                        setPadding(searchBoxPadding, 0, searchBoxPadding, 0)
 
                         startToStartOfParent()
                         endToEndOfParent()
@@ -104,8 +107,8 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
 
                 imageButton {
                     id = ID_IMAGE_BUTTON
-                    setBackgroundColor(res.transparentColor)
-                    setImageDrawable(res.settingsDrawable)
+                    setBackgroundColor(transparentColor)
+                    setImageDrawable(settingsDrawable)
                     elevation = searchWidget.elevation + 1
                     bringToFront()
                     setOnClickListener { navigator.goToSettings() }
@@ -117,8 +120,8 @@ class SearchLayout(private val appContext: AppContext) : BaseLayout(appContext),
                         endToEndOf(searchWidget)
                         topToTopOf(searchWidget)
                         bottomToBottomOf(searchWidget)
-                        marginEnd = res.searchBoxPadding
-                        marginStart = res.searchBoxPadding
+                        marginEnd = searchBoxPadding
+                        marginStart = searchBoxPadding
                     }
                 }
             }
