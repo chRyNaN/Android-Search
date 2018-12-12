@@ -1,6 +1,7 @@
 package com.chrynan.androidsearch.ui.layout
 
 import android.content.Context
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
@@ -12,7 +13,9 @@ import com.chrynan.androidsearch.ui.widget.ToggleCell
 import com.chrynan.androidsearch.ui.widget.defaultCell
 import com.chrynan.androidsearch.ui.widget.toggleCell
 import com.chrynan.androidsearch.util.AppContext
+import com.chrynan.androidviews.builder.appBarLayout
 import com.chrynan.androidviews.builder.scrollLayout
+import com.chrynan.androidviews.builder.toolbar
 import com.chrynan.androidviews.builder.verticalLayout
 import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
@@ -57,139 +60,157 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
     override fun setupDependencies() = Injector.inject(this)
 
     override fun onCreateLayout(context: Context) =
-            scrollLayout(context) {
+            verticalLayout(context) {
 
-                verticalLayout {
-
-                    appsToggleCell = toggleCell {
-                        titleText = appsTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                appBarLayout {
+                    toolbar {
+                        init {
+                            this.title = "Settings"
                         }
                     }
+                }
 
-                    audioFilesToggleCell = toggleCell {
-                        titleText = audioFilesTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.AUDIO, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                scrollLayout {
+
+                    verticalLayout {
+
+                        init {
+                            layoutParams(this@scrollLayout) {
+                                width = ViewGroup.LayoutParams.MATCH_PARENT
+                                height = ViewGroup.LayoutParams.MATCH_PARENT
+                            }
                         }
-                    }
 
-                    imageFilesToggleCell = toggleCell {
-                        titleText = imageFilesTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.IMAGE, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        appsToggleCell = toggleCell {
+                            titleText = appsTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    videoFilesToggleCell = toggleCell {
-                        titleText = videoFilesTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.VIDEO, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        audioFilesToggleCell = toggleCell {
+                            titleText = audioFilesTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.AUDIO, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    contactsToggleCell = toggleCell {
-                        titleText = contactsTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        imageFilesToggleCell = toggleCell {
+                            titleText = imageFilesTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.IMAGE, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    calendarToggleCell = toggleCell {
-                        titleText = calendarEventsTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CALENDAR, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        videoFilesToggleCell = toggleCell {
+                            titleText = videoFilesTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.VIDEO, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    textMessagesToggleCell = toggleCell {
-                        titleText = textMessagesTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.MESSAGES, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        contactsToggleCell = toggleCell {
+                            titleText = contactsTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    emailAddressToggleCell = toggleCell {
-                        titleText = emailAddressTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        calendarToggleCell = toggleCell {
+                            titleText = calendarEventsTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CALENDAR, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    webAddressToggleCell = toggleCell {
-                        titleText = webAddressTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.URL, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        textMessagesToggleCell = toggleCell {
+                            titleText = textMessagesTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.MESSAGES, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    phoneNumberToggleCell = toggleCell {
-                        titleText = phoneNumberTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.PHONE_NUMBER, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        emailAddressToggleCell = toggleCell {
+                            titleText = emailAddressTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    suggestionsToggleCell = toggleCell {
-                        titleText = suggestionsTitleText
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        webAddressToggleCell = toggleCell {
+                            titleText = webAddressTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.URL, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    searchHistoryToggleCell = toggleCell {
-                        titleText = searchHistory
-                        setOnClickListener { toggleOn = !toggleOn }
-                        toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.HISTORY, it) }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        phoneNumberToggleCell = toggleCell {
+                            titleText = phoneNumberTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.PHONE_NUMBER, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
-                    searchApproachToggleCell = defaultCell {
-                        titleText = searchApproach
-                        setOnClickListener { navigator.goToSearchQuerySettings() }
-                        layoutParams {
-                            width = LinearLayout.LayoutParams.MATCH_PARENT
-                            height = LinearLayout.LayoutParams.WRAP_CONTENT
+                        suggestionsToggleCell = toggleCell {
+                            titleText = suggestionsTitleText
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
                         }
-                    }
 
+                        searchHistoryToggleCell = toggleCell {
+                            titleText = searchHistory
+                            setOnClickListener { toggleOn = !toggleOn }
+                            toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.HISTORY, it) }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
+                        }
+
+                        searchApproachToggleCell = defaultCell {
+                            titleText = searchApproach
+                            setOnClickListener { navigator.goToSearchQuerySettings() }
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            }
+                        }
+
+                    }
                 }
 
                 viewGroup.post {
