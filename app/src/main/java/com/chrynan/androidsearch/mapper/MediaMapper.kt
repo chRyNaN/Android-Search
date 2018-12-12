@@ -2,6 +2,7 @@ package com.chrynan.androidsearch.mapper
 
 import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.resource.MediaMapperResources
+import com.chrynan.androidsearch.resource.source.MediaMapperResourcesSource
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.glidedrawable.ImageVideoThumbnailDrawableFunction
@@ -10,8 +11,9 @@ import javax.inject.Inject
 
 class MediaMapper @Inject constructor(
         private val context: AppContext,
-        private val res: MediaMapperResources
-) : UniDirectionalMapper<Media, AutoCompleteResultViewModel.Media> {
+        res: MediaMapperResourcesSource
+) : UniDirectionalMapper<Media, AutoCompleteResultViewModel.Media>,
+        MediaMapperResources by res {
 
     override fun map(value: Media): AutoCompleteResultViewModel.Media =
             AutoCompleteResultViewModel.Media(
@@ -31,10 +33,10 @@ class MediaMapper @Inject constructor(
 
     private fun getDescription(media: Media): String =
             when {
-                media.isAudio -> res.musicDescription
-                media.isVideo -> res.moviesDescription
-                media.isImage -> res.picturesDescription
-                else -> res.filesDescription
+                media.isAudio -> musicDescription
+                media.isVideo -> moviesDescription
+                media.isImage -> picturesDescription
+                else -> filesDescription
             }
 
     private val Media.isAudio: Boolean
