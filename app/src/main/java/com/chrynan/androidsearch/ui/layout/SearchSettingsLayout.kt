@@ -3,10 +3,10 @@ package com.chrynan.androidsearch.ui.layout
 import android.content.Context
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.navigator.SearchSettingsNavigator
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
+import com.chrynan.androidsearch.resource.SearchSettingsResources
 import com.chrynan.androidsearch.ui.view.SearchSettingsView
 import com.chrynan.androidsearch.ui.widget.DefaultCell
 import com.chrynan.androidsearch.ui.widget.ToggleCell
@@ -21,27 +21,15 @@ import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appContext),
+class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
         SearchSettingsView {
 
     @Inject
     lateinit var presenter: SearchSettingsPresenter
     @Inject
     lateinit var navigator: SearchSettingsNavigator
-
-    private val appsTitleText by lazy { appContext.getString(R.string.settings_toggle_title_apps) }
-    private val audioFilesTitleText by lazy { appContext.getString(R.string.settings_toggle_title_audio_files) }
-    private val imageFilesTitleText by lazy { appContext.getString(R.string.settings_toggle_title_image_files) }
-    private val videoFilesTitleText by lazy { appContext.getString(R.string.settings_toggle_title_video_files) }
-    private val contactsTitleText by lazy { appContext.getString(R.string.settings_toggle_title_contacts) }
-    private val calendarEventsTitleText by lazy { appContext.getString(R.string.settings_toggle_title_calendar_events) }
-    private val textMessagesTitleText by lazy { appContext.getString(R.string.settings_toggle_title_text_messages) }
-    private val emailAddressTitleText by lazy { appContext.getString(R.string.settings_toggle_title_email_links) }
-    private val webAddressTitleText by lazy { appContext.getString(R.string.settings_toggle_title_url_links) }
-    private val phoneNumberTitleText by lazy { appContext.getString(R.string.settings_toggle_title_phone_numbers) }
-    private val suggestionsTitleText by lazy { appContext.getString(R.string.settings_toggle_title_suggestions) }
-    private val searchHistory by lazy { appContext.getString(R.string.auto_complete_description_title_search_history) }
-    private val searchApproach by lazy { appContext.getString(R.string.settings_search_approach_cell_title) }
+    @Inject
+    lateinit var res: SearchSettingsResources
 
     private var appsToggleCell by Delegates.notNull<ToggleCell>()
     private var audioFilesToggleCell by Delegates.notNull<ToggleCell>()
@@ -82,7 +70,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         appsToggleCell = toggleCell {
-                            titleText = appsTitleText
+                            titleText = res.appsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it) }
                             layoutParams {
@@ -92,7 +80,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         audioFilesToggleCell = toggleCell {
-                            titleText = audioFilesTitleText
+                            titleText = res.audioFilesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.AUDIO, it) }
                             layoutParams {
@@ -102,7 +90,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         imageFilesToggleCell = toggleCell {
-                            titleText = imageFilesTitleText
+                            titleText = res.imageFilesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.IMAGE, it) }
                             layoutParams {
@@ -112,7 +100,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         videoFilesToggleCell = toggleCell {
-                            titleText = videoFilesTitleText
+                            titleText = res.videoFilesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.VIDEO, it) }
                             layoutParams {
@@ -122,7 +110,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         contactsToggleCell = toggleCell {
-                            titleText = contactsTitleText
+                            titleText = res.contactsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it) }
                             layoutParams {
@@ -132,7 +120,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         calendarToggleCell = toggleCell {
-                            titleText = calendarEventsTitleText
+                            titleText = res.calendarEventsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CALENDAR, it) }
                             layoutParams {
@@ -142,7 +130,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         textMessagesToggleCell = toggleCell {
-                            titleText = textMessagesTitleText
+                            titleText = res.textMessagesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.MESSAGES, it) }
                             layoutParams {
@@ -152,7 +140,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         emailAddressToggleCell = toggleCell {
-                            titleText = emailAddressTitleText
+                            titleText = res.emailAddressTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it) }
                             layoutParams {
@@ -162,7 +150,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         webAddressToggleCell = toggleCell {
-                            titleText = webAddressTitleText
+                            titleText = res.webAddressTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.URL, it) }
                             layoutParams {
@@ -172,7 +160,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         phoneNumberToggleCell = toggleCell {
-                            titleText = phoneNumberTitleText
+                            titleText = res.phoneNumberTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.PHONE_NUMBER, it) }
                             layoutParams {
@@ -182,7 +170,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         suggestionsToggleCell = toggleCell {
-                            titleText = suggestionsTitleText
+                            titleText = res.suggestionsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it) }
                             layoutParams {
@@ -192,7 +180,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         searchHistoryToggleCell = toggleCell {
-                            titleText = searchHistory
+                            titleText = res.searchHistory
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.HISTORY, it) }
                             layoutParams {
@@ -202,7 +190,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
                         }
 
                         searchApproachToggleCell = defaultCell {
-                            titleText = searchApproach
+                            titleText = res.searchApproach
                             setOnClickListener { navigator.goToSearchQuerySettings() }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
