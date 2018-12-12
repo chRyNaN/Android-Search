@@ -1,13 +1,13 @@
 package com.chrynan.androidsearch.resource.source
 
 import com.chrynan.androidsearch.R
-import com.chrynan.androidsearch.di.scope.LayoutScope
+import com.chrynan.androidsearch.di.scope.ActivityScope
 import com.chrynan.androidsearch.resource.ResourceProvider
 import com.chrynan.androidsearch.resource.SearchQuerySettingsLayoutResources
 import com.chrynan.androidsearch.util.AppContext
 import javax.inject.Inject
 
-@LayoutScope
+@ActivityScope
 class SearchQuerySettingsLayoutResourcesSource @Inject constructor(appContext: AppContext) : ResourceProvider(appContext),
         SearchQuerySettingsLayoutResources {
 

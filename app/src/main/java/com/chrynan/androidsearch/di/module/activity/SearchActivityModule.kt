@@ -4,6 +4,7 @@ import com.chrynan.androidsearch.di.component.layout.SearchLayoutComponent
 import com.chrynan.androidsearch.di.scope.ActivityScope
 import com.chrynan.androidsearch.navigator.SearchNavigator
 import com.chrynan.androidsearch.navigator.source.SearchNavigatorSource
+import com.chrynan.androidsearch.resource.source.SearchLayoutResourcesSource
 import com.chrynan.androidsearch.ui.layout.SearchLayout
 import com.chrynan.androidsearch.util.AppContext
 import dagger.Binds
@@ -19,7 +20,7 @@ abstract class SearchActivityModule {
         @JvmStatic
         @Provides
         @ActivityScope
-        fun provideSearchLayout(appContext: AppContext) = SearchLayout(appContext)
+        fun provideSearchLayout(appContext: AppContext, res: SearchLayoutResourcesSource) = SearchLayout(appContext, res)
     }
 
     @Binds
