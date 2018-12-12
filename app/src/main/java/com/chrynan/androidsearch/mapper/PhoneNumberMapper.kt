@@ -1,22 +1,18 @@
 package com.chrynan.androidsearch.mapper
 
-import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.wrapper.PhoneNumber
-import com.chrynan.androidsearch.util.AppContext
+import com.chrynan.androidsearch.resource.PhoneNumberMapperResources
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.mapper.UniDirectionalMapper
 import javax.inject.Inject
 
-class PhoneNumberMapper @Inject constructor(private val context: AppContext) : UniDirectionalMapper<String, List<AutoCompleteResultViewModel.PhoneNumber>> {
-
-    private val phoneDescription by lazy { context.getString(R.string.auto_complete_description_phone_number) }
-    private val smsDescription by lazy { context.getString(R.string.auto_complete_description_sms) }
+class PhoneNumberMapper @Inject constructor(private val res: PhoneNumberMapperResources) : UniDirectionalMapper<String, List<AutoCompleteResultViewModel.PhoneNumber>> {
 
     override fun map(value: String) =
             listOf(
                     AutoCompleteResultViewModel.PhoneNumber(
                             title = value,
-                            description = phoneDescription,
+                            description = res.phoneDescription,
                             defaultIconResId = 0,
                             iconFetcher = null,
                             actionIcon = null,
@@ -24,7 +20,7 @@ class PhoneNumberMapper @Inject constructor(private val context: AppContext) : U
                             callAction = true),
                     AutoCompleteResultViewModel.PhoneNumber(
                             title = value,
-                            description = smsDescription,
+                            description = res.smsDescription,
                             defaultIconResId = 0,
                             iconFetcher = null,
                             actionIcon = null,
