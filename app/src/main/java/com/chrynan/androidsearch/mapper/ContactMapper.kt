@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.mapper
 import com.chrynan.androidsearch.model.Contact
 import com.chrynan.androidsearch.model.wrapper.ContactId
 import com.chrynan.androidsearch.resource.ContactMapperResources
+import com.chrynan.androidsearch.resource.source.ContactMapperResourcesSource
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.glidedrawable.ContactThumbnailDrawableFunction
@@ -11,13 +12,14 @@ import javax.inject.Inject
 
 class ContactMapper @Inject constructor(
         private val context: AppContext,
-        private val res: ContactMapperResources
-) : UniDirectionalMapper<Contact, AutoCompleteResultViewModel.Contact> {
+        res: ContactMapperResourcesSource
+) : UniDirectionalMapper<Contact, AutoCompleteResultViewModel.Contact>,
+        ContactMapperResources by res {
 
     override fun map(value: Contact): AutoCompleteResultViewModel.Contact =
             AutoCompleteResultViewModel.Contact(
                     title = value.name,
-                    description = res.contactDescription,
+                    description = contactDescription,
                     defaultIconResId = 0,
                     iconFetcher = value.photoUri?.let { ContactThumbnailDrawableFunction(context, it) },
                     actionIcon = null,
