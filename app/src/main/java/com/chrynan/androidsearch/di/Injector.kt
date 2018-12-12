@@ -36,6 +36,7 @@ object Injector {
 
     fun inject(activity: SettingsActivity) {
         settingsActivityComponent = appComponent.settingsActivityBuilder()
+                .activity(activity)
                 .build()
 
         settingsActivityComponent.inject(activity)

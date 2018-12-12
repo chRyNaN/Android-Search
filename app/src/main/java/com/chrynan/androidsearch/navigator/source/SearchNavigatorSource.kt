@@ -8,5 +8,5 @@ import javax.inject.Inject
 class SearchNavigatorSource @Inject constructor(parentActivity: SearchActivity) : BaseNavigatorSource(parentActivity),
         SearchNavigator {
 
-    override fun goToSettings() = goToActivity(SettingsActivity.newIntent(parentActivity))
+    override fun goToSettings() = goToActivity { SettingsActivity.newIntent(it) }
 }

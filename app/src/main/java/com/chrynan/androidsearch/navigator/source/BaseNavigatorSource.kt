@@ -1,13 +1,14 @@
 package com.chrynan.androidsearch.navigator.source
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import com.chrynan.androidsearch.navigator.Navigator
 import com.chrynan.androidviews.layout.AndroidLayout
 import com.chrynan.androidviews.layout.AndroidLayoutProvider
 import com.chrynan.queue.mutableStackOf
 
-abstract class BaseNavigatorSource(protected val parentActivity: Activity) : Navigator {
+abstract class BaseNavigatorSource(private val parentActivity: Activity) : Navigator {
 
     private val layoutStack = mutableStackOf<AndroidLayout>()
 
@@ -29,8 +30,8 @@ abstract class BaseNavigatorSource(protected val parentActivity: Activity) : Nav
         layoutStack.push(layout)
     }
 
-    protected fun goToActivity(intent: Intent) {
-        parentActivity.startActivity(intent)
+    protected fun goToActivity(block: (Context) -> Intent) {
+        parentActivity.startActivity(block(parentActivity))
     }
 
     private fun showLayoutInParentActivity(layout: AndroidLayout) {

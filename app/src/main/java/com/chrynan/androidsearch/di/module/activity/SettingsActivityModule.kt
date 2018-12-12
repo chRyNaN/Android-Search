@@ -3,9 +3,12 @@
 package com.chrynan.androidsearch.di.module.activity
 
 import com.chrynan.androidsearch.di.scope.ActivityScope
+import com.chrynan.androidsearch.navigator.SearchSettingsNavigator
+import com.chrynan.androidsearch.navigator.source.SearchSettingsNavigatorSource
 import com.chrynan.androidsearch.ui.layout.SearchQuerySettingsLayout
 import com.chrynan.androidsearch.ui.layout.SearchSettingsLayout
 import com.chrynan.androidsearch.util.AppContext
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
@@ -25,4 +28,8 @@ internal abstract class SettingsActivityModule {
         @Provides
         fun provideSearchQuerySettingsLayout(appContext: AppContext) = SearchQuerySettingsLayout(appContext)
     }
+
+    @ActivityScope
+    @Binds
+    abstract fun bindSearchSettingsNavigator(source: SearchSettingsNavigatorSource): SearchSettingsNavigator
 }

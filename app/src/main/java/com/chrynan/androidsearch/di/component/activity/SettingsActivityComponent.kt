@@ -7,11 +7,14 @@ import com.chrynan.androidsearch.di.component.layout.SearchSettingsLayoutCompone
 import com.chrynan.androidsearch.di.module.activity.SettingsActivityModule
 import com.chrynan.androidsearch.di.scope.ActivityScope
 import com.chrynan.androidsearch.ui.activity.SettingsActivity
+import dagger.BindsInstance
 import dagger.Subcomponent
 
 @ActivityScope
 @Subcomponent(modules = [SettingsActivityModule::class])
 interface SettingsActivityComponent {
+
+    fun activity(): SettingsActivity
 
     fun searchSettingsLayoutBuilder(): SearchSettingsLayoutComponent.Builder
 
@@ -21,6 +24,9 @@ interface SettingsActivityComponent {
 
     @Subcomponent.Builder
     interface Builder {
+
+        @BindsInstance
+        fun activity(activity: SettingsActivity): Builder
 
         fun build(): SettingsActivityComponent
     }

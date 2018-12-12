@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.LinearLayout
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
+import com.chrynan.androidsearch.navigator.SearchSettingsNavigator
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
 import com.chrynan.androidsearch.ui.view.SearchSettingsView
 import com.chrynan.androidsearch.ui.widget.DefaultCell
@@ -22,6 +23,8 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
     @Inject
     lateinit var presenter: SearchSettingsPresenter
+    @Inject
+    lateinit var navigator: SearchSettingsNavigator
 
     private val appsTitleText by lazy { appContext.getString(R.string.settings_toggle_title_apps) }
     private val audioFilesTitleText by lazy { appContext.getString(R.string.settings_toggle_title_audio_files) }
@@ -180,7 +183,7 @@ class SearchSettingsLayout(private val appContext: AppContext) : BaseLayout(appC
 
                     searchApproachToggleCell = defaultCell {
                         titleText = searchApproach
-                        setOnClickListener { } // TODO add navigation
+                        setOnClickListener { navigator.goToSearchQuerySettings() }
                         layoutParams {
                             width = LinearLayout.LayoutParams.MATCH_PARENT
                             height = LinearLayout.LayoutParams.WRAP_CONTENT

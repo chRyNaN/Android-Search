@@ -21,7 +21,7 @@ interface SearchActivityComponent {
     interface Builder {
 
         @BindsInstance
-        fun activity(application: SearchActivity): Builder
+        fun activity(activity: SearchActivity): Builder
 
         fun build(): SearchActivityComponent
     }
