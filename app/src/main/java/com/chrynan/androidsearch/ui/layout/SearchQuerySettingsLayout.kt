@@ -5,19 +5,20 @@ import android.view.View
 import android.widget.LinearLayout
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
-import com.chrynan.androidsearch.resource.SearchQuerySettingsResources
+import com.chrynan.androidsearch.resource.SearchQuerySettingsLayoutResources
+import com.chrynan.androidsearch.resource.source.SearchQuerySettingsLayoutResourcesSource
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.scrollLayout
 import com.chrynan.androidviews.builder.textInputEditText
 import com.chrynan.androidviews.builder.textInputLayout
 import com.chrynan.androidviews.builder.verticalLayout
-import javax.inject.Inject
 
-class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext) {
-
-    @Inject
-    lateinit var res: SearchQuerySettingsResources
+class SearchQuerySettingsLayout(
+        appContext: AppContext,
+        res: SearchQuerySettingsLayoutResourcesSource
+) : BaseLayout(appContext),
+        SearchQuerySettingsLayoutResources by res {
 
     override fun setupDependencies() = Injector.inject(this)
 
@@ -29,7 +30,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                     radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {
 
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.WEB_VIEW) {
-                            titleText = res.webTitleText
+                            titleText = webTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -38,7 +39,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.CHROME_CUSTOM_TAB) {
-                            titleText = res.chromeCustomTabsTitleText
+                            titleText = chromeCustomTabsTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -47,7 +48,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.BROWSER) {
-                            titleText = res.browserTitleText
+                            titleText = browserTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -60,7 +61,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                     radioButtonCellGroup<SearchSettingsPresenter.SearchUrlCheckedItem> {
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.BING) {
-                            titleText = res.bingTitleText
+                            titleText = bingTitleText
                             setOnClickListener { isChecked = !isChecked }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -69,7 +70,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH) {
-                            titleText = res.contextualWebSearchTitleText
+                            titleText = contextualWebSearchTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -78,7 +79,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.DUCK_DUCK_GO) {
-                            titleText = res.duckDuckGoTitleText
+                            titleText = duckDuckGoTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -87,7 +88,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.GOOGLE) {
-                            titleText = res.googleTitleText
+                            titleText = googleTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -96,7 +97,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CUSTOM) {
-                            titleText = res.customTitleText
+                            titleText = customTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -112,7 +113,7 @@ class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext)
                         }
 
                         textInputEditText {
-                            hint = res.customUrlHint
+                            hint = customUrlHint
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
