@@ -1,9 +1,11 @@
 package com.chrynan.androidsearch.resource
 
 import com.chrynan.androidsearch.R
+import com.chrynan.androidsearch.di.scope.LayoutScope
 import com.chrynan.androidsearch.util.AppContext
 import javax.inject.Inject
 
+@LayoutScope
 class SearchSettingsResources @Inject constructor(appContext: AppContext) : ResourceProvider(appContext) {
 
     val appsTitleText by string(R.string.settings_toggle_title_apps)

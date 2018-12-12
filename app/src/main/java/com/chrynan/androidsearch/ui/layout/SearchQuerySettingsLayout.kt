@@ -3,27 +3,21 @@ package com.chrynan.androidsearch.ui.layout
 import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
-import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
+import com.chrynan.androidsearch.resource.SearchQuerySettingsResources
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.scrollLayout
 import com.chrynan.androidviews.builder.textInputEditText
 import com.chrynan.androidviews.builder.textInputLayout
 import com.chrynan.androidviews.builder.verticalLayout
+import javax.inject.Inject
 
-class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout(appContext) {
+class SearchQuerySettingsLayout(appContext: AppContext) : BaseLayout(appContext) {
 
-    private val webTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_web_view) }
-    private val chromeCustomTabsTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_chrome_custom_tabs) }
-    private val browserTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_browser_app) }
-    private val bingTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_bing) }
-    private val contextualWebSearchTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_contextual_web_search) }
-    private val duckDuckGoTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_duck_duck_go) }
-    private val googleTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_google) }
-    private val customTitleText by lazy { appContext.getString(R.string.settings_radio_button_title_custom) }
-    private val customUrlHint by lazy { appContext.getString(R.string.settings_custom_url_hint) }
+    @Inject
+    lateinit var res: SearchQuerySettingsResources
 
     override fun setupDependencies() = Injector.inject(this)
 
@@ -35,7 +29,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                     radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {
 
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.WEB_VIEW) {
-                            titleText = webTitleText
+                            titleText = res.webTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -44,7 +38,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.CHROME_CUSTOM_TAB) {
-                            titleText = chromeCustomTabsTitleText
+                            titleText = res.chromeCustomTabsTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -53,7 +47,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.BROWSER) {
-                            titleText = browserTitleText
+                            titleText = res.browserTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -66,7 +60,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                     radioButtonCellGroup<SearchSettingsPresenter.SearchUrlCheckedItem> {
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.BING) {
-                            titleText = bingTitleText
+                            titleText = res.bingTitleText
                             setOnClickListener { isChecked = !isChecked }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -75,7 +69,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH) {
-                            titleText = contextualWebSearchTitleText
+                            titleText = res.contextualWebSearchTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -84,7 +78,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.DUCK_DUCK_GO) {
-                            titleText = duckDuckGoTitleText
+                            titleText = res.duckDuckGoTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -93,7 +87,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.GOOGLE) {
-                            titleText = googleTitleText
+                            titleText = res.googleTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -102,7 +96,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                         }
 
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CUSTOM) {
-                            titleText = customTitleText
+                            titleText = res.customTitleText
                             setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
@@ -118,7 +112,7 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                         }
 
                         textInputEditText {
-                            hint = customUrlHint
+                            hint = res.customUrlHint
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
