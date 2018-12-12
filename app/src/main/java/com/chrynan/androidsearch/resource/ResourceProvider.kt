@@ -13,6 +13,9 @@ open class ResourceProvider(private val appContext: AppContext) {
     protected fun string(@StringRes resourceId: StringResourceId): Lazy<String> =
             lazy { appContext.getString(resourceId) }
 
+    protected fun <T : Any> formattedString(@StringRes resourceId: StringResourceId): Lazy<(T) -> String> =
+            lazyOf({ args -> appContext.resources.getString(resourceId, args) })
+
     protected fun color(@ColorRes resourceId: ColorResourceId, theme: Resources.Theme = appContext.theme): Lazy<Int> =
             lazy { appContext.resources.getColor(resourceId, theme) }
 
