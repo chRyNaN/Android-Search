@@ -1,21 +1,17 @@
 package com.chrynan.androidsearch.mapper
 
-import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Media
+import com.chrynan.androidsearch.resource.MediaMapperResources
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.glidedrawable.ImageVideoThumbnailDrawableFunction
 import com.chrynan.mapper.UniDirectionalMapper
 import javax.inject.Inject
 
-class MediaMapper @Inject constructor(private val context: AppContext) : UniDirectionalMapper<Media, AutoCompleteResultViewModel.Media> {
-
-    private val descriptionFormatter: (String) -> String = { context.getString(R.string.auto_complete_description, it) }
-
-    private val filesDescription by lazy { descriptionFormatter(context.getString(R.string.auto_complete_description_title_files)) }
-    private val musicDescription by lazy { descriptionFormatter(context.getString(R.string.auto_complete_description_title_music)) }
-    private val moviesDescription by lazy { descriptionFormatter(context.getString(R.string.auto_complete_description_title_movies)) }
-    private val picturesDescription by lazy { descriptionFormatter(context.getString(R.string.auto_complete_description_title_pictures)) }
+class MediaMapper @Inject constructor(
+        private val context: AppContext,
+        private val res: MediaMapperResources
+) : UniDirectionalMapper<Media, AutoCompleteResultViewModel.Media> {
 
     override fun map(value: Media): AutoCompleteResultViewModel.Media =
             AutoCompleteResultViewModel.Media(
@@ -35,10 +31,10 @@ class MediaMapper @Inject constructor(private val context: AppContext) : UniDire
 
     private fun getDescription(media: Media): String =
             when {
-                media.isAudio -> musicDescription
-                media.isVideo -> moviesDescription
-                media.isImage -> picturesDescription
-                else -> filesDescription
+                media.isAudio -> res.musicDescription
+                media.isVideo -> res.moviesDescription
+                media.isImage -> res.picturesDescription
+                else -> res.filesDescription
             }
 
     private val Media.isAudio: Boolean
