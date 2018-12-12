@@ -29,67 +29,87 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
 
     override fun onCreateLayout(context: Context) =
             scrollLayout(context) {
+
                 verticalLayout {
+
                     radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {
+
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.WEB_VIEW) {
                             titleText = webTitleText
+                            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.CHROME_CUSTOM_TAB) {
                             titleText = chromeCustomTabsTitleText
+                            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                         radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.BROWSER) {
                             titleText = browserTitleText
+                            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                     }
 
                     radioButtonCellGroup<SearchSettingsPresenter.SearchUrlCheckedItem> {
+
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.BING) {
                             titleText = bingTitleText
+                            setOnClickListener { isChecked = !isChecked }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH) {
                             titleText = contextualWebSearchTitleText
+                            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.DUCK_DUCK_GO) {
                             titleText = duckDuckGoTitleText
+                            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.GOOGLE) {
                             titleText = googleTitleText
+                            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                         radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CUSTOM) {
                             titleText = customTitleText
+                            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                                 height = LinearLayout.LayoutParams.WRAP_CONTENT
                             }
                         }
+
                     }
 
                     textInputLayout {
@@ -105,6 +125,8 @@ class SearchQuerySettingsLayout(private val appContext: AppContext) : BaseLayout
                             }
                         }
                     }
+
                 }
+
             }
 }

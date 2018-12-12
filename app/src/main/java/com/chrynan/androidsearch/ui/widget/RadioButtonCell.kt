@@ -64,7 +64,7 @@ class RadioButtonCell : ConstraintLayout {
 
     constructor(context: Context) : this(context, null)
 
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, android.R.attr.editTextStyle)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         LayoutInflater.from(context).inflate(R.layout.widget_radio_button_cell, this)
@@ -84,6 +84,10 @@ class RadioButtonCell : ConstraintLayout {
         titleTextView?.isEnabled = enabled
         descriptionTextView?.isEnabled = enabled
         iconImageView?.isEnabled = enabled
+    }
+
+    fun setCheckedTriggeringListener(value: Boolean) {
+        radioButton?.isChecked = value
     }
 }
 
