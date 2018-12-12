@@ -6,7 +6,8 @@ import android.widget.LinearLayout
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.navigator.SearchSettingsNavigator
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
-import com.chrynan.androidsearch.resource.SearchSettingsResources
+import com.chrynan.androidsearch.resource.SearchSettingsLayoutResources
+import com.chrynan.androidsearch.resource.source.SearchSettingsLayoutResourcesSource
 import com.chrynan.androidsearch.ui.view.SearchSettingsView
 import com.chrynan.androidsearch.ui.widget.DefaultCell
 import com.chrynan.androidsearch.ui.widget.ToggleCell
@@ -21,15 +22,17 @@ import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
-        SearchSettingsView {
+class SearchSettingsLayout(
+        appContext: AppContext,
+        res: SearchSettingsLayoutResourcesSource
+) : BaseLayout(appContext),
+        SearchSettingsView,
+        SearchSettingsLayoutResources by res {
 
     @Inject
     lateinit var presenter: SearchSettingsPresenter
     @Inject
     lateinit var navigator: SearchSettingsNavigator
-    @Inject
-    lateinit var res: SearchSettingsResources
 
     private var appsToggleCell by Delegates.notNull<ToggleCell>()
     private var audioFilesToggleCell by Delegates.notNull<ToggleCell>()
@@ -70,7 +73,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         appsToggleCell = toggleCell {
-                            titleText = res.appsTitleText
+                            titleText = appsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it) }
                             layoutParams {
@@ -80,7 +83,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         audioFilesToggleCell = toggleCell {
-                            titleText = res.audioFilesTitleText
+                            titleText = audioFilesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.AUDIO, it) }
                             layoutParams {
@@ -90,7 +93,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         imageFilesToggleCell = toggleCell {
-                            titleText = res.imageFilesTitleText
+                            titleText = imageFilesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.IMAGE, it) }
                             layoutParams {
@@ -100,7 +103,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         videoFilesToggleCell = toggleCell {
-                            titleText = res.videoFilesTitleText
+                            titleText = videoFilesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.VIDEO, it) }
                             layoutParams {
@@ -110,7 +113,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         contactsToggleCell = toggleCell {
-                            titleText = res.contactsTitleText
+                            titleText = contactsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it) }
                             layoutParams {
@@ -120,7 +123,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         calendarToggleCell = toggleCell {
-                            titleText = res.calendarEventsTitleText
+                            titleText = calendarEventsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CALENDAR, it) }
                             layoutParams {
@@ -130,7 +133,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         textMessagesToggleCell = toggleCell {
-                            titleText = res.textMessagesTitleText
+                            titleText = textMessagesTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.MESSAGES, it) }
                             layoutParams {
@@ -140,7 +143,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         emailAddressToggleCell = toggleCell {
-                            titleText = res.emailAddressTitleText
+                            titleText = emailAddressTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it) }
                             layoutParams {
@@ -150,7 +153,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         webAddressToggleCell = toggleCell {
-                            titleText = res.webAddressTitleText
+                            titleText = webAddressTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.URL, it) }
                             layoutParams {
@@ -160,7 +163,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         phoneNumberToggleCell = toggleCell {
-                            titleText = res.phoneNumberTitleText
+                            titleText = phoneNumberTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.PHONE_NUMBER, it) }
                             layoutParams {
@@ -170,7 +173,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         suggestionsToggleCell = toggleCell {
-                            titleText = res.suggestionsTitleText
+                            titleText = suggestionsTitleText
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it) }
                             layoutParams {
@@ -180,7 +183,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         searchHistoryToggleCell = toggleCell {
-                            titleText = res.searchHistory
+                            titleText = searchHistory
                             setOnClickListener { toggleOn = !toggleOn }
                             toggleListener = { presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.HISTORY, it) }
                             layoutParams {
@@ -190,7 +193,7 @@ class SearchSettingsLayout(appContext: AppContext) : BaseLayout(appContext),
                         }
 
                         searchApproachToggleCell = defaultCell {
-                            titleText = res.searchApproach
+                            titleText = searchApproach
                             setOnClickListener { navigator.goToSearchQuerySettings() }
                             layoutParams {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
