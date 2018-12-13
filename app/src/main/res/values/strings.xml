@@ -29,6 +29,7 @@
     <string name="duck_duck_go">DuckDuckGo</string>
     <string name="duck_duck_go_link">https://duckduckgo.com/</string>
 
+    <string name="settings_search_toolbar_title">Settings</string>
     <string name="settings_search_label">Search Settings</string>
     <string name="settings_toggle_title_apps">Applications</string>
     <string name="settings_toggle_title_audio_files">Audio Files</string>
