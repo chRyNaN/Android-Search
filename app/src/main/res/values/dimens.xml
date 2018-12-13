@@ -13,4 +13,6 @@
     <dimen name="app_widget_single_grid_size">40dp</dimen>
     <dimen name="app_widget_max_grid_size">250dp</dimen>
 
+    <dimen name="cell_min_height">64dp</dimen>
+
 </resources>

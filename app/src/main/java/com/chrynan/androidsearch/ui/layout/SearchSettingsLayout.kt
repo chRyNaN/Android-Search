@@ -14,10 +14,7 @@ import com.chrynan.androidsearch.ui.widget.ToggleCell
 import com.chrynan.androidsearch.ui.widget.defaultCell
 import com.chrynan.androidsearch.ui.widget.toggleCell
 import com.chrynan.androidsearch.util.AppContext
-import com.chrynan.androidviews.builder.appBarLayout
-import com.chrynan.androidviews.builder.scrollLayout
-import com.chrynan.androidviews.builder.toolbar
-import com.chrynan.androidviews.builder.verticalLayout
+import com.chrynan.androidviews.builder.*
 import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
 import kotlin.properties.Delegates
@@ -69,6 +66,16 @@ class SearchSettingsLayout(
                             layoutParams(this@scrollLayout) {
                                 width = ViewGroup.LayoutParams.MATCH_PARENT
                                 height = ViewGroup.LayoutParams.MATCH_PARENT
+                            }
+                        }
+
+                        textView {
+                            text = searchSettingsLabel
+                            setTextColor(labelColor)
+                            layoutParams {
+                                width = LinearLayout.LayoutParams.MATCH_PARENT
+                                height = LinearLayout.LayoutParams.WRAP_CONTENT
+                                setMargins(labelStartMargin, labelTopMargin, labelEndMargin, labelBottomMargin)
                             }
                         }
 

@@ -7,8 +7,10 @@ import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.chrynan.androidsearch.util.*
+import com.chrynan.inlinepixel.ContextScreenDimensionUnitConverter
+import com.chrynan.inlinepixel.ScreenDimensionUnitConverter
 
-open class ResourceProvider(private val appContext: AppContext) {
+open class ResourceProvider(private val appContext: AppContext) : ScreenDimensionUnitConverter by ContextScreenDimensionUnitConverter(appContext) {
 
     protected fun string(@StringRes resourceId: StringResourceId): Lazy<String> =
             lazy { appContext.getString(resourceId) }

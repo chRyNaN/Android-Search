@@ -5,23 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/selectableItemBackground"
+    android:minHeight="@dimen/cell_min_height"
     android:paddingStart="@dimen/default_screen_margin"
-    android:paddingTop="@dimen/spacing_medium"
+    android:paddingTop="@dimen/spacing_xsmall"
     android:paddingEnd="@dimen/default_screen_margin"
-    android:paddingBottom="@dimen/spacing_medium">
+    android:paddingBottom="@dimen/spacing_xsmall">
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_small"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
         app:layout_constraintEnd_toStartOf="@+id/toggleSwitch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"/>
 
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/toggleSwitch"
         app:layout_constraintStart_toStartOf="parent"

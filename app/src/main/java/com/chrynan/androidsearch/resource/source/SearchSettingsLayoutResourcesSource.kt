@@ -11,6 +11,12 @@ import javax.inject.Inject
 class SearchSettingsLayoutResourcesSource @Inject constructor(appContext: AppContext) : ResourceProvider(appContext),
         SearchSettingsLayoutResources {
 
+    override val searchSettingsLabel by string(R.string.settings_search_label)
+    override val labelTopMargin by dimenPixelOffset(R.dimen.spacing_small)
+    override val labelStartMargin by dimenPixelOffset(R.dimen.spacing_small)
+    override val labelEndMargin by dimenPixelOffset(R.dimen.spacing_small)
+    override val labelBottomMargin by dimenPixelOffset(R.dimen.spacing_xsmall)
+    override val labelColor by color(R.color.colorAccent)
     override val appsTitleText by string(R.string.settings_toggle_title_apps)
     override val audioFilesTitleText by string(R.string.settings_toggle_title_audio_files)
     override val imageFilesTitleText by string(R.string.settings_toggle_title_image_files)
