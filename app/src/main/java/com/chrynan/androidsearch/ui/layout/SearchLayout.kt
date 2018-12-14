@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.ui.layout
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
+import android.view.ViewGroup
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.accore.runOnAndroidUI
@@ -19,7 +20,6 @@ import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
 import com.chrynan.androidviewutils.doOnLayout
-import com.chrynan.inlinepixel.dip
 import javax.inject.Inject
 
 class SearchLayout(
@@ -54,11 +54,12 @@ class SearchLayout(
                 val searchWidget = searchWidget {
                     id = ID_SEARCH_WIDGET
                     inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
-                    elevation = dip(8).toPx().value.toFloat()
+                    elevation = searchWidgetElevation
                     hint = hintText
-                    maxLines = 1
+                    maxLines = searchWidgetMaxLines
                     setSingleLine(true)
-                    textSize = 16 * context.resources.displayMetrics.density //sp(16f).toPx().value.toFloat()
+                    textSize = searchWidgetTextSize
+                    setHintTextColor(searchWidgetHintColor)
 
                     runOnAndroidUI {
                         onTextChanged { presenter.performQuery(it.charSequence.toString()) }
@@ -69,10 +70,10 @@ class SearchLayout(
                         width = ConstraintSize.MatchConstraint
                         height = ConstraintSize.WrapContent
 
-                        margin(ConstraintSide.START, searchBoxMargin)
-                        margin(ConstraintSide.END, searchBoxMargin)
-                        margin(ConstraintSide.TOP, searchBoxMargin)
-                        setPadding(searchBoxPadding, 0, searchBoxPadding, 0)
+                        margin(ConstraintSide.START, searchWidgetMargin)
+                        margin(ConstraintSide.END, searchWidgetMargin)
+                        margin(ConstraintSide.TOP, searchWidgetMargin)
+                        setPadding(searchWidgetHorizontalPadding, searchWidgetVerticalPadding, searchWidgetHorizontalPadding, searchWidgetVerticalPadding)
 
                         startToStartOfParent()
                         endToEndOfParent()
@@ -93,12 +94,12 @@ class SearchLayout(
 
                         startToStartOfParent()
                         endToEndOfParent()
-                        topToBottomOf(searchWidget.id)
+                        topToTopOfParent()
                         bottomToBottomOfParent()
 
                         doOnLayout {
                             setPadding(paddingLeft,
-                                    paddingTop + searchWidget.measuredHeight,
+                                    paddingTop + searchWidget.measuredHeight + (searchWidget.layoutParams as ViewGroup.MarginLayoutParams).topMargin,
                                     paddingRight,
                                     paddingBottom)
                         }
@@ -120,8 +121,8 @@ class SearchLayout(
                         endToEndOf(searchWidget)
                         topToTopOf(searchWidget)
                         bottomToBottomOf(searchWidget)
-                        marginEnd = searchBoxPadding
-                        marginStart = searchBoxPadding
+                        marginEnd = searchWidgetHorizontalPadding
+                        marginStart = searchWidgetHorizontalPadding
                     }
                 }
             }

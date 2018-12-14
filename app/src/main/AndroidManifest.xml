@@ -38,7 +38,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/search_app_widget_provider"/>
+                android:resource="@xml/search_widget_provider"/>
         </receiver>
 
     </application>

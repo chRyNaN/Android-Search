@@ -6,13 +6,24 @@
     <dimen name="spacing_medium">24dp</dimen>
     <dimen name="spacing_large">32dp</dimen>
 
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+
     <dimen name="default_screen_margin">@dimen/spacing_small</dimen>
 
     <dimen name="app_list_item_icon_size">32dp</dimen>
 
-    <dimen name="app_widget_single_grid_size">40dp</dimen>
-    <dimen name="app_widget_max_grid_size">250dp</dimen>
-
     <dimen name="cell_min_height">64dp</dimen>
+
+    <dimen name="search_widget_single_grid_size">40dp</dimen>
+    <dimen name="search_widget_max_grid_size">250dp</dimen>
+    <dimen name="search_widget_vertical_padding">12dp</dimen>
+    <dimen name="search_widget_horizontal_padding">16dp</dimen>
+    <dimen name="search_widget_margin">0dp</dimen>
+    <dimen name="search_widget_text_size">18sp</dimen>
+    <dimen name="search_widget_background_corner_radius">80dp</dimen>
+    <dimen name="search_widget_in_app_elevation">8dp</dimen>
+    <dimen name="search_widget_out_of_app_elevation">0dp</dimen>
 
 </resources>

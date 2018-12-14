@@ -47,7 +47,7 @@ class SearchWidget : AppCompatEditText {
         }
     }
 
-    private val defaultBackgroundColor by lazy { context.getColor(R.color.white) }
+    private val defaultBackgroundColor by lazy { context.getColor(R.color.search_widget_background_color) }
 
     constructor(context: Context) : this(context, null)
 

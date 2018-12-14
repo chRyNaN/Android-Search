@@ -20,9 +20,8 @@ class SearchAppWidgetProvider : AppWidgetProvider() {
         for (i in 0 until appWidgetIds.size) {
             val appWidgetId = appWidgetIds[i]
 
-            val remoteViews = RemoteViews(context.packageName, R.layout.layout_app_widget).apply {
-                setOnClickPendingIntent(R.id.appWidgetImageView, pendingIntent)
-                setImageViewResource(R.id.appWidgetImageView, R.drawable.app_widget)
+            val remoteViews = RemoteViews(context.packageName, R.layout.layout_search_widget).apply {
+                setOnClickPendingIntent(R.id.searchWidgetLinearLayout, pendingIntent)
             }
 
             appWidgetManager.updateAppWidget(appWidgetId, remoteViews)

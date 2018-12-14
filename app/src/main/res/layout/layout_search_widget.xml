@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchWidgetLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/search_widget_margin"
+    android:background="@drawable/search_widget_background"
+    android:elevation="@dimen/search_widget_out_of_app_elevation"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/search_widget_horizontal_padding"
+    android:paddingTop="@dimen/search_widget_vertical_padding"
+    android:paddingEnd="@dimen/search_widget_horizontal_padding"
+    android:paddingBottom="@dimen/search_widget_vertical_padding">
+
+    <TextView
+        android:id="@+id/searchWidgetTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_widget_hint"
+        android:textColor="@color/search_widget_hint_color"
+        android:textSize="@dimen/search_widget_text_size"/>
+
+</LinearLayout>
