@@ -11,7 +11,8 @@
     android:paddingStart="@dimen/search_widget_horizontal_padding"
     android:paddingTop="@dimen/search_widget_vertical_padding"
     android:paddingEnd="@dimen/search_widget_horizontal_padding"
-    android:paddingBottom="@dimen/search_widget_vertical_padding">
+    android:paddingBottom="@dimen/search_widget_vertical_padding"
+    android:transitionName="@string/search_widget_transition_name">
 
     <TextView
         android:id="@+id/searchWidgetTextView"

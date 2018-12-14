@@ -60,6 +60,7 @@ class SearchLayout(
                     setSingleLine(true)
                     textSize = searchWidgetTextSize
                     setHintTextColor(searchWidgetHintColor)
+                    transitionName = searchWidgetTransitionName
 
                     runOnAndroidUI {
                         onTextChanged { presenter.performQuery(it.charSequence.toString()) }

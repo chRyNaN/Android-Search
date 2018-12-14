@@ -16,4 +16,5 @@ interface SearchLayoutResources {
     val searchWidgetTextSize: Float
     val searchWidgetTextColor: Int
     val searchWidgetHintColor: Int
+    val searchWidgetTransitionName: String
 }

@@ -3,6 +3,7 @@
     <string name="app_name">android-search</string>
 
     <string name="search_widget_hint">Search</string>
+    <string name="search_widget_transition_name">Search Widget</string>
 
     <string name="auto_complete_description">from your %s</string>
     <string name="auto_complete_description_title_search_history">Search History</string>

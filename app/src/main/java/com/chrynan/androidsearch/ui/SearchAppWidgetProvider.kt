@@ -8,9 +8,7 @@ import android.content.Intent
 import android.widget.RemoteViews
 import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.ui.activity.SearchActivity
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@ExperimentalCoroutinesApi
 class SearchAppWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {

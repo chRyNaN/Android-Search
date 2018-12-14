@@ -24,4 +24,5 @@ class SearchLayoutResourcesSource @Inject constructor(appContext: AppContext) : 
     override val searchWidgetTextSize by lazy { px(dimen(R.dimen.search_widget_text_size).value).toSp().value.toFloat() }
     override val searchWidgetTextColor by color(R.color.search_widget_text_color)
     override val searchWidgetHintColor by color(R.color.search_widget_hint_color)
+    override val searchWidgetTransitionName by string(R.string.search_widget_transition_name)
 }
