@@ -26,8 +26,6 @@ class SearchSettingsPresenter @Inject constructor(
             updateImageFilesToggle(preferences.imageFiles)
             updateVideoFilesToggle(preferences.videoFiles)
             updateContactsToggle(preferences.contacts)
-            updateCalendarToggle(preferences.calendar)
-            updateTextMessagesToggle(preferences.messages)
             updateEmailToggle(preferences.emailLink)
             updateWebAddressToggle(preferences.webAddressLink)
             updatePhoneNumberToggle(preferences.phoneNumberLink)
@@ -45,8 +43,6 @@ class SearchSettingsPresenter @Inject constructor(
                 SearchToggleItem.IMAGE -> preferences.imageFiles = toggledOn
                 SearchToggleItem.VIDEO -> preferences.videoFiles = toggledOn
                 SearchToggleItem.CONTACTS -> preferences.contacts = toggledOn
-                SearchToggleItem.CALENDAR -> preferences.calendar = toggledOn
-                SearchToggleItem.MESSAGES -> preferences.messages = toggledOn
                 SearchToggleItem.EMAIL -> preferences.emailLink = toggledOn
                 SearchToggleItem.URL -> preferences.webAddressLink = toggledOn
                 SearchToggleItem.PHONE_NUMBER -> preferences.phoneNumberLink = toggledOn
@@ -80,8 +76,6 @@ class SearchSettingsPresenter @Inject constructor(
         IMAGE,
         VIDEO,
         CONTACTS,
-        CALENDAR,
-        MESSAGES,
         EMAIL,
         URL,
         PHONE_NUMBER,

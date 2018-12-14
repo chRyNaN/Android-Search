@@ -36,8 +36,6 @@ class SearchSettingsLayout(
     private var imageFilesToggleCell by Delegates.notNull<ToggleCell>()
     private var videoFilesToggleCell by Delegates.notNull<ToggleCell>()
     private var contactsToggleCell by Delegates.notNull<ToggleCell>()
-    private var calendarToggleCell by Delegates.notNull<ToggleCell>()
-    private var textMessagesToggleCell by Delegates.notNull<ToggleCell>()
     private var emailAddressToggleCell by Delegates.notNull<ToggleCell>()
     private var webAddressToggleCell by Delegates.notNull<ToggleCell>()
     private var phoneNumberToggleCell by Delegates.notNull<ToggleCell>()
@@ -91,14 +89,6 @@ class SearchSettingsLayout(
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it)
                         }
 
-                        calendarToggleCell = toggleCell(title = calendarEventsTitleText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CALENDAR, it)
-                        }
-
-                        textMessagesToggleCell = toggleCell(title = textMessagesTitleText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.MESSAGES, it)
-                        }
-
                         emailAddressToggleCell = toggleCell(title = emailAddressTitleText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it)
                         }
@@ -144,10 +134,6 @@ class SearchSettingsLayout(
     override fun updateVideoFilesToggle(toggledOn: Boolean) = videoFilesToggleCell.perform { toggleOn = toggledOn }
 
     override fun updateContactsToggle(toggledOn: Boolean) = contactsToggleCell.perform { toggleOn = toggledOn }
-
-    override fun updateCalendarToggle(toggledOn: Boolean) = calendarToggleCell.perform { toggleOn = toggledOn }
-
-    override fun updateTextMessagesToggle(toggledOn: Boolean) = textMessagesToggleCell.perform { toggleOn = toggledOn }
 
     override fun updateEmailToggle(toggledOn: Boolean) = emailAddressToggleCell.perform { toggleOn = toggledOn }
 

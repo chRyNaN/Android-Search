@@ -21,8 +21,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         private const val KEY_PHONE_NUMBER = "PHONE_NUMBER"
         private const val KEY_TYPE_AHEAD = "TYPE_AHEAD"
         private const val KEY_HISTORY = "HISTORY"
-        private const val KEY_MESSAGES = "MESSAGES"
-        private const val KEY_CALENDAR = "CALENDAR"
         private const val KEY_WEB_ADDRESS = "KEY_WEB_ADDRESS"
         private const val KEY_WEB_VIEW = "WEB_VIEW"
         private const val KEY_CHROME_CUSTOM_TABS = "CHROME_CUSTOM_TABS"
@@ -38,8 +36,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         private const val DEFAULT_PHONE_NUMBER_LINK = true
         private const val DEFAULT_HISTORY = false
         private const val DEFAULT_TYPE_AHEAD = true
-        private const val DEFAULT_MESSAGES = false
-        private const val DEFAULT_CALENDAR = false
         private const val DEFAULT_WEB_ADDRESS_LINK = true
         private const val DEFAULT_WEB_VIEW = false
         private const val DEFAULT_CHROME_CUSTOM_TABS = false
@@ -103,18 +99,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         get() = sharedPreferences.getBoolean(KEY_TYPE_AHEAD, DEFAULT_TYPE_AHEAD)
         set(value) {
             sharedPreferences.edit().putBoolean(KEY_TYPE_AHEAD, value).apply()
-        }
-
-    override var messages: Boolean
-        get() = sharedPreferences.getBoolean(KEY_MESSAGES, DEFAULT_MESSAGES)
-        set(value) {
-            sharedPreferences.edit().putBoolean(KEY_MESSAGES, value).apply()
-        }
-
-    override var calendar: Boolean
-        get() = sharedPreferences.getBoolean(KEY_CALENDAR, DEFAULT_CALENDAR)
-        set(value) {
-            sharedPreferences.edit().putBoolean(KEY_CALENDAR, value).apply()
         }
 
     override var webAddressLink: Boolean

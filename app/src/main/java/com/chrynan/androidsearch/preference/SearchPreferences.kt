@@ -20,10 +20,6 @@ interface SearchPreferences {
 
     var typeAhead: Boolean
 
-    var messages: Boolean
-
-    var calendar: Boolean
-
     var webAddressLink: Boolean
 
     var webView: Boolean

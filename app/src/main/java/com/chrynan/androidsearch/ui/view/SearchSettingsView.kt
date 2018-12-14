@@ -12,10 +12,6 @@ interface SearchSettingsView {
 
     fun updateContactsToggle(toggledOn: Boolean)
 
-    fun updateCalendarToggle(toggledOn: Boolean)
-
-    fun updateTextMessagesToggle(toggledOn: Boolean)
-
     fun updateEmailToggle(toggledOn: Boolean)
 
     fun updateWebAddressToggle(toggledOn: Boolean)
