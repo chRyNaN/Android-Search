@@ -59,6 +59,7 @@ class SearchLayout(
                     maxLines = searchWidgetMaxLines
                     setSingleLine(true)
                     textSize = searchWidgetTextSize
+                    setTextColor(searchWidgetTextColor)
                     setHintTextColor(searchWidgetHintColor)
                     transitionName = searchWidgetTransitionName
 

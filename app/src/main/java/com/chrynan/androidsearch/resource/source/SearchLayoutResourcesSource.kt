@@ -12,7 +12,7 @@ import javax.inject.Inject
 class SearchLayoutResourcesSource @Inject constructor(appContext: AppContext) : ResourceProvider(appContext),
         SearchLayoutResources {
 
-    override val backgroundColor by color(R.color.search_widget_background_color)
+    override val backgroundColor by color(R.color.search_layout_background_color)
     override val hintText by string(R.string.search_widget_hint)
     override val transparentColor by color(android.R.color.transparent)
     override val settingsDrawable by drawable(R.drawable.ic_settings)

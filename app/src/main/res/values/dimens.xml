@@ -18,15 +18,18 @@
 
     <dimen name="search_widget_single_grid_size">40dp</dimen>
     <dimen name="search_widget_max_grid_size">250dp</dimen>
-    <dimen name="search_widget_vertical_padding">12dp</dimen>
+    <dimen name="search_widget_vertical_padding">10dp</dimen>
     <dimen name="search_widget_horizontal_padding">16dp</dimen>
     <dimen name="search_widget_margin">0dp</dimen>
-    <dimen name="search_widget_text_size">18sp</dimen>
+    <dimen name="search_widget_text_size">22sp</dimen>
     <dimen name="search_widget_background_corner_radius">80dp</dimen>
     <dimen name="search_widget_in_app_elevation">8dp</dimen>
     <dimen name="search_widget_out_of_app_elevation">0dp</dimen>
 
     <dimen name="auto_complete_adapter_title_text_size">16sp</dimen>
-    <dimen name="auto_complete_adapter_description_text_size">12sp</dimen>
+    <dimen name="auto_complete_adapter_description_text_size">14sp</dimen>
+
+    <dimen name="cell_title_text_size">16sp</dimen>
+    <dimen name="cell_description_text_size">14sp</dimen>
 
 </resources>

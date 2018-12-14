@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#607D8B</color>
-    <color name="colorPrimaryDark">#455A64</color>
-    <color name="colorAccent">#448AFF</color>
+    <color name="colorPrimary">#343b4c</color>
+    <color name="colorPrimaryDark">#272d2d</color>
+    <color name="colorAccent">#08a4bd</color>
+    <color name="navigationBarColor">@color/colorPrimaryDark</color>
+    <color name="textColorPrimary">@color/white</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="black_50_percent_transparent">#80000000</color>
+
+    <color name="search_layout_background_color">#F4F4F4</color>
 
     <color name="search_widget_background_color">@color/white</color>
-    <color name="search_widget_text_color">#000000</color>
-    <color name="search_widget_hint_color">#000000</color>
+    <color name="search_widget_text_color">@color/black</color>
+    <color name="search_widget_hint_color">@color/black_50_percent_transparent</color>
 
-    <color name="auto_complete_adapter_title_text_color">#000000</color>
-    <color name="auto_complete_adapter_description_text_color">#000000</color>
+    <color name="auto_complete_adapter_title_text_color">@color/black</color>
+    <color name="auto_complete_adapter_description_text_color">@color/black_50_percent_transparent
+    </color>
+
+    <color name="cell_title_text_color">@color/black</color>
+    <color name="cell_description_text_color">@color/black_50_percent_transparent</color>
+
+    <color name="test_scheme_one_a">#f18f01</color>
+    <color name="test_scheme_one_b">#048ba8</color>
+    <color name="test_scheme_one_c">#2e4057</color>
+    <color name="test_scheme_one_d">#99c24d</color>
+    <color name="test_scheme_one_e">#2f2d2e</color>
+
+    <color name="test_scheme_two_a">#4357ad</color>
+    <color name="test_scheme_two_b">#272d2d</color>
+    <color name="test_scheme_two_c">#08a4bd</color>
+    <color name="test_scheme_two_d">#e6e6e6</color>
+    <color name="test_scheme_two_e">#394053</color>
 
 </resources>
