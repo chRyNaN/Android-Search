@@ -1,5 +1,6 @@
 package com.chrynan.androidsearch.mapper
 
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.wrapper.Email
 import com.chrynan.androidsearch.resource.EmailMapperResources
 import com.chrynan.androidsearch.resource.source.EmailMapperResourcesSource
@@ -14,7 +15,7 @@ class EmailMapper @Inject constructor(res: EmailMapperResourcesSource) : UniDire
             AutoCompleteResultViewModel.Email(
                     title = value,
                     description = emailDescription,
-                    defaultIconResId = 0,
+                    defaultIconResId = R.drawable.ic_adapter_email,
                     iconFetcher = null,
                     actionIcon = null,
                     email = Email(value))

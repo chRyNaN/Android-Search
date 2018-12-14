@@ -23,7 +23,7 @@ class AppMapper @Inject constructor(
                         title = getApplicationLabel(value)?.toString() ?: value.name
                         ?: "", // Apparently, this is the culprit to the performance impact. Getting the application Label takes the longest to load.
                         description = appDescription,
-                        defaultIconResId = R.drawable.ic_launcher_background,
+                        defaultIconResId = R.drawable.ic_adapter_app,
                         iconFetcher = ApplicationIconDrawableFunction(this, value.packageName),
                         actionIcon = null,
                         packageName = PackageName(value.packageName))

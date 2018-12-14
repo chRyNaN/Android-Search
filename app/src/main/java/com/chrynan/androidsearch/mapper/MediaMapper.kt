@@ -1,5 +1,6 @@
 package com.chrynan.androidsearch.mapper
 
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.resource.MediaMapperResources
 import com.chrynan.androidsearch.resource.source.MediaMapperResourcesSource
@@ -19,7 +20,12 @@ class MediaMapper @Inject constructor(
             AutoCompleteResultViewModel.Media(
                     title = value.title,
                     description = getDescription(value),
-                    defaultIconResId = 0,
+                    defaultIconResId = when (value.type) {
+                        Media.Type.IMAGE -> R.drawable.ic_adapter_image
+                        Media.Type.AUDIO -> R.drawable.ic_adapter_audio
+                        Media.Type.VIDEO -> R.drawable.ic_adapter_video
+                        Media.Type.OTHER -> R.drawable.ic_adapter_file
+                    },
                     iconFetcher = value.thumbnailId?.let {
                         if (value.type == Media.Type.IMAGE || value.type == Media.Type.VIDEO) {
                             ImageVideoThumbnailDrawableFunction(context = context, thumbnailId = it, isImage = value.type == Media.Type.IMAGE)

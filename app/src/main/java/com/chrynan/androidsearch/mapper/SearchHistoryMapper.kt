@@ -1,5 +1,6 @@
 package com.chrynan.androidsearch.mapper
 
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Search
 import com.chrynan.androidsearch.model.wrapper.Query
 import com.chrynan.androidsearch.resource.SearchHistoryMapperResources
@@ -15,7 +16,7 @@ class SearchHistoryMapper @Inject constructor(res: SearchHistoryMapperResourcesS
             AutoCompleteResultViewModel.SearchHistory(
                     title = value.query,
                     description = searchHistoryDescription,
-                    defaultIconResId = 0,
+                    defaultIconResId = R.drawable.ic_adapter_history,
                     iconFetcher = null,
                     actionIcon = null,
                     query = Query(value.query))

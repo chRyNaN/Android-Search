@@ -1,5 +1,6 @@
 package com.chrynan.androidsearch.mapper
 
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.Contact
 import com.chrynan.androidsearch.model.wrapper.ContactId
 import com.chrynan.androidsearch.resource.ContactMapperResources
@@ -20,7 +21,7 @@ class ContactMapper @Inject constructor(
             AutoCompleteResultViewModel.Contact(
                     title = value.name,
                     description = contactDescription,
-                    defaultIconResId = 0,
+                    defaultIconResId = R.drawable.ic_adapter_contact,
                     iconFetcher = value.photoUri?.let { ContactThumbnailDrawableFunction(context, it) },
                     actionIcon = null,
                     name = value.name,

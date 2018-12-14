@@ -1,5 +1,6 @@
 package com.chrynan.androidsearch.mapper
 
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.wrapper.Url
 import com.chrynan.androidsearch.resource.WebAddressMapperResources
 import com.chrynan.androidsearch.resource.source.WebAddressMapperResourcesSource
@@ -14,7 +15,7 @@ class WebAddressMapper @Inject constructor(res: WebAddressMapperResourcesSource)
             AutoCompleteResultViewModel.WebAddress(
                     title = value,
                     description = urlDescription,
-                    defaultIconResId = 0,
+                    defaultIconResId = R.drawable.ic_adapter_browser,
                     iconFetcher = null,
                     actionIcon = null,
                     url = Url(value))

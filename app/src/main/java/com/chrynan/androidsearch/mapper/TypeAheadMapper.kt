@@ -1,5 +1,6 @@
 package com.chrynan.androidsearch.mapper
 
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.TypeAhead
 import com.chrynan.androidsearch.resource.TypeAheadMapperResources
 import com.chrynan.androidsearch.resource.source.TypeAheadMapperResourcesSource
@@ -14,7 +15,7 @@ class TypeAheadMapper @Inject constructor(res: TypeAheadMapperResourcesSource) :
             AutoCompleteResultViewModel.TypeAheadSearch(
                     title = value.suggestion,
                     description = typeAheadDescription,
-                    defaultIconResId = 0,
+                    defaultIconResId = R.drawable.ic_adapter_search,
                     iconFetcher = null,
                     actionIcon = null,
                     suggestion = value.suggestion)

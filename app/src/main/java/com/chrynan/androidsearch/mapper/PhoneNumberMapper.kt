@@ -1,5 +1,6 @@
 package com.chrynan.androidsearch.mapper
 
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.model.wrapper.PhoneNumber
 import com.chrynan.androidsearch.resource.PhoneNumberMapperResources
 import com.chrynan.androidsearch.resource.source.PhoneNumberMapperResourcesSource
@@ -15,7 +16,7 @@ class PhoneNumberMapper @Inject constructor(res: PhoneNumberMapperResourcesSourc
                     AutoCompleteResultViewModel.PhoneNumber(
                             title = value,
                             description = phoneDescription,
-                            defaultIconResId = 0,
+                            defaultIconResId = R.drawable.ic_adapter_phone,
                             iconFetcher = null,
                             actionIcon = null,
                             phoneNumber = PhoneNumber(value),
@@ -23,7 +24,7 @@ class PhoneNumberMapper @Inject constructor(res: PhoneNumberMapperResourcesSourc
                     AutoCompleteResultViewModel.PhoneNumber(
                             title = value,
                             description = smsDescription,
-                            defaultIconResId = 0,
+                            defaultIconResId = R.drawable.ic_adapter_text,
                             iconFetcher = null,
                             actionIcon = null,
                             phoneNumber = PhoneNumber(value),
