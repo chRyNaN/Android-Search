@@ -9,10 +9,7 @@ import com.chrynan.androidsearch.resource.SearchQuerySettingsLayoutResources
 import com.chrynan.androidsearch.resource.source.SearchQuerySettingsLayoutResourcesSource
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
 import com.chrynan.androidsearch.util.AppContext
-import com.chrynan.androidviews.builder.scrollLayout
-import com.chrynan.androidviews.builder.textInputEditText
-import com.chrynan.androidviews.builder.textInputLayout
-import com.chrynan.androidviews.builder.verticalLayout
+import com.chrynan.androidviews.builder.*
 
 class SearchQuerySettingsLayout(
         appContext: AppContext,
@@ -123,5 +120,16 @@ class SearchQuerySettingsLayout(
 
                 }
 
+            }
+
+    private fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.label(labelText: String) =
+            textView {
+                text = labelText
+                //setTextColor(labelColor)
+                layoutParams {
+                    width = LinearLayout.LayoutParams.MATCH_PARENT
+                    height = LinearLayout.LayoutParams.WRAP_CONTENT
+                    //setMargins(labelStartMargin, labelTopMargin, labelEndMargin, labelBottomMargin)
+                }
             }
 }

@@ -12,7 +12,6 @@ class SearchSettingsLayoutResourcesSource @Inject constructor(appContext: AppCon
         SearchSettingsLayoutResources {
 
     override val toolbarTitle by string(R.string.settings_search_toolbar_title)
-    override val searchSettingsLabel by string(R.string.settings_search_label)
     override val labelTopMargin by dimenPixelOffset(R.dimen.spacing_small)
     override val labelStartMargin by dimenPixelOffset(R.dimen.spacing_small)
     override val labelEndMargin by dimenPixelOffset(R.dimen.spacing_small)

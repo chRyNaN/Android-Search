@@ -67,8 +67,6 @@ class SearchSettingsLayout(
                             }
                         }
 
-                        label(searchSettingsLabel)
-
                         appsToggleCell = toggleCell(title = appsTitleText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it)
                         }
@@ -146,17 +144,6 @@ class SearchSettingsLayout(
     override fun updateHistoryToggle(toggledOn: Boolean) = searchHistoryToggleCell.perform { toggleOn = toggledOn }
 
     override fun showSearchApproach(searchApproach: String?) = searchApproachToggleCell.perform { endText = searchApproach }
-
-    private fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.label(labelText: String) =
-            textView {
-                text = labelText
-                setTextColor(labelColor)
-                layoutParams {
-                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                    setMargins(labelStartMargin, labelTopMargin, labelEndMargin, labelBottomMargin)
-                }
-            }
 
     private fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.toggleCell(title: String, toggleAction: (Boolean) -> Unit) =
             toggleCell {
