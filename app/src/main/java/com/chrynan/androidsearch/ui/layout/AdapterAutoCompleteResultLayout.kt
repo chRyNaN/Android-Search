@@ -1,15 +1,19 @@
 package com.chrynan.androidsearch.ui.layout
 
 import android.content.Context
-import android.graphics.drawable.StateListDrawable
 import android.widget.ImageView
 import android.widget.TextView
-import com.chrynan.androidsearch.R
+import com.chrynan.androidsearch.resource.AdapterAutoCompleteResources
+import com.chrynan.androidsearch.resource.source.AdapterAutoCompleteResourcesSource
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.*
 import javax.inject.Inject
 
-class AdapterAutoCompleteResultLayout @Inject constructor(appContext: AppContext) : BaseLayout(appContext) {
+class AdapterAutoCompleteResultLayout @Inject constructor(
+        appContext: AppContext,
+        res: AdapterAutoCompleteResourcesSource
+) : BaseLayout(appContext),
+        AdapterAutoCompleteResources by res {
 
     companion object {
 
@@ -24,12 +28,6 @@ class AdapterAutoCompleteResultLayout @Inject constructor(appContext: AppContext
     lateinit var titleTextView: TextView
     lateinit var descriptionTextView: TextView
     lateinit var actionImageView: ImageView
-
-    private val horizontalParentPadding by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.default_screen_margin) }
-    private val verticalParentPadding by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.spacing_small) }
-    private val titleTextStartMargin by lazy { appContext.resources.getDimensionPixelOffset(R.dimen.spacing_small) }
-    private val parentBackground by lazy { appContext.resources.getDrawable(android.R.drawable.list_selector_background, appContext.theme) as StateListDrawable }
-    private val iconSize by lazy { appContext.resources.getDimensionPixelSize(R.dimen.app_list_item_icon_size) }
 
     override fun onCreateLayout(context: Context): LayoutBuilder<*, *> {
         layoutBuilder = constraintLayout(context) {

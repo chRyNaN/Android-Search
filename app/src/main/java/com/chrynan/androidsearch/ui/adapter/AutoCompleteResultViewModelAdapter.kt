@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import com.chrynan.aaaah.Adapter
 import com.chrynan.aaaah.AdapterViewType
 import com.chrynan.aaaah.from
+import com.chrynan.androidsearch.resource.source.AdapterAutoCompleteResourcesSource
 import com.chrynan.androidsearch.ui.layout.AdapterAutoCompleteResultLayout
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidsearch.util.GlideApp
@@ -14,6 +15,7 @@ import javax.inject.Inject
 @Adapter
 class AutoCompleteResultViewModelAdapter @Inject constructor(
         appContext: AppContext,
+        private val res: AdapterAutoCompleteResourcesSource,
         private val listener: AutoCompleteResultSelectedListener
 ) : BaseLayoutAdapter<AdapterAutoCompleteResultLayout, AutoCompleteResultViewModel>(appContext) {
 
@@ -21,7 +23,7 @@ class AutoCompleteResultViewModelAdapter @Inject constructor(
 
     override fun onHandlesItem(item: Any) = item is AutoCompleteResultViewModel
 
-    override fun onProvideLayout(): AdapterAutoCompleteResultLayout = AdapterAutoCompleteResultLayout(appContext)
+    override fun onProvideLayout(): AdapterAutoCompleteResultLayout = AdapterAutoCompleteResultLayout(appContext, res)
 
     override fun onBindItem(layout: AdapterAutoCompleteResultLayout, item: AutoCompleteResultViewModel) {
         layout.apply {
