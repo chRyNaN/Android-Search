@@ -6,7 +6,12 @@ interface AdapterAutoCompleteResources {
 
     val horizontalParentPadding: Int
     val verticalParentPadding: Int
-    val titleTextStartMargin: Int
+    val titleTextHorizontalMargin: Int
+    val titleTextSize: Float
+    val titleTextColor: Int
+    val descriptionTextSize: Float
+    val descriptionTextColor: Int
     val iconSize: Int
     val parentBackground: Drawable
+    val cellMinHeight: Int
 }

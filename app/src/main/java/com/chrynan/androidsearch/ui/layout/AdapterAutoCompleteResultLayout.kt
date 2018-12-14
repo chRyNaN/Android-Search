@@ -34,10 +34,12 @@ class AdapterAutoCompleteResultLayout @Inject constructor(
             init {
                 setPadding(horizontalParentPadding, verticalParentPadding, horizontalParentPadding, verticalParentPadding)
                 background = parentBackground
+                minHeight = cellMinHeight
             }
 
             iconImageView = imageView {
                 id = ID_ICON_IMAGE_VIEW
+
                 constraints(this@constraintLayout) {
                     width = ConstraintSize.ExactPixel(iconSize)
                     height = ConstraintSize.ExactPixel(iconSize)
@@ -49,10 +51,14 @@ class AdapterAutoCompleteResultLayout @Inject constructor(
 
             titleTextView = textView {
                 id = ID_TITLE_TEXT_VIEW
+                textSize = titleTextSize
+                setTextColor(titleTextColor)
+
                 constraints(this@constraintLayout) {
                     width = ConstraintSize.MatchConstraint
                     height = ConstraintSize.WrapContent
-                    marginStart = titleTextStartMargin
+                    marginStart = titleTextHorizontalMargin
+                    marginEnd = titleTextHorizontalMargin
                     bottomToTopOf(ID_DESCRIPTION_TEXT_VIEW)
                     endToStartOf(ID_ACTION_IMAGE_VIEW)
                     startToEndOf(ID_ICON_IMAGE_VIEW)
@@ -62,6 +68,9 @@ class AdapterAutoCompleteResultLayout @Inject constructor(
 
             descriptionTextView = textView {
                 id = ID_DESCRIPTION_TEXT_VIEW
+                textSize = descriptionTextSize
+                setTextColor(descriptionTextColor)
+
                 constraints(this@constraintLayout) {
                     width = ConstraintSize.MatchConstraint
                     height = ConstraintSize.WrapContent
@@ -74,6 +83,7 @@ class AdapterAutoCompleteResultLayout @Inject constructor(
 
             actionImageView = imageView {
                 id = ID_ACTION_IMAGE_VIEW
+
                 constraints(this@constraintLayout) {
                     width = ConstraintSize.WrapContent
                     height = ConstraintSize.WrapContent

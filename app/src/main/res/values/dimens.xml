@@ -26,4 +26,7 @@
     <dimen name="search_widget_in_app_elevation">8dp</dimen>
     <dimen name="search_widget_out_of_app_elevation">0dp</dimen>
 
+    <dimen name="auto_complete_adapter_title_text_size">16sp</dimen>
+    <dimen name="auto_complete_adapter_description_text_size">12sp</dimen>
+
 </resources>

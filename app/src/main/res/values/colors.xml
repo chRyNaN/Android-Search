@@ -11,4 +11,7 @@
     <color name="search_widget_text_color">#000000</color>
     <color name="search_widget_hint_color">#000000</color>
 
+    <color name="auto_complete_adapter_title_text_color">#000000</color>
+    <color name="auto_complete_adapter_description_text_color">#000000</color>
+
 </resources>
