@@ -12,6 +12,7 @@ class SearchSettingsLayoutResourcesSource @Inject constructor(appContext: AppCon
         SearchSettingsLayoutResources {
 
     override val toolbarTitle by string(R.string.settings_search_toolbar_title)
+    override val toolbarNavigationIcon by drawable(R.drawable.ic_close)
     override val appsTitleText by string(R.string.settings_toggle_title_apps)
     override val audioFilesTitleText by string(R.string.settings_toggle_title_audio_files)
     override val imageFilesTitleText by string(R.string.settings_toggle_title_image_files)

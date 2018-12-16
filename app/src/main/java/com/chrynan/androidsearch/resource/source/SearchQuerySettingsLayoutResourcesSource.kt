@@ -13,6 +13,7 @@ class SearchQuerySettingsLayoutResourcesSource @Inject constructor(appContext: A
         SearchQuerySettingsLayoutResources {
 
     override val toolbarTitle by string(R.string.search_approach_toolbar_title)
+    override val toolbarNavigationIcon by drawable(R.drawable.ic_back)
     override val searchMethodLabel by string(R.string.search_approach_label_method)
     override val searchAddressLabel by string(R.string.search_approach_label_address)
     override val webTitleText by string(R.string.settings_radio_button_title_web_view)

@@ -26,6 +26,8 @@ class SearchQuerySettingsLayout(
                     toolbar {
                         init {
                             title = toolbarTitle
+                            navigationIcon = toolbarNavigationIcon
+                            setNavigationOnClickListener { }
                         }
                     }
                 }

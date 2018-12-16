@@ -1,8 +1,11 @@
 package com.chrynan.androidsearch.resource
 
+import android.graphics.drawable.Drawable
+
 interface SearchSettingsLayoutResources {
 
     val toolbarTitle: String
+    val toolbarNavigationIcon: Drawable
     val appsTitleText: String
     val audioFilesTitleText: String
     val imageFilesTitleText: String

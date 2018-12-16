@@ -52,6 +52,8 @@ class SearchSettingsLayout(
                     toolbar {
                         init {
                             title = toolbarTitle
+                            navigationIcon = toolbarNavigationIcon
+                            setNavigationOnClickListener { navigator.goBack() }
                         }
                     }
                 }

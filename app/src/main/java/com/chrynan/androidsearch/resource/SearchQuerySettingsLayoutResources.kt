@@ -1,8 +1,11 @@
 package com.chrynan.androidsearch.resource
 
+import android.graphics.drawable.Drawable
+
 interface SearchQuerySettingsLayoutResources {
 
     val toolbarTitle: String
+    val toolbarNavigationIcon: Drawable
     val searchMethodLabel: String
     val searchAddressLabel: String
     val webTitleText: String
