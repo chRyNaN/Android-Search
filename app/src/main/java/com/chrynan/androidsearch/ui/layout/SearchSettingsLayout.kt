@@ -67,43 +67,43 @@ class SearchSettingsLayout(
                             }
                         }
 
-                        appsToggleCell = toggleCell(title = appsTitleText) {
+                        appsToggleCell = toggleCell(title = appsTitleText, description = appsDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it)
                         }
 
-                        audioFilesToggleCell = toggleCell(title = audioFilesTitleText) {
+                        audioFilesToggleCell = toggleCell(title = audioFilesTitleText, description = audioFilesDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.AUDIO, it)
                         }
 
-                        imageFilesToggleCell = toggleCell(title = imageFilesTitleText) {
+                        imageFilesToggleCell = toggleCell(title = imageFilesTitleText, description = imageFilesDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.IMAGE, it)
                         }
 
-                        videoFilesToggleCell = toggleCell(title = videoFilesTitleText) {
+                        videoFilesToggleCell = toggleCell(title = videoFilesTitleText, description = videoFilesDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.VIDEO, it)
                         }
 
-                        contactsToggleCell = toggleCell(title = contactsTitleText) {
+                        contactsToggleCell = toggleCell(title = contactsTitleText, description = contactsDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it)
                         }
 
-                        emailAddressToggleCell = toggleCell(title = emailAddressTitleText) {
+                        emailAddressToggleCell = toggleCell(title = emailAddressTitleText, description = emailAddressDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it)
                         }
 
-                        webAddressToggleCell = toggleCell(title = webAddressTitleText) {
+                        webAddressToggleCell = toggleCell(title = webAddressTitleText, description = webAddressDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.URL, it)
                         }
 
-                        phoneNumberToggleCell = toggleCell(title = phoneNumberTitleText) {
+                        phoneNumberToggleCell = toggleCell(title = phoneNumberTitleText, description = phoneNumberDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.PHONE_NUMBER, it)
                         }
 
-                        suggestionsToggleCell = toggleCell(title = suggestionsTitleText) {
+                        suggestionsToggleCell = toggleCell(title = suggestionsTitleText, description = suggestionsDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it)
                         }
 
-                        searchHistoryToggleCell = toggleCell(title = searchHistory) {
+                        searchHistoryToggleCell = toggleCell(title = searchHistoryTitleText, description = searchHistoryDescriptionText) {
                             presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.HISTORY, it)
                         }
 
@@ -145,9 +145,10 @@ class SearchSettingsLayout(
 
     override fun showSearchApproach(searchApproach: String?) = searchApproachToggleCell.perform { endText = searchApproach }
 
-    private fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.toggleCell(title: String, toggleAction: (Boolean) -> Unit) =
+    private fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.toggleCell(title: String, description: String? = null, toggleAction: (Boolean) -> Unit) =
             toggleCell {
                 titleText = title
+                descriptionText = description
                 setOnClickListener { toggleOn = !toggleOn }
                 toggleListener = { toggleAction(it) }
                 layoutParams {

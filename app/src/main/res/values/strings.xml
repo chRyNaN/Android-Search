@@ -36,13 +36,22 @@
     <string name="settings_toggle_title_image_files">Image Files</string>
     <string name="settings_toggle_title_video_files">Video Files</string>
     <string name="settings_toggle_title_contacts">Contacts</string>
-    <string name="settings_toggle_title_calendar_events">Calendar</string>
-    <string name="settings_toggle_title_text_messages">Text Messages</string>
     <string name="settings_toggle_title_email_links">Email Addresses</string>
     <string name="settings_toggle_title_url_links">Web Addresses</string>
     <string name="settings_toggle_title_phone_numbers">Phone Numbers</string>
     <string name="settings_toggle_title_suggestions">Suggestions</string>
     <string name="settings_toggle_title_history">History</string>
+
+    <string name="settings_toggle_description_apps">Search through applications installed on this device.</string>
+    <string name="settings_toggle_description_audio_files">Search through audio files stored on this device.</string>
+    <string name="settings_toggle_description_image_files">Search through image files stored on this device.</string>
+    <string name="settings_toggle_description_video_files">Search through video files stored on this device.</string>
+    <string name="settings_toggle_description_contacts">Search through your contacts.</string>
+    <string name="settings_toggle_description_email_addresses">Display option to compose email for query in email address format.</string>
+    <string name="settings_toggle_description_web_addresses">Display option to load website for query in URL format.</string>
+    <string name="settings_toggle_description_phone_numbers">Display options to call and send messages for query in phone number format.</string>
+    <string name="settings_toggle_description_suggestions">Display search suggestions from Contextual Web Search.</string>
+    <string name="settings_toggle_description_search_history">Allow storing and retrieving search history.</string>
 
     <string name="settings_search_approach_cell_title">Search Approach</string>
 
