@@ -55,6 +55,9 @@
 
     <string name="settings_search_approach_cell_title">Search Approach</string>
 
+    <string name="search_approach_toolbar_title">Search Approach</string>
+    <string name="search_approach_label_method">Method</string>
+    <string name="search_approach_label_address">Address</string>
     <string name="search_approach_default_app">Default Search App</string>
     <string name="search_approach_web_view">WebView</string>
     <string name="search_approach_chrome_custom_tabs">Chrome Custom Tabs</string>

@@ -32,4 +32,10 @@
     <dimen name="cell_title_text_size">16sp</dimen>
     <dimen name="cell_description_text_size">14sp</dimen>
 
+    <dimen name="label_margin_start">@dimen/spacing_small</dimen>
+    <dimen name="label_margin_end">@dimen/spacing_small</dimen>
+    <dimen name="label_margin_top">@dimen/spacing_small</dimen>
+    <dimen name="label_margin_bottom">@dimen/spacing_xsmall</dimen>
+    <dimen name="label_text_size">14sp</dimen>
+
 </resources>

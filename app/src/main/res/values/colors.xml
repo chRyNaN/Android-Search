@@ -24,6 +24,8 @@
     <color name="cell_title_text_color">@color/black</color>
     <color name="cell_description_text_color">@color/black_50_percent_transparent</color>
 
+    <color name="label_text_color">@color/colorAccent</color>
+
     <color name="test_scheme_one_a">#f18f01</color>
     <color name="test_scheme_one_b">#048ba8</color>
     <color name="test_scheme_one_c">#2e4057</color>

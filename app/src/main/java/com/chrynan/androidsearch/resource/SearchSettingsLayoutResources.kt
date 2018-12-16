@@ -3,11 +3,6 @@ package com.chrynan.androidsearch.resource
 interface SearchSettingsLayoutResources {
 
     val toolbarTitle: String
-    val labelTopMargin: Int
-    val labelStartMargin: Int
-    val labelEndMargin: Int
-    val labelBottomMargin: Int
-    val labelColor: Int
     val appsTitleText: String
     val audioFilesTitleText: String
     val imageFilesTitleText: String

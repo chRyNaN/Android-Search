@@ -51,7 +51,7 @@ class SearchSettingsLayout(
                 appBarLayout {
                     toolbar {
                         init {
-                            this.title = toolbarTitle
+                            title = toolbarTitle
                         }
                     }
                 }
