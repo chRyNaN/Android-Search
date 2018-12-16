@@ -7,7 +7,7 @@ import com.chrynan.androidviewutils.setVisibleOrGone
 
 class RadioButtonCellGroup<K : Any>(private val radioButtonCells: Map<K, RadioButtonCell?>) {
 
-    var groupCheckedListener: ((K, Boolean) -> Unit)? = null
+    var groupCheckedListener: ((key: K, checked: Boolean) -> Unit)? = null
         set(value) {
             field = value
 

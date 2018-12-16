@@ -36,7 +36,7 @@ class SearchQuerySettingsLayout(
 
                         label(searchMethodLabel)
 
-                        radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {
+                        val methodGroup = radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {
 
                             radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.BROWSER) {
                                 titleText = browserTitleText
@@ -69,7 +69,7 @@ class SearchQuerySettingsLayout(
 
                         label(searchAddressLabel)
 
-                        radioButtonCellGroup<SearchSettingsPresenter.SearchUrlCheckedItem> {
+                        val addressGroup = radioButtonCellGroup<SearchSettingsPresenter.SearchUrlCheckedItem> {
 
                             radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.BING) {
                                 titleText = bingTitleText
@@ -130,6 +130,14 @@ class SearchQuerySettingsLayout(
                                     height = LinearLayout.LayoutParams.WRAP_CONTENT
                                 }
                             }
+                        }
+
+                        methodGroup.groupCheckedListener = { key: SearchSettingsPresenter.SearchCheckedItem, checked: Boolean ->
+                            // TODO add presenter call
+                        }
+
+                        addressGroup.groupCheckedListener = { key: SearchSettingsPresenter.SearchUrlCheckedItem, checked: Boolean ->
+                            // TODO add presenter call
                         }
 
                     }
