@@ -1,10 +1,16 @@
 package com.chrynan.androidsearch.model.toggle
 
-enum class SearchUrlCheckedItem {
+import com.chrynan.androidsearch.model.wrapper.Url
 
-    BING,
-    CONTEXTUAL_WEB_SEARCH,
-    DUCK_DUCK_GO,
-    GOOGLE,
-    CUSTOM
+sealed class SearchUrlCheckedItem {
+
+    object Bing : SearchUrlCheckedItem()
+
+    object ContextualWebSearch : SearchUrlCheckedItem()
+
+    object DuckDuckGo : SearchUrlCheckedItem()
+
+    object Google : SearchUrlCheckedItem()
+
+    data class Custom(val url: Url) : SearchUrlCheckedItem()
 }

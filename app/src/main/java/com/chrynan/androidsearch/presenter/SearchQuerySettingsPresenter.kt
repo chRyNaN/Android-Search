@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.presenter
 import com.chrynan.androidsearch.model.QueryUrls
 import com.chrynan.androidsearch.model.toggle.SearchCheckedItem
 import com.chrynan.androidsearch.model.toggle.SearchUrlCheckedItem
+import com.chrynan.androidsearch.model.wrapper.Url
 import com.chrynan.androidsearch.preference.SearchPreferences
 import com.chrynan.androidsearch.ui.view.SearchQuerySettingsView
 import com.chrynan.kotlinutils.perform
@@ -20,11 +21,11 @@ class SearchQuerySettingsPresenter @Inject constructor(
                 updateWebViewChecked(preferences.webView)
 
                 when (preferences.webUrl) {
-                    QueryUrls.BING -> setUrlCheckedItem(SearchUrlCheckedItem.BING)
-                    QueryUrls.CONTEXTUAL_WEB_SEARCH -> setUrlCheckedItem(SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH)
-                    QueryUrls.DUCK_DUCK_GO -> setUrlCheckedItem(SearchUrlCheckedItem.DUCK_DUCK_GO)
-                    QueryUrls.GOOGLE -> setUrlCheckedItem(SearchUrlCheckedItem.GOOGLE)
-                    else -> setUrlCheckedItem(SearchUrlCheckedItem.CUSTOM)
+                    QueryUrls.BING -> setUrlCheckedItem(SearchUrlCheckedItem.Bing)
+                    QueryUrls.CONTEXTUAL_WEB_SEARCH -> setUrlCheckedItem(SearchUrlCheckedItem.ContextualWebSearch)
+                    QueryUrls.DUCK_DUCK_GO -> setUrlCheckedItem(SearchUrlCheckedItem.DuckDuckGo)
+                    QueryUrls.GOOGLE -> setUrlCheckedItem(SearchUrlCheckedItem.Google)
+                    else -> setUrlCheckedItem(SearchUrlCheckedItem.Custom(Url(preferences.webUrl)))
                 }
             }
 
@@ -39,19 +40,19 @@ class SearchQuerySettingsPresenter @Inject constructor(
 
     fun selectSearchUrl(item: SearchUrlCheckedItem) {
         when (item) {
-            SearchUrlCheckedItem.BING -> preferences.webUrl = QueryUrls.BING
-            SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH -> QueryUrls.CONTEXTUAL_WEB_SEARCH
-            SearchUrlCheckedItem.DUCK_DUCK_GO -> preferences.webUrl = QueryUrls.DUCK_DUCK_GO
-            SearchUrlCheckedItem.GOOGLE -> preferences.webUrl = QueryUrls.GOOGLE
-            else -> preferences.webUrl = ""
+            SearchUrlCheckedItem.Bing -> preferences.webUrl = QueryUrls.BING
+            SearchUrlCheckedItem.ContextualWebSearch -> QueryUrls.CONTEXTUAL_WEB_SEARCH
+            SearchUrlCheckedItem.DuckDuckGo -> preferences.webUrl = QueryUrls.DUCK_DUCK_GO
+            SearchUrlCheckedItem.Google -> preferences.webUrl = QueryUrls.GOOGLE
+            is SearchUrlCheckedItem.Custom -> preferences.webUrl = item.url.value
         }
     }
 
     private fun setUrlCheckedItem(item: SearchUrlCheckedItem) = view.perform {
-        updateBingChecked(item == SearchUrlCheckedItem.BING)
-        updateContextualWebSearchChecked(item == SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH)
-        updateDuckDuckGoChecked(item == SearchUrlCheckedItem.DUCK_DUCK_GO)
-        updateGoogleChecked(item == SearchUrlCheckedItem.GOOGLE)
-        updateCustomChecked(item == SearchUrlCheckedItem.CUSTOM)
+        updateBingChecked(item == SearchUrlCheckedItem.Bing)
+        updateContextualWebSearchChecked(item == SearchUrlCheckedItem.ContextualWebSearch)
+        updateDuckDuckGoChecked(item == SearchUrlCheckedItem.DuckDuckGo)
+        updateGoogleChecked(item == SearchUrlCheckedItem.Google)
+        updateCustomChecked(item is SearchUrlCheckedItem.Custom)
     }
 }
