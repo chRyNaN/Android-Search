@@ -25,10 +25,10 @@ class SearchQuerySettingsLayoutResourcesSource @Inject constructor(appContext: A
     override val googleTitleText by string(R.string.settings_radio_button_title_google)
     override val customTitleText by string(R.string.settings_radio_button_title_custom)
     override val customUrlHint by string(R.string.settings_custom_url_hint)
-    override val labelTopMargin by dimenPixelOffset(R.dimen.label_margin_top)
-    override val labelStartMargin by dimenPixelOffset(R.dimen.label_margin_start)
-    override val labelEndMargin by dimenPixelOffset(R.dimen.label_margin_end)
-    override val labelBottomMargin by dimenPixelOffset(R.dimen.label_margin_bottom)
+    override val labelTopMargin by dimenPixelOffset(R.dimen.label_margin_vertical)
+    override val labelStartMargin by dimenPixelOffset(R.dimen.label_margin_horizontal)
+    override val labelEndMargin by dimenPixelOffset(R.dimen.label_margin_horizontal)
+    override val labelBottomMargin by dimenPixelOffset(R.dimen.label_margin_vertical)
     override val labelTextColor by color(R.color.label_text_color)
     override val labelTextSize by lazy { px(dimen(R.dimen.label_text_size).value).toSp().value.toFloat() }
 }

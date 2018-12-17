@@ -8,6 +8,7 @@ import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
 import com.chrynan.androidsearch.resource.SearchQuerySettingsLayoutResources
 import com.chrynan.androidsearch.resource.source.SearchQuerySettingsLayoutResourcesSource
 import com.chrynan.androidsearch.ui.widget.divider
+import com.chrynan.androidsearch.ui.widget.label
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.*
@@ -147,18 +148,6 @@ class SearchQuerySettingsLayout(
 
                     }
 
-                }
-            }
-
-    private fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.label(labelText: String) =
-            textView {
-                text = labelText
-                setTextColor(labelTextColor)
-                textSize = labelTextSize
-                layoutParams {
-                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                    setMargins(labelStartMargin, labelTopMargin, labelEndMargin, labelBottomMargin)
                 }
             }
 }
