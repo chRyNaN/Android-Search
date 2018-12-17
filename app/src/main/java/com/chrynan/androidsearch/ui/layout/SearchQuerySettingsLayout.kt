@@ -9,7 +9,6 @@ import android.widget.ScrollView
 import com.chrynan.accore.runOnAndroidUI
 import com.chrynan.acview.onTextChanged
 import com.chrynan.androidsearch.di.Injector
-import com.chrynan.androidsearch.model.QueryUrls
 import com.chrynan.androidsearch.model.toggle.SearchCheckedItem
 import com.chrynan.androidsearch.model.toggle.SearchUrlCheckedItem
 import com.chrynan.androidsearch.model.wrapper.Url
@@ -79,32 +78,11 @@ class SearchQuerySettingsLayout(
 
                         val methodGroup = radioButtonCellGroup<SearchCheckedItem> {
 
-                            browserToggleCell = radioButtonCell(SearchCheckedItem.BROWSER) {
-                                titleText = browserTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
+                            browserToggleCell = radioButtonCell(key = SearchCheckedItem.BROWSER, title = browserTitleText)
 
-                            chromeCustomTabsToggleCell = radioButtonCell(SearchCheckedItem.CHROME_CUSTOM_TAB) {
-                                titleText = chromeCustomTabsTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
+                            chromeCustomTabsToggleCell = radioButtonCell(key = SearchCheckedItem.CHROME_CUSTOM_TAB, title = chromeCustomTabsTitleText)
 
-                            webViewToggleCell = radioButtonCell(SearchCheckedItem.WEB_VIEW) {
-                                titleText = webTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
+                            webViewToggleCell = radioButtonCell(key = SearchCheckedItem.WEB_VIEW, title = webTitleText)
 
                         }
 
@@ -114,60 +92,27 @@ class SearchQuerySettingsLayout(
 
                         val addressGroup = radioButtonCellGroup<SearchUrlCheckedItem> {
 
-                            bingToggleCell = radioButtonCell(SearchUrlCheckedItem.Bing) {
-                                titleText = bingTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
+                            bingToggleCell = radioButtonCell(key = SearchUrlCheckedItem.Bing, title = bingTitleText)
 
-                            contextualWebSearchToggleCell = radioButtonCell(SearchUrlCheckedItem.ContextualWebSearch) {
-                                titleText = contextualWebSearchTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
+                            contextualWebSearchToggleCell = radioButtonCell(key = SearchUrlCheckedItem.ContextualWebSearch, title = contextualWebSearchTitleText)
 
-                            duckDuckGoToggleCell = radioButtonCell(SearchUrlCheckedItem.DuckDuckGo) {
-                                titleText = duckDuckGoTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
+                            duckDuckGoToggleCell = radioButtonCell(key = SearchUrlCheckedItem.DuckDuckGo, title = duckDuckGoTitleText)
 
-                            googleToggleCell = radioButtonCell(SearchUrlCheckedItem.Google) {
-                                titleText = googleTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
+                            googleToggleCell = radioButtonCell(key = SearchUrlCheckedItem.Google, title = googleTitleText)
 
-                            customUrlToggleCell = radioButtonCell(SearchUrlCheckedItem.Custom(Url(QueryUrls.DUCK_DUCK_GO))) {
-                                titleText = customTitleText
-                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
-                                layoutParams {
-                                    width = LinearLayout.LayoutParams.MATCH_PARENT
-                                    height = LinearLayout.LayoutParams.WRAP_CONTENT
-                                }
-                            }
-
+                            customUrlToggleCell = radioButtonCell(key = SearchUrlCheckedItem.Custom(presenter.currentUrl), title = customTitleText)
                         }
 
                         customUrlTextInputLayout = textInputLayout {
                             init {
                                 visibilityState = ViewVisibilityState.GONE
+                                setPadding(customUrlHorizontalPadding, customUrlVerticalPadding, customUrlHorizontalPadding, customUrlVerticalPadding)
                             }
 
                             customUrlEditText = textInputEditText {
                                 hint = customUrlHint
+                                setTextColor(customUrlTextColor)
+                                textSize = customUrlTextSize
                                 layoutParams {
                                     width = LinearLayout.LayoutParams.MATCH_PARENT
                                     height = LinearLayout.LayoutParams.WRAP_CONTENT
@@ -212,5 +157,10 @@ class SearchQuerySettingsLayout(
 
     override fun updateGoogleChecked(checked: Boolean) = googleToggleCell.perform { isChecked = checked }
 
-    override fun updateCustomChecked(checked: Boolean) = customUrlToggleCell.perform { isChecked = checked }
+    override fun updateCustomChecked(checked: Boolean) = customUrlToggleCell.perform {
+        isChecked = checked
+        customUrlTextInputLayout.setVisibleOrGone(isChecked)
+    }
+
+    override fun updateCustomUrl(url: String?) = customUrlEditText.perform { setText(url) }
 }

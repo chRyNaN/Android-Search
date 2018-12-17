@@ -14,6 +14,9 @@ class SearchQuerySettingsPresenter @Inject constructor(
         private val preferences: SearchPreferences
 ) : CoroutinePresenter() {
 
+    val currentUrl: Url
+        get() = Url(preferences.webUrl)
+
     fun getSettings() =
             view.perform {
                 updateBrowserChecked(preferences.browser)
@@ -25,7 +28,10 @@ class SearchQuerySettingsPresenter @Inject constructor(
                     QueryUrls.CONTEXTUAL_WEB_SEARCH -> setUrlCheckedItem(SearchUrlCheckedItem.ContextualWebSearch)
                     QueryUrls.DUCK_DUCK_GO -> setUrlCheckedItem(SearchUrlCheckedItem.DuckDuckGo)
                     QueryUrls.GOOGLE -> setUrlCheckedItem(SearchUrlCheckedItem.Google)
-                    else -> setUrlCheckedItem(SearchUrlCheckedItem.Custom(Url(preferences.webUrl)))
+                    else -> {
+                        setUrlCheckedItem(SearchUrlCheckedItem.Custom(Url(preferences.webUrl)))
+                        updateCustomUrl(preferences.webUrl)
+                    }
                 }
             }
 

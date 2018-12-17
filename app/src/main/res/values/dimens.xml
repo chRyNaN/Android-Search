@@ -36,4 +36,8 @@
     <dimen name="label_margin_vertical">@dimen/spacing_small</dimen>
     <dimen name="label_text_size">14sp</dimen>
 
+    <dimen name="custom_url_horizontal_margin">@dimen/default_screen_margin</dimen>
+    <dimen name="custom_url_vertical_margin">@dimen/spacing_xsmall</dimen>
+    <dimen name="custom_url_text_size">@dimen/text_size_medium</dimen>
+
 </resources>

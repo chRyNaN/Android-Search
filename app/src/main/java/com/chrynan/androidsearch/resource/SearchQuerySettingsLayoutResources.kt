@@ -17,10 +17,8 @@ interface SearchQuerySettingsLayoutResources {
     val googleTitleText: String
     val customTitleText: String
     val customUrlHint: String
-    val labelTopMargin: Int
-    val labelStartMargin: Int
-    val labelEndMargin: Int
-    val labelBottomMargin: Int
-    val labelTextColor: Int
-    val labelTextSize: Float
+    val customUrlHorizontalPadding: Int
+    val customUrlVerticalPadding: Int
+    val customUrlTextColor: Int
+    val customUrlTextSize: Float
 }

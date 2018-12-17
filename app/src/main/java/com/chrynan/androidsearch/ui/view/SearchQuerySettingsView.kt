@@ -17,4 +17,6 @@ interface SearchQuerySettingsView {
     fun updateGoogleChecked(checked: Boolean)
 
     fun updateCustomChecked(checked: Boolean)
+
+    fun updateCustomUrl(url: String?)
 }

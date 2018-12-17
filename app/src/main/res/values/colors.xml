@@ -29,6 +29,8 @@
 
     <color name="divider_color">@color/black_25_percent_transparent</color>
 
+    <color name="custom_url_text_color">@color/black</color>
+
     <color name="test_scheme_one_a">#f18f01</color>
     <color name="test_scheme_one_b">#048ba8</color>
     <color name="test_scheme_one_c">#2e4057</color>

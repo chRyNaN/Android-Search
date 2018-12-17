@@ -2,6 +2,7 @@
 
 package com.chrynan.androidsearch.ui.widget
 
+import android.widget.LinearLayout
 import com.chrynan.androidviews.builder.LayoutBuilder
 import com.chrynan.androidviewutils.setVisibleOrGone
 
@@ -61,8 +62,17 @@ class RadioButtonCellGroupBuilder<K : Any>(private val layoutBuilder: LayoutBuil
 
     private val map = mutableMapOf<K, RadioButtonCell>()
 
-    fun radioButtonCell(key: K, block: (RadioButtonCell.() -> Unit)? = null): RadioButtonCell {
-        val cell = layoutBuilder.radioButtonCell(block)
+    fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.radioButtonCell(key: K, title: String, description: String? = null, block: (RadioButtonCell.() -> Unit)? = null): RadioButtonCell {
+        val cell = layoutBuilder.radioButtonCell {
+            titleText = title
+            descriptionText = description
+            setOnClickListener { setCheckedTriggeringListener(!isChecked) }
+            layoutParams {
+                width = LinearLayout.LayoutParams.MATCH_PARENT
+                height = LinearLayout.LayoutParams.WRAP_CONTENT
+            }
+        }
+        block?.invoke(cell)
         map[key] = cell
         return cell
     }
