@@ -7,14 +7,15 @@ import javax.inject.Inject
 
 class SearchQuerySettingsPresenter @Inject constructor(private val preferences: SearchPreferences) : CoroutinePresenter() {
 
-    fun toggleSearchApproach(item: SearchCheckedItem, toggledOn: Boolean) =
-            when (item) {
-                SearchCheckedItem.WEB_VIEW -> preferences.webView = toggledOn
-                SearchCheckedItem.CHROME_CUSTOM_TAB -> preferences.chromeCustomTab = toggledOn
-                SearchCheckedItem.BROWSER -> preferences.browser = toggledOn
-            }
+    fun toggleSearchApproach(item: SearchCheckedItem) {
+        //when (item) {
+        //  SearchCheckedItem.WEB_VIEW -> preferences.webView = toggledOn
+        //  SearchCheckedItem.CHROME_CUSTOM_TAB -> preferences.chromeCustomTab = toggledOn
+        //  SearchCheckedItem.BROWSER -> preferences.browser = toggledOn
+        //}
+    }
 
-    fun selectSearchUrl(item: SearchUrlCheckedItem, toggledOn: Boolean) {
+    fun selectSearchUrl(item: SearchUrlCheckedItem) {
         // TODO
     }
 }

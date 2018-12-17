@@ -7,24 +7,19 @@ import com.chrynan.androidviewutils.setVisibleOrGone
 
 class RadioButtonCellGroup<K : Any>(private val radioButtonCells: Map<K, RadioButtonCell?>) {
 
-    var groupCheckedListener: ((key: K, checked: Boolean) -> Unit)? = null
-        set(value) {
-            field = value
-
-            radioButtonCells.entries
-                    .forEach { entry ->
-                        if (value == null) {
-                            entry.value?.checkedListener = null
-                        } else {
-                            entry.value?.checkedListener = { checked ->
-                                value.invoke(entry.key, checked)
-
-                                radioButtonCells.entries
-                                        .forEach { it.value?.isChecked = it.key == entry.key }
-                            }
-                        }
-                    }
+    init {
+        radioButtonCells.entries.forEach { entry ->
+            entry.value?.checkedListener = { checked ->
+                // Always consider the item as toggled on because we remove the listener when toggling
+                // off the other items and we don't allow toggling off an item (only toggling on another
+                // item which turns off the others).
+                toggleOnKeyAndOffOtherKeys(entry.key)
+                groupCheckedListener?.invoke(entry.key)
+            }
         }
+    }
+
+    var groupCheckedListener: ((checkedKey: K) -> Unit)? = null
 
     var isEnabled: Boolean = true
         set(value) {
@@ -41,6 +36,19 @@ class RadioButtonCellGroup<K : Any>(private val radioButtonCells: Map<K, RadioBu
             radioButtonCells.values
                     .forEach { it?.setVisibleOrGone(value) }
         }
+
+    private fun toggleOnKeyAndOffOtherKeys(checkedKey: K) {
+        radioButtonCells.entries.forEach { pair ->
+            pair.value?.setIsCheckedWithoutTriggeringListener(pair.key == checkedKey)
+        }
+    }
+
+    private fun RadioButtonCell.setIsCheckedWithoutTriggeringListener(checked: Boolean) {
+        val listener = checkedListener
+        checkedListener = null
+        isChecked = checked
+        checkedListener = listener
+    }
 }
 
 fun <K : Any> LayoutBuilder<*, *>.radioButtonCellGroup(block: RadioButtonCellGroupBuilder<K>.() -> Unit): RadioButtonCellGroup<K> {

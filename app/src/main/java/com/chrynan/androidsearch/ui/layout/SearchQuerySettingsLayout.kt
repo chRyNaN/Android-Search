@@ -85,7 +85,7 @@ class SearchQuerySettingsLayout(
 
                             radioButtonCell(SearchUrlCheckedItem.BING) {
                                 titleText = bingTitleText
-                                setOnClickListener { isChecked = !isChecked }
+                                setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
                                     width = LinearLayout.LayoutParams.MATCH_PARENT
                                     height = LinearLayout.LayoutParams.WRAP_CONTENT
@@ -144,12 +144,12 @@ class SearchQuerySettingsLayout(
                             }
                         }
 
-                        methodGroup.groupCheckedListener = { key: SearchCheckedItem, checked: Boolean ->
-                            presenter.toggleSearchApproach(key, checked)
+                        methodGroup.groupCheckedListener = { key: SearchCheckedItem ->
+                            presenter.toggleSearchApproach(key)
                         }
 
-                        addressGroup.groupCheckedListener = { key: SearchUrlCheckedItem, checked: Boolean ->
-                            presenter.selectSearchUrl(key, checked)
+                        addressGroup.groupCheckedListener = { key: SearchUrlCheckedItem ->
+                            presenter.selectSearchUrl(key)
                         }
                     }
 
