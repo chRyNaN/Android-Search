@@ -7,6 +7,7 @@ import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
 import com.chrynan.androidsearch.resource.SearchQuerySettingsLayoutResources
 import com.chrynan.androidsearch.resource.source.SearchQuerySettingsLayoutResourcesSource
+import com.chrynan.androidsearch.ui.widget.divider
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.*
@@ -68,6 +69,8 @@ class SearchQuerySettingsLayout(
                             }
 
                         }
+
+                        divider()
 
                         label(searchAddressLabel)
 
