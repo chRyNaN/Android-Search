@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.chrynan.androidsearch.di.Injector
+import com.chrynan.androidsearch.model.toggle.SearchToggleItem
 import com.chrynan.androidsearch.navigator.SearchSettingsNavigator
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
 import com.chrynan.androidsearch.resource.SearchSettingsLayoutResources
@@ -70,43 +71,43 @@ class SearchSettingsLayout(
                         }
 
                         appsToggleCell = toggleCell(title = appsTitleText, description = appsDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.APPS, it)
+                            presenter.toggleSearchItem(SearchToggleItem.APPS, it)
                         }
 
                         audioFilesToggleCell = toggleCell(title = audioFilesTitleText, description = audioFilesDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.AUDIO, it)
+                            presenter.toggleSearchItem(SearchToggleItem.AUDIO, it)
                         }
 
                         imageFilesToggleCell = toggleCell(title = imageFilesTitleText, description = imageFilesDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.IMAGE, it)
+                            presenter.toggleSearchItem(SearchToggleItem.IMAGE, it)
                         }
 
                         videoFilesToggleCell = toggleCell(title = videoFilesTitleText, description = videoFilesDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.VIDEO, it)
+                            presenter.toggleSearchItem(SearchToggleItem.VIDEO, it)
                         }
 
                         contactsToggleCell = toggleCell(title = contactsTitleText, description = contactsDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.CONTACTS, it)
+                            presenter.toggleSearchItem(SearchToggleItem.CONTACTS, it)
                         }
 
                         emailAddressToggleCell = toggleCell(title = emailAddressTitleText, description = emailAddressDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.EMAIL, it)
+                            presenter.toggleSearchItem(SearchToggleItem.EMAIL, it)
                         }
 
                         webAddressToggleCell = toggleCell(title = webAddressTitleText, description = webAddressDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.URL, it)
+                            presenter.toggleSearchItem(SearchToggleItem.URL, it)
                         }
 
                         phoneNumberToggleCell = toggleCell(title = phoneNumberTitleText, description = phoneNumberDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.PHONE_NUMBER, it)
+                            presenter.toggleSearchItem(SearchToggleItem.PHONE_NUMBER, it)
                         }
 
                         suggestionsToggleCell = toggleCell(title = suggestionsTitleText, description = suggestionsDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.SUGGESTION, it)
+                            presenter.toggleSearchItem(SearchToggleItem.SUGGESTION, it)
                         }
 
                         searchHistoryToggleCell = toggleCell(title = searchHistoryTitleText, description = searchHistoryDescriptionText) {
-                            presenter.toggleSearchItem(SearchSettingsPresenter.SearchToggleItem.HISTORY, it)
+                            presenter.toggleSearchItem(SearchToggleItem.HISTORY, it)
                         }
 
                         searchApproachToggleCell = defaultCell {

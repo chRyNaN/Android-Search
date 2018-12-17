@@ -2,8 +2,10 @@ package com.chrynan.androidsearch.presenter
 
 import android.content.Context
 import com.chrynan.androidsearch.R
+import com.chrynan.androidsearch.model.toggle.SearchToggleItem
 import com.chrynan.androidsearch.preference.SearchPreferences
 import com.chrynan.androidsearch.ui.view.SearchSettingsView
+import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
 
 class SearchSettingsPresenter @Inject constructor(
@@ -12,28 +14,24 @@ class SearchSettingsPresenter @Inject constructor(
         private val preferences: SearchPreferences
 ) : CoroutinePresenter() {
 
-    private val searchApp by lazy { context.getString(R.string.search_approach_default_app) }
     private val webView by lazy { context.getString(R.string.search_approach_web_view) }
     private val chromeCustomTabs by lazy { context.getString(R.string.search_approach_chrome_custom_tabs) }
     private val browser by lazy { context.getString(R.string.search_approach_browser) }
 
-    override fun detachView() {}
-
-    fun getSettings() {
-        view.apply {
-            updateApplicationsToggle(preferences.apps)
-            updateAudioFilesToggle(preferences.audioFiles)
-            updateImageFilesToggle(preferences.imageFiles)
-            updateVideoFilesToggle(preferences.videoFiles)
-            updateContactsToggle(preferences.contacts)
-            updateEmailToggle(preferences.emailLink)
-            updateWebAddressToggle(preferences.webAddressLink)
-            updatePhoneNumberToggle(preferences.phoneNumberLink)
-            updateSuggestionToggle(preferences.typeAhead)
-            updateHistoryToggle(preferences.history)
-            showSearchApproach(getSearchApproach())
-        }
-    }
+    fun getSettings() =
+            view.perform {
+                updateApplicationsToggle(preferences.apps)
+                updateAudioFilesToggle(preferences.audioFiles)
+                updateImageFilesToggle(preferences.imageFiles)
+                updateVideoFilesToggle(preferences.videoFiles)
+                updateContactsToggle(preferences.contacts)
+                updateEmailToggle(preferences.emailLink)
+                updateWebAddressToggle(preferences.webAddressLink)
+                updatePhoneNumberToggle(preferences.phoneNumberLink)
+                updateSuggestionToggle(preferences.typeAhead)
+                updateHistoryToggle(preferences.history)
+                showSearchApproach(getSearchApproach())
+            }
 
     // TODO need to update to ask for permissions for the fields that require them
     fun toggleSearchItem(item: SearchToggleItem, toggledOn: Boolean) =
@@ -55,47 +53,6 @@ class SearchSettingsPresenter @Inject constructor(
                 preferences.webView -> webView
                 preferences.chromeCustomTab -> chromeCustomTabs
                 preferences.browser -> browser
-                else -> null
+                else -> browser
             }
-
-    fun toggleSearchApproach(item: SearchCheckedItem, toggledOn: Boolean) =
-            when (item) {
-                SearchCheckedItem.WEB_VIEW -> preferences.webView = toggledOn
-                SearchCheckedItem.CHROME_CUSTOM_TAB -> preferences.chromeCustomTab = toggledOn
-                SearchCheckedItem.BROWSER -> preferences.browser = toggledOn
-            }
-
-    fun selectSearchUrl(item: SearchUrlCheckedItem, toggledOn: Boolean) {
-        // TODO
-    }
-
-    enum class SearchToggleItem {
-
-        APPS,
-        AUDIO,
-        IMAGE,
-        VIDEO,
-        CONTACTS,
-        EMAIL,
-        URL,
-        PHONE_NUMBER,
-        SUGGESTION,
-        HISTORY
-    }
-
-    enum class SearchCheckedItem {
-
-        WEB_VIEW,
-        CHROME_CUSTOM_TAB,
-        BROWSER
-    }
-
-    enum class SearchUrlCheckedItem {
-
-        BING,
-        CONTEXTUAL_WEB_SEARCH,
-        DUCK_DUCK_GO,
-        GOOGLE,
-        CUSTOM
-    }
 }

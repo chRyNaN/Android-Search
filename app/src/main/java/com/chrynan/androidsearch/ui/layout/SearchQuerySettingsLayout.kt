@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
 import com.chrynan.androidsearch.di.Injector
-import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
+import com.chrynan.androidsearch.model.toggle.SearchCheckedItem
+import com.chrynan.androidsearch.model.toggle.SearchUrlCheckedItem
+import com.chrynan.androidsearch.presenter.SearchQuerySettingsPresenter
 import com.chrynan.androidsearch.resource.SearchQuerySettingsLayoutResources
 import com.chrynan.androidsearch.resource.source.SearchQuerySettingsLayoutResourcesSource
 import com.chrynan.androidsearch.ui.widget.divider
@@ -12,12 +14,16 @@ import com.chrynan.androidsearch.ui.widget.label
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
 import com.chrynan.androidsearch.util.AppContext
 import com.chrynan.androidviews.builder.*
+import javax.inject.Inject
 
 class SearchQuerySettingsLayout(
         appContext: AppContext,
         res: SearchQuerySettingsLayoutResourcesSource
 ) : BaseLayout(appContext),
         SearchQuerySettingsLayoutResources by res {
+
+    @Inject
+    lateinit var presenter: SearchQuerySettingsPresenter
 
     override fun setupDependencies() = Injector.inject(this)
 
@@ -40,9 +46,9 @@ class SearchQuerySettingsLayout(
 
                         label(searchMethodLabel)
 
-                        val methodGroup = radioButtonCellGroup<SearchSettingsPresenter.SearchCheckedItem> {
+                        val methodGroup = radioButtonCellGroup<SearchCheckedItem> {
 
-                            radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.BROWSER) {
+                            radioButtonCell(SearchCheckedItem.BROWSER) {
                                 titleText = browserTitleText
                                 setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
@@ -51,7 +57,7 @@ class SearchQuerySettingsLayout(
                                 }
                             }
 
-                            radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.CHROME_CUSTOM_TAB) {
+                            radioButtonCell(SearchCheckedItem.CHROME_CUSTOM_TAB) {
                                 titleText = chromeCustomTabsTitleText
                                 setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
@@ -60,7 +66,7 @@ class SearchQuerySettingsLayout(
                                 }
                             }
 
-                            radioButtonCell(SearchSettingsPresenter.SearchCheckedItem.WEB_VIEW) {
+                            radioButtonCell(SearchCheckedItem.WEB_VIEW) {
                                 titleText = webTitleText
                                 setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
@@ -75,9 +81,9 @@ class SearchQuerySettingsLayout(
 
                         label(searchAddressLabel)
 
-                        val addressGroup = radioButtonCellGroup<SearchSettingsPresenter.SearchUrlCheckedItem> {
+                        val addressGroup = radioButtonCellGroup<SearchUrlCheckedItem> {
 
-                            radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.BING) {
+                            radioButtonCell(SearchUrlCheckedItem.BING) {
                                 titleText = bingTitleText
                                 setOnClickListener { isChecked = !isChecked }
                                 layoutParams {
@@ -86,7 +92,7 @@ class SearchQuerySettingsLayout(
                                 }
                             }
 
-                            radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH) {
+                            radioButtonCell(SearchUrlCheckedItem.CONTEXTUAL_WEB_SEARCH) {
                                 titleText = contextualWebSearchTitleText
                                 setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
@@ -95,7 +101,7 @@ class SearchQuerySettingsLayout(
                                 }
                             }
 
-                            radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.DUCK_DUCK_GO) {
+                            radioButtonCell(SearchUrlCheckedItem.DUCK_DUCK_GO) {
                                 titleText = duckDuckGoTitleText
                                 setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
@@ -104,7 +110,7 @@ class SearchQuerySettingsLayout(
                                 }
                             }
 
-                            radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.GOOGLE) {
+                            radioButtonCell(SearchUrlCheckedItem.GOOGLE) {
                                 titleText = googleTitleText
                                 setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
@@ -113,7 +119,7 @@ class SearchQuerySettingsLayout(
                                 }
                             }
 
-                            radioButtonCell(SearchSettingsPresenter.SearchUrlCheckedItem.CUSTOM) {
+                            radioButtonCell(SearchUrlCheckedItem.CUSTOM) {
                                 titleText = customTitleText
                                 setOnClickListener { setCheckedTriggeringListener(!isChecked) }
                                 layoutParams {
@@ -138,14 +144,13 @@ class SearchQuerySettingsLayout(
                             }
                         }
 
-                        methodGroup.groupCheckedListener = { key: SearchSettingsPresenter.SearchCheckedItem, checked: Boolean ->
-                            // TODO add presenter call
+                        methodGroup.groupCheckedListener = { key: SearchCheckedItem, checked: Boolean ->
+                            presenter.toggleSearchApproach(key, checked)
                         }
 
-                        addressGroup.groupCheckedListener = { key: SearchSettingsPresenter.SearchUrlCheckedItem, checked: Boolean ->
-                            // TODO add presenter call
+                        addressGroup.groupCheckedListener = { key: SearchUrlCheckedItem, checked: Boolean ->
+                            presenter.selectSearchUrl(key, checked)
                         }
-
                     }
 
                 }
