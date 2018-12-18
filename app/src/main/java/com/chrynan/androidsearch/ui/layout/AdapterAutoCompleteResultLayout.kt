@@ -33,7 +33,7 @@ class AdapterAutoCompleteResultLayout @Inject constructor(
         layoutBuilder = constraintLayout(context) {
             init {
                 setPadding(horizontalParentPadding, verticalParentPadding, horizontalParentPadding, verticalParentPadding)
-                background = parentBackground
+                setBackgroundResource(parentBackgroundId)
                 minHeight = cellMinHeight
             }
 

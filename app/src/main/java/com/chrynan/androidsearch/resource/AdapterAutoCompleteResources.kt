@@ -1,7 +1,5 @@
 package com.chrynan.androidsearch.resource
 
-import android.graphics.drawable.Drawable
-
 interface AdapterAutoCompleteResources {
 
     val horizontalParentPadding: Int
@@ -12,6 +10,6 @@ interface AdapterAutoCompleteResources {
     val descriptionTextSize: Float
     val descriptionTextColor: Int
     val iconSize: Int
-    val parentBackground: Drawable
+    val parentBackgroundId: Int
     val cellMinHeight: Int
 }
