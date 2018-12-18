@@ -1,6 +1,5 @@
 package com.chrynan.androidsearch.presenter
 
-import com.chrynan.androidsearch.model.QueryUrls
 import com.chrynan.androidsearch.model.toggle.SearchCheckedItem
 import com.chrynan.androidsearch.model.toggle.SearchUrlCheckedItem
 import com.chrynan.androidsearch.model.wrapper.Url
@@ -23,15 +22,10 @@ class SearchQuerySettingsPresenter @Inject constructor(
                 updateChromeCustomTabsChecked(preferences.chromeCustomTab)
                 updateWebViewChecked(preferences.webView)
 
-                when (preferences.webUrl) {
-                    QueryUrls.BING -> setUrlCheckedItem(SearchUrlCheckedItem.Bing)
-                    QueryUrls.CONTEXTUAL_WEB_SEARCH -> setUrlCheckedItem(SearchUrlCheckedItem.ContextualWebSearch)
-                    QueryUrls.DUCK_DUCK_GO -> setUrlCheckedItem(SearchUrlCheckedItem.DuckDuckGo)
-                    QueryUrls.GOOGLE -> setUrlCheckedItem(SearchUrlCheckedItem.Google)
-                    else -> {
-                        setUrlCheckedItem(SearchUrlCheckedItem.Custom(Url(preferences.webUrl)))
-                        updateCustomUrl(preferences.webUrl)
-                    }
+                val checkedItem = SearchUrlCheckedItem.fromUrl(url = Url(preferences.webUrl))
+                setUrlCheckedItem(item = checkedItem)
+                if (checkedItem is SearchUrlCheckedItem.Custom) {
+                    updateCustomUrl(url = checkedItem.url.value)
                 }
             }
 
@@ -44,15 +38,7 @@ class SearchQuerySettingsPresenter @Inject constructor(
         }
     }
 
-    fun selectSearchUrl(item: SearchUrlCheckedItem) {
-        when (item) {
-            SearchUrlCheckedItem.Bing -> preferences.webUrl = QueryUrls.BING
-            SearchUrlCheckedItem.ContextualWebSearch -> QueryUrls.CONTEXTUAL_WEB_SEARCH
-            SearchUrlCheckedItem.DuckDuckGo -> preferences.webUrl = QueryUrls.DUCK_DUCK_GO
-            SearchUrlCheckedItem.Google -> preferences.webUrl = QueryUrls.GOOGLE
-            is SearchUrlCheckedItem.Custom -> preferences.webUrl = item.url.value
-        }
-    }
+    fun selectSearchUrl(item: SearchUrlCheckedItem) = preferences.perform { webUrl = item.url.value }
 
     private fun setUrlCheckedItem(item: SearchUrlCheckedItem) = view.perform {
         updateBingChecked(item == SearchUrlCheckedItem.Bing)
