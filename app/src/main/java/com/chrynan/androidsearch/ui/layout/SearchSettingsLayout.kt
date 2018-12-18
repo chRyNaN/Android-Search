@@ -9,12 +9,16 @@ import com.chrynan.androidsearch.navigator.SearchSettingsNavigator
 import com.chrynan.androidsearch.presenter.SearchSettingsPresenter
 import com.chrynan.androidsearch.resource.SearchSettingsLayoutResources
 import com.chrynan.androidsearch.resource.source.SearchSettingsLayoutResourcesSource
+import com.chrynan.androidsearch.ui.activity.SettingsActivity
 import com.chrynan.androidsearch.ui.view.SearchSettingsView
 import com.chrynan.androidsearch.ui.widget.DefaultCell
 import com.chrynan.androidsearch.ui.widget.ToggleCell
 import com.chrynan.androidsearch.ui.widget.defaultCell
 import com.chrynan.androidsearch.ui.widget.toggleCell
 import com.chrynan.androidsearch.util.AppContext
+import com.chrynan.androidsearch.util.PermissionResult
+import com.chrynan.androidsearch.util.Permissions
+import com.chrynan.androidsearch.util.RequestCode
 import com.chrynan.androidviews.builder.*
 import com.chrynan.kotlinutils.perform
 import javax.inject.Inject
@@ -31,6 +35,8 @@ class SearchSettingsLayout(
     lateinit var presenter: SearchSettingsPresenter
     @Inject
     lateinit var navigator: SearchSettingsNavigator
+    @Inject
+    lateinit var parentActivity: SettingsActivity
 
     private var appsToggleCell by Delegates.notNull<ToggleCell>()
     private var audioFilesToggleCell by Delegates.notNull<ToggleCell>()
@@ -74,20 +80,28 @@ class SearchSettingsLayout(
                             presenter.toggleSearchItem(SearchToggleItem.APPS, it)
                         }
 
-                        audioFilesToggleCell = toggleCell(title = audioFilesTitleText, description = audioFilesDescriptionText) {
-                            presenter.toggleSearchItem(SearchToggleItem.AUDIO, it)
+                        audioFilesToggleCell = toggleCell(title = audioFilesTitleText, description = audioFilesDescriptionText) { toggleOn ->
+                            Permissions.requestOrRun(activity = parentActivity, requestCode = SearchSettingsPresenter.PERMISSION_AUDIO_REQUEST_CODE, permissions = presenter.filePermissions) {
+                                presenter.toggleSearchItem(SearchToggleItem.AUDIO, toggleOn)
+                            }
                         }
 
-                        imageFilesToggleCell = toggleCell(title = imageFilesTitleText, description = imageFilesDescriptionText) {
-                            presenter.toggleSearchItem(SearchToggleItem.IMAGE, it)
+                        imageFilesToggleCell = toggleCell(title = imageFilesTitleText, description = imageFilesDescriptionText) { toggleOn ->
+                            Permissions.requestOrRun(activity = parentActivity, requestCode = SearchSettingsPresenter.PERMISSION_IMAGE_REQUEST_CODE, permissions = presenter.filePermissions) {
+                                presenter.toggleSearchItem(SearchToggleItem.IMAGE, toggleOn)
+                            }
                         }
 
-                        videoFilesToggleCell = toggleCell(title = videoFilesTitleText, description = videoFilesDescriptionText) {
-                            presenter.toggleSearchItem(SearchToggleItem.VIDEO, it)
+                        videoFilesToggleCell = toggleCell(title = videoFilesTitleText, description = videoFilesDescriptionText) { toggleOn ->
+                            Permissions.requestOrRun(activity = parentActivity, requestCode = SearchSettingsPresenter.PERMISSION_VIDEO_REQUEST_CODE, permissions = presenter.filePermissions) {
+                                presenter.toggleSearchItem(SearchToggleItem.VIDEO, toggleOn)
+                            }
                         }
 
-                        contactsToggleCell = toggleCell(title = contactsTitleText, description = contactsDescriptionText) {
-                            presenter.toggleSearchItem(SearchToggleItem.CONTACTS, it)
+                        contactsToggleCell = toggleCell(title = contactsTitleText, description = contactsDescriptionText) { toggleOn ->
+                            Permissions.requestOrRun(activity = parentActivity, requestCode = SearchSettingsPresenter.PERMISSION_CONTACT_REQUEST_CODE, permissions = presenter.contactPermissions) {
+                                presenter.toggleSearchItem(SearchToggleItem.CONTACTS, toggleOn)
+                            }
                         }
 
                         emailAddressToggleCell = toggleCell(title = emailAddressTitleText, description = emailAddressDescriptionText) {
@@ -147,6 +161,8 @@ class SearchSettingsLayout(
     override fun updateHistoryToggle(toggledOn: Boolean) = searchHistoryToggleCell.perform { toggleOn = toggledOn }
 
     override fun showSearchApproach(searchApproach: String?) = searchApproachToggleCell.perform { endText = searchApproach }
+
+    fun onPermissionResults(requestCode: RequestCode, results: List<PermissionResult>) = presenter.handlePermissionResults(requestCode = requestCode, results = results)
 
     private fun <V : LinearLayout, P : LinearLayout.LayoutParams> LayoutBuilder<V, P>.toggleCell(title: String, description: String? = null, toggleAction: (Boolean) -> Unit) =
             toggleCell {

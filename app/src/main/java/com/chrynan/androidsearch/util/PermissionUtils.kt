@@ -65,8 +65,8 @@ object PermissionInt {
 
 enum class PermissionState(val permissionInt: Int) {
 
-    PERMISSION_GRANTED(PermissionInt.GRANTED),
-    PERMISSION_DENIED(PermissionInt.DENIED),
+    GRANTED(PermissionInt.GRANTED),
+    DENIED(PermissionInt.DENIED),
     RATIONALE_SUGGESTED(PermissionInt.RATIONALE_SUGGESTED),
     PROHIBITED(PermissionInt.PROHIBITED);
 
@@ -76,6 +76,18 @@ enum class PermissionState(val permissionInt: Int) {
                 values().firstOrNull { it.permissionInt == permissionInt }
     }
 }
+
+val PermissionState.isGranted
+    get() = this == PermissionState.GRANTED
+
+val PermissionState.isDenied
+    get() = this == PermissionState.DENIED
+
+val PermissionState.isRationaleSuggested
+    get() = this == PermissionState.RATIONALE_SUGGESTED
+
+val PermissionState.isProhibited
+    get() = this == PermissionState.PROHIBITED
 
 data class PermissionResult(
         val permission: RuntimePermission,
@@ -91,19 +103,19 @@ fun Activity.permissionState(permission: RuntimePermission, hasRequestedBefore: 
     val shouldShowRationale = ActivityCompat.shouldShowRequestPermissionRationale(this, permission.permissionString)
 
     return when {
-        hasPermission -> PermissionState.PERMISSION_GRANTED
-        !hasPermission && !hasRequestedBefore -> PermissionState.PERMISSION_DENIED
+        hasPermission -> PermissionState.GRANTED
+        !hasPermission && !hasRequestedBefore -> PermissionState.DENIED
         !hasPermission && shouldShowRationale -> PermissionState.RATIONALE_SUGGESTED
         !hasPermission && !shouldShowRationale -> PermissionState.PROHIBITED
-        else -> PermissionState.PERMISSION_DENIED
+        else -> PermissionState.DENIED
     }
 }
 
 fun Activity.isGranted(permission: RuntimePermission, hasRequestedBefore: Boolean = false): Boolean =
-        permissionState(permission = permission, hasRequestedBefore = hasRequestedBefore) == PermissionState.PERMISSION_GRANTED
+        permissionState(permission = permission, hasRequestedBefore = hasRequestedBefore) == PermissionState.GRANTED
 
 fun Activity.isDenied(permission: RuntimePermission, hasRequestedBefore: Boolean = false): Boolean =
-        permissionState(permission = permission, hasRequestedBefore = hasRequestedBefore) == PermissionState.PERMISSION_DENIED
+        permissionState(permission = permission, hasRequestedBefore = hasRequestedBefore) == PermissionState.DENIED
 
 fun Activity.isRationaleSuggested(permission: RuntimePermission, hasRequestedBefore: Boolean = false): Boolean =
         permissionState(permission = permission, hasRequestedBefore = hasRequestedBefore) == PermissionState.RATIONALE_SUGGESTED
@@ -111,9 +123,16 @@ fun Activity.isRationaleSuggested(permission: RuntimePermission, hasRequestedBef
 fun Activity.isProhibited(permission: RuntimePermission, hasRequestedBefore: Boolean = false): Boolean =
         permissionState(permission = permission, hasRequestedBefore = hasRequestedBefore) == PermissionState.PROHIBITED
 
+fun Activity.areAllGranted(permissions: List<RuntimePermission>): Boolean =
+        permissions.all { permissionState(it) == PermissionState.GRANTED }
+
 object Permissions {
 
-    fun request(activity: Activity, permissions: List<RuntimePermission>, requestCode: RequestCode) {
+    fun request(activity: Activity, requestCode: RequestCode, permissions: List<RuntimePermission>) {
+        ActivityCompat.requestPermissions(activity, permissions.map { it.permissionString }.toTypedArray(), requestCode)
+    }
+
+    fun request(activity: Activity, requestCode: RequestCode, vararg permissions: RuntimePermission) {
         ActivityCompat.requestPermissions(activity, permissions.map { it.permissionString }.toTypedArray(), requestCode)
     }
 
@@ -125,4 +144,11 @@ object Permissions {
             callback(requestCode, results)
         }
     }
+
+    fun requestOrRun(activity: Activity, requestCode: RequestCode, permissions: List<RuntimePermission>, alreadyGrantedCallback: () -> Unit) =
+            if (activity.areAllGranted(permissions = permissions)) {
+                alreadyGrantedCallback()
+            } else {
+                request(activity = activity, requestCode = requestCode, permissions = permissions)
+            }
 }
