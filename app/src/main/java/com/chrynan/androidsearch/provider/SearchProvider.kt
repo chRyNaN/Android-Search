@@ -55,7 +55,6 @@ class SearchProvider @Inject constructor(
             //if (instantAnswers) newProviders += instantAnswerProvider
             if (typeAhead) newProviders += typeAheadProvider
             if (history) newProviders += searchHistoryProvider
-            if (apps) newProviders += appProvider
             if (audioFiles) newProviders += audioProvider
             if (imageFiles) newProviders += imageProvider
             if (videoFiles) newProviders += videoProvider
@@ -63,6 +62,7 @@ class SearchProvider @Inject constructor(
             if (emailLink) newProviders += emailProvider
             if (phoneNumberLink) newProviders += phoneNumberProvider
             if (webAddressLink) newProviders += webAddressProvider
+            if (apps) newProviders += appProvider
         }
 
         return newProviders

@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.ui.layout
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
+import android.util.Log
 import android.view.ViewGroup
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
@@ -65,7 +66,10 @@ class SearchLayout(
 
                     runOnAndroidUI {
                         onTextChanged { presenter.performQuery(it.charSequence.toString()) }
-                        onEnterAction { presenter.performSearch(context, text.toString()) }
+                        onEnterAction {
+                            Log.d("Search", "onEnterAction")
+                            presenter.performSearch(context, text.toString())
+                        }
                     }
 
                     constraints(this@constraintLayout) {

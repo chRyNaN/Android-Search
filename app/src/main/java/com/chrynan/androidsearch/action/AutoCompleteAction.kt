@@ -13,7 +13,7 @@ class AutoCompleteAction @Inject constructor(
         private val openFileAction: OpenFileAction,
         private val openUrlAction: OpenUrlAction,
         private val openEmailAction: OpenEmailAction,
-        private val searchAction: SearchAction
+        private val searchAction: OpenSearchUrlInBrowserAction
 ) : QueryResultAction<AutoCompleteResultViewModel> {
 
     override fun perform(context: Context, item: AutoCompleteResultViewModel) =
