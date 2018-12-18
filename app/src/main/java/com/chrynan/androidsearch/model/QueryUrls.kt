@@ -2,9 +2,8 @@ package com.chrynan.androidsearch.model
 
 object QueryUrls {
 
-    // TODO update these
-    const val BING = "bing"
-    const val CONTEXTUAL_WEB_SEARCH = "contextualWebSearch"
-    const val DUCK_DUCK_GO = "duckDuckGo"
-    const val GOOGLE = "google"
+    const val BING = "https://www.bing.com/search?q="
+    const val CONTEXTUAL_WEB_SEARCH = "https://contextualwebsearch.com/api/Search/WebSearchAPI?q="
+    const val DUCK_DUCK_GO = "https://duckduckgo.com/?q="
+    const val GOOGLE = "https://www.google.com/search?q="
 }
