@@ -6,6 +6,7 @@ import android.util.Log
 import com.chrynan.aaaah.DiffProcessor
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
+import com.chrynan.accore.runInBackground
 import com.chrynan.accore.runOnAndroidUI
 import com.chrynan.androidsearch.action.AutoCompleteAction
 import com.chrynan.androidsearch.action.OpenSearchUrlInBrowserAction
@@ -25,25 +26,27 @@ class SearchPresenter @Inject constructor(
         private val autoCompleteAction: AutoCompleteAction
 ) : CoroutinePresenter() {
 
-    suspend fun performQuery(query: String?) {
-        val time = measureTimeMillis {
-            autoCompleteProvider.query(query) { results ->
-                val queryPair = measureTimeMillisWithResult {
-                    results
-                }
-                val resultList = queryPair.first
-                val diffPair = measureTimeMillisWithResult {
-                    diffProcessor.calculateDiff(resultList)
-                }
-                val diffResult = diffPair.first
+    fun performQuery(query: String?) {
+        runInBackground {
+            val time = measureTimeMillis {
+                autoCompleteProvider.query(query) { results ->
+                    val queryPair = measureTimeMillisWithResult {
+                        results
+                    }
+                    val resultList = queryPair.first
+                    val diffPair = measureTimeMillisWithResult {
+                        diffProcessor.calculateDiff(resultList)
+                    }
+                    val diffResult = diffPair.first
 
-                runOnAndroidUI {
-                    adapter.items = resultList
-                    diffResult.dispatchUpdatesTo(updateCallback)
+                    runOnAndroidUI {
+                        adapter.items = resultList
+                        diffResult.dispatchUpdatesTo(updateCallback)
+                    }
                 }
             }
+            Log.d("TimeCount", "totalTime: milliseconds = $time; seconds = ${time / 1000}")
         }
-        Log.d("TimeCount", "totalTime: milliseconds = $time; seconds = ${time / 1000}")
     }
 
     fun performSearch(context: Context, query: String) {

@@ -9,7 +9,6 @@ import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.accore.runOnAndroidUI
 import com.chrynan.acview.onEnterAction
-import com.chrynan.acview.onTextChanged
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.navigator.SearchNavigator
 import com.chrynan.androidsearch.presenter.SearchPresenter
@@ -18,6 +17,7 @@ import com.chrynan.androidsearch.resource.source.SearchLayoutResourcesSource
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
 import com.chrynan.androidsearch.ui.widget.searchWidget
 import com.chrynan.androidsearch.util.AppContext
+import com.chrynan.androidsearch.util.onTextChanged
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
 import com.chrynan.androidviewutils.doOnLayout
@@ -65,7 +65,7 @@ class SearchLayout(
                     transitionName = searchWidgetTransitionName
 
                     runOnAndroidUI {
-                        onTextChanged { presenter.performQuery(it.charSequence.toString()) }
+                        onTextChanged { presenter.performQuery(it) }
                         onEnterAction {
                             Log.d("Search", "onEnterAction")
                             presenter.performSearch(context, text.toString())
