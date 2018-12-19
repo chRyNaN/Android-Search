@@ -7,7 +7,6 @@ import android.support.design.widget.TextInputLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import com.chrynan.accore.runOnAndroidUI
-import com.chrynan.acview.onTextChanged
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.model.toggle.SearchCheckedItem
 import com.chrynan.androidsearch.model.toggle.SearchUrlCheckedItem
@@ -21,6 +20,7 @@ import com.chrynan.androidsearch.ui.widget.divider
 import com.chrynan.androidsearch.ui.widget.label
 import com.chrynan.androidsearch.ui.widget.radioButtonCellGroup
 import com.chrynan.androidsearch.util.AppContext
+import com.chrynan.androidsearch.util.onTextChanged
 import com.chrynan.androidviews.builder.*
 import com.chrynan.androidviewutils.ViewVisibilityState
 import com.chrynan.androidviewutils.setVisibleOrGone
@@ -119,7 +119,7 @@ class SearchQuerySettingsLayout(
                                 }
                                 runOnAndroidUI {
                                     onTextChanged {
-                                        presenter.selectSearchUrl(SearchUrlCheckedItem.Custom(Url(it.charSequence.toString())))
+                                        presenter.selectSearchUrl(SearchUrlCheckedItem.Custom(Url(it)))
                                     }
                                 }
                             }

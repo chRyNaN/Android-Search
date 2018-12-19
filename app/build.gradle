@@ -56,7 +56,6 @@ dependencies {
     // Coroutine Utilities
     implementation 'com.github.chRyNaN.android-coroutine-utils:core:v0.1.4'
     implementation 'com.github.chRyNaN.android-coroutine-utils:lifecycle:v0.1.4'
-    implementation 'com.github.chRyNaN.android-coroutine-utils:view:v0.1.4'
 
     // Dependency Injection
     kapt "com.google.dagger:dagger-compiler:2.19"
