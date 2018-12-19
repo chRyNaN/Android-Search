@@ -6,7 +6,9 @@ import com.chrynan.androidsearch.model.Contact
 import com.chrynan.androidsearch.repository.ContactRepository
 import com.chrynan.androidsearch.util.AppContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ContactSource @Inject constructor(private val context: AppContext) : ContactRepository {
 
     private val projection = arrayOf(

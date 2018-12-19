@@ -5,7 +5,9 @@ import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.repository.AudioMediaRepository
 import com.chrynan.androidsearch.util.AppContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AudioMediaSource @Inject constructor(private val context: AppContext) : AudioMediaRepository {
 
     private val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI

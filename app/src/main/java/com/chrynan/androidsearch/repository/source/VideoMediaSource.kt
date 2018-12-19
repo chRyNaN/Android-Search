@@ -5,7 +5,9 @@ import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.repository.VideoMediaRepository
 import com.chrynan.androidsearch.util.AppContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class VideoMediaSource @Inject constructor(private val context: AppContext) : VideoMediaRepository {
 
     private val uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI

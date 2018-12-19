@@ -5,7 +5,9 @@ import com.chrynan.androidsearch.model.Media
 import com.chrynan.androidsearch.repository.ImageMediaRepository
 import com.chrynan.androidsearch.util.AppContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ImageMediaSource @Inject constructor(private val context: AppContext) : ImageMediaRepository {
 
     private val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
