@@ -6,6 +6,8 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 
 const val EMPTY_STRING = ""
@@ -26,4 +28,17 @@ fun TextView.onTextChanged(block: (String) -> Unit) {
             block(charSequence?.toString() ?: EMPTY_STRING)
         }
     })
+}
+
+fun TextView.onEnterAction(block: () -> Unit) {
+    setOnEditorActionListener { _, actionId, event ->
+        var result = false
+
+        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER) {
+            block()
+            result = true
+        }
+
+        result
+    }
 }

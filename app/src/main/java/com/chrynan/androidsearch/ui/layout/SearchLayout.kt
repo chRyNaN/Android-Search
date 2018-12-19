@@ -7,8 +7,6 @@ import android.util.Log
 import android.view.ViewGroup
 import com.chrynan.aaaah.ManagerRecyclerViewAdapter
 import com.chrynan.aaaah.UniqueAdapterItem
-import com.chrynan.accore.runOnAndroidUI
-import com.chrynan.acview.onEnterAction
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.navigator.SearchNavigator
 import com.chrynan.androidsearch.presenter.SearchPresenter
@@ -17,6 +15,7 @@ import com.chrynan.androidsearch.resource.source.SearchLayoutResourcesSource
 import com.chrynan.androidsearch.ui.adapter.AutoCompleteResultViewModelAdapter
 import com.chrynan.androidsearch.ui.widget.searchWidget
 import com.chrynan.androidsearch.util.AppContext
+import com.chrynan.androidsearch.util.onEnterAction
 import com.chrynan.androidsearch.util.onTextChanged
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import com.chrynan.androidviews.builder.*
@@ -64,12 +63,10 @@ class SearchLayout(
                     setHintTextColor(searchWidgetHintColor)
                     transitionName = searchWidgetTransitionName
 
-                    runOnAndroidUI {
-                        onTextChanged { presenter.performQuery(it) }
-                        onEnterAction {
-                            Log.d("Search", "onEnterAction")
-                            presenter.performSearch(context, text.toString())
-                        }
+                    onTextChanged { presenter.performQuery(it) }
+                    onEnterAction {
+                        Log.d("Search", "onEnterAction")
+                        presenter.performSearch(context, text.toString())
                     }
 
                     constraints(this@constraintLayout) {
