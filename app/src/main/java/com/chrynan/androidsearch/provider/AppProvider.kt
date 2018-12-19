@@ -22,8 +22,7 @@ class AppProvider @Inject constructor(
                         .map(mapper::map)
             }
 
-            applications?.containsQueryIgnoreCase(query) { it.title }
-                    ?: emptySequence()
+            applications!!.containsQueryIgnoreCase(query) { it.title }
         }
     }
 }
