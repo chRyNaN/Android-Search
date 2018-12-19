@@ -17,7 +17,7 @@ class ContactSource @Inject constructor(private val context: AppContext) : Conta
             Projection.LOOKUP_KEY.columnName,
             Projection.PHOTO_URI.columnName)
 
-    override suspend fun getBy(query: String): Sequence<Contact> {
+    override suspend fun getBy(query: String): List<Contact> {
         val uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, Uri.encode(query))
 
         val cursor = context.contentResolver.query(uri, projection, null, null, null)
@@ -35,7 +35,7 @@ class ContactSource @Inject constructor(private val context: AppContext) : Conta
 
         cursor.close()
 
-        return list.asSequence()
+        return list
     }
 
     private enum class Projection(val columnName: String, val columnIndex: Int) {

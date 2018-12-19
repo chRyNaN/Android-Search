@@ -4,5 +4,5 @@ import android.content.pm.ApplicationInfo
 
 interface ApplicationInfoRepository {
 
-    suspend fun getAll(): Sequence<ApplicationInfo>
+    suspend fun getAll(): List<ApplicationInfo>
 }

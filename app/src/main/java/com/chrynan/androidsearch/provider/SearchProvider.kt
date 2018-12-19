@@ -31,18 +31,18 @@ class SearchProvider @Inject constructor(
     private var providers: Set<QueryResultProvider<UniqueAdapterItem>> = getUpdatedProviders()
 
     @Suppress("ConvertCallChainIntoSequence")
-    suspend fun query(query: String?, onUpdate: (Sequence<UniqueAdapterItem>) -> Unit) = coroutineScope {
-        var sequence = emptySequence<UniqueAdapterItem>()
+    suspend fun query(query: String?, onUpdate: (List<UniqueAdapterItem>) -> Unit) = coroutineScope {
+        val list = mutableListOf<UniqueAdapterItem>()
 
         if (query.isNullOrBlank()) {
-            onUpdate(sequence)
+            onUpdate(list)
         } else {
             providers
                     .filter { it.handlesQuery(query) }
                     .map { async { it.query(query) } }
                     .forEach {
-                        sequence += it.await()
-                        onUpdate(sequence)
+                        list.addAll(it.await())
+                        onUpdate(list)
                     }
         }
     }

@@ -4,5 +4,5 @@ import com.chrynan.androidsearch.model.Search
 
 interface SearchHistoryRepository {
 
-    suspend fun getBy(query: String): Sequence<Search>
+    suspend fun getBy(query: String): List<Search>
 }

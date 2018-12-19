@@ -4,5 +4,5 @@ import com.chrynan.androidsearch.model.Media
 
 interface MediaRepository {
 
-    suspend fun getBy(query: String): Sequence<Media>
+    suspend fun getBy(query: String): List<Media>
 }

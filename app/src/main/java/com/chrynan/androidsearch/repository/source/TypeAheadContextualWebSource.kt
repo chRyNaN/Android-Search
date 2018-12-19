@@ -9,10 +9,9 @@ import javax.inject.Singleton
 @Singleton
 class TypeAheadContextualWebSource @Inject constructor(private val webService: ContextualWebSuggestionWebService) : TypeAheadRepository {
 
-    override suspend fun getBy(query: String): Sequence<TypeAhead> =
+    override suspend fun getBy(query: String): List<TypeAhead> =
             webService.getSearchSuggestions(query = query)
                     .await()
-                    .asSequence()
                     .take(3)
                     .map { TypeAhead(suggestion = it) }
 }

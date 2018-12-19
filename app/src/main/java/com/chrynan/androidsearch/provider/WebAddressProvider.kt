@@ -16,5 +16,5 @@ class WebAddressProvider @Inject constructor(private val mapper: WebAddressMappe
 
     override fun handlesQuery(query: String) = query.isNotBlank() and URL_REGEX.matches(query)
 
-    override suspend fun query(query: String) = sequenceOf(mapper.map(query))
+    override suspend fun query(query: String) = listOf(mapper.map(query))
 }

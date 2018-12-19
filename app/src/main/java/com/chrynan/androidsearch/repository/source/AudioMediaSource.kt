@@ -15,7 +15,7 @@ class AudioMediaSource @Inject constructor(private val context: AppContext) : Au
             Projection.ID.columnName, Projection.DATA.columnName)
     private val selection = "${Projection.TITLE.columnName} like ?"
 
-    override suspend fun getBy(query: String): Sequence<Media> {
+    override suspend fun getBy(query: String): List<Media> {
         val cursor = context.contentResolver.query(uri, projection, selection, arrayOf("%$query%"), null)
 
         val list = mutableListOf<Media>()
@@ -31,7 +31,7 @@ class AudioMediaSource @Inject constructor(private val context: AppContext) : Au
 
         cursor.close()
 
-        return list.asSequence()
+        return list
     }
 
     private enum class Projection(val columnName: String, val columnIndex: Int) {

@@ -4,5 +4,5 @@ import com.chrynan.androidsearch.model.TypeAhead
 
 interface TypeAheadRepository {
 
-    suspend fun getBy(query: String): Sequence<TypeAhead>
+    suspend fun getBy(query: String): List<TypeAhead>
 }

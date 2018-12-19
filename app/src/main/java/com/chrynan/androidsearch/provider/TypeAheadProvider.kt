@@ -17,6 +17,6 @@ class TypeAheadProvider @Inject constructor(
                 repository.getBy(query)
                         .map(mapper::map)
             } catch (e: Exception) {
-                emptySequence<AutoCompleteResultViewModel.TypeAheadSearch>()
+                emptyList<AutoCompleteResultViewModel.TypeAheadSearch>()
             }
 }

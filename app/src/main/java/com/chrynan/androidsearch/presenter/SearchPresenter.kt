@@ -29,7 +29,7 @@ class SearchPresenter @Inject constructor(
         val time = measureTimeMillis {
             autoCompleteProvider.query(query) { results ->
                 val queryPair = measureTimeMillisWithResult {
-                    results.toList()
+                    results
                 }
                 val resultList = queryPair.first
                 val diffPair = measureTimeMillisWithResult {

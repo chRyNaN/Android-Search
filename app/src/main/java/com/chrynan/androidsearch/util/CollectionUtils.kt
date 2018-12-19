@@ -10,5 +10,5 @@ inline fun <reified T> Sequence<T>.sortAlphabeticallyBy(crossinline selector: (T
     return sortedWith(Comparator { a, b -> collator.compare(selector(a), selector(b)) })
 }
 
-inline fun <reified T> Sequence<T>.containsQueryIgnoreCase(query: String, crossinline compareBy: (T) -> String): Sequence<T> =
+inline fun <reified T> List<T>.containsQueryIgnoreCase(query: String, crossinline compareBy: (T) -> String): List<T> =
         filter { compareBy(it).toLowerCase().contains(query.toLowerCase()) }

@@ -17,5 +17,5 @@ class PhoneNumberProvider @Inject constructor(private val mapper: PhoneNumberMap
     override fun handlesQuery(query: String) =
             query.isNotBlank() and (PhoneNumberUtils.isGlobalPhoneNumber(query) or query.matches(PHONE_NUMBER_REGEX))
 
-    override suspend fun query(query: String) = mapper.map(query).asSequence()
+    override suspend fun query(query: String) = mapper.map(query)
 }

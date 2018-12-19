@@ -8,5 +8,5 @@ import javax.inject.Singleton
 @Singleton
 class SearchHistorySource @Inject constructor() : SearchHistoryRepository {
 
-    override suspend fun getBy(query: String) = emptySequence<Search>()
+    override suspend fun getBy(query: String) = emptyList<Search>()
 }

@@ -9,8 +9,7 @@ import javax.inject.Singleton
 @Singleton
 class ApplicationInfoSource @Inject constructor(private val packageManager: PackageManager) : ApplicationInfoRepository {
 
-    override suspend fun getAll(): Sequence<ApplicationInfo> =
+    override suspend fun getAll(): List<ApplicationInfo> =
             packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-                    .asSequence()
                     .filter { packageManager.getLaunchIntentForPackage(it.packageName) != null }
 }

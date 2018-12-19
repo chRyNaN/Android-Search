@@ -13,9 +13,9 @@ class AppProvider @Inject constructor(
         private val mapper: AppMapper
 ) : QueryResultProvider<AutoCompleteResultViewModel.App> {
 
-    private var applications: Sequence<AutoCompleteResultViewModel.App>? = null
+    private var applications: List<AutoCompleteResultViewModel.App>? = null
 
-    override suspend fun query(query: String): Sequence<AutoCompleteResultViewModel.App> {
+    override suspend fun query(query: String): List<AutoCompleteResultViewModel.App> {
         if (applications == null) {
             applications = repository.getAll()
                     .map(mapper::map)
