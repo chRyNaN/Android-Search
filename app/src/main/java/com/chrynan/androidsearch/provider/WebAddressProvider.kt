@@ -3,8 +3,6 @@ package com.chrynan.androidsearch.provider
 import android.util.Patterns
 import com.chrynan.androidsearch.mapper.WebAddressMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,7 +16,5 @@ class WebAddressProvider @Inject constructor(private val mapper: WebAddressMappe
 
     override fun handlesQuery(query: String) = query.isNotBlank() and URL_REGEX.matches(query)
 
-    override suspend fun query(query: String) = coroutineScope {
-        async { sequenceOf(mapper.map(query)) }
-    }
+    override suspend fun query(query: String) = sequenceOf(mapper.map(query))
 }

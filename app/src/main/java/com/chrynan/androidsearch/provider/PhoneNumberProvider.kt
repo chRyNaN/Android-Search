@@ -3,8 +3,6 @@ package com.chrynan.androidsearch.provider
 import android.telephony.PhoneNumberUtils
 import com.chrynan.androidsearch.mapper.PhoneNumberMapper
 import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,7 +17,5 @@ class PhoneNumberProvider @Inject constructor(private val mapper: PhoneNumberMap
     override fun handlesQuery(query: String) =
             query.isNotBlank() and (PhoneNumberUtils.isGlobalPhoneNumber(query) or query.matches(PHONE_NUMBER_REGEX))
 
-    override suspend fun query(query: String) = coroutineScope {
-        async { mapper.map(query).asSequence() }
-    }
+    override suspend fun query(query: String) = mapper.map(query).asSequence()
 }

@@ -4,6 +4,7 @@ package com.chrynan.androidsearch.provider
 
 import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.androidsearch.preference.SearchPreferences
+import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -38,7 +39,7 @@ class SearchProvider @Inject constructor(
         } else {
             providers
                     .filter { it.handlesQuery(query) }
-                    .map { it.query(query) }
+                    .map { async { it.query(query) } }
                     .forEach {
                         sequence += it.await()
                         onUpdate(sequence)
