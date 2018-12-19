@@ -6,7 +6,9 @@ import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class VideoProvider @Inject constructor(
         private val repository: VideoMediaRepository,
         private val mapper: MediaMapper

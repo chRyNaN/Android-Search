@@ -6,7 +6,9 @@ import com.chrynan.aaaah.UniqueAdapterItem
 import com.chrynan.androidsearch.preference.SearchPreferences
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class SearchProvider @Inject constructor(
         private val appProvider: AppProvider,
         private val audioProvider: AudioProvider,

@@ -6,7 +6,9 @@ import com.chrynan.androidsearch.viewmodel.AutoCompleteResultViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class EmailProvider @Inject constructor(private val mapper: EmailMapper) : QueryResultProvider<AutoCompleteResultViewModel.Email> {
 
     companion object {
