@@ -108,6 +108,11 @@ dependencies {
     // Stack
     implementation 'com.github.chRyNaN.queue:queue-jvm:v0.1.2'
 
+    // Web - Mozilla GeckoView
+    implementation "org.mozilla.components:browser-session:0.35.1"
+    implementation "org.mozilla.components:concept-engine:0.35.1"
+    implementation "org.mozilla.components:browser-engine-gecko:0.35.1"
+
     // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
