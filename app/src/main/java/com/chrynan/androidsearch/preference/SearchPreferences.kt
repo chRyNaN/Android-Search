@@ -24,6 +24,8 @@ interface SearchPreferences {
 
     var webView: Boolean
 
+    var geckoView: Boolean
+
     var chromeCustomTab: Boolean
 
     var browser: Boolean

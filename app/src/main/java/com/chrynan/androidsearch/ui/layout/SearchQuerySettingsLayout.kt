@@ -42,6 +42,7 @@ class SearchQuerySettingsLayout(
     private var scrollLayout by Delegates.notNull<ScrollView>()
     private var browserToggleCell by Delegates.notNull<RadioButtonCell>()
     private var chromeCustomTabsToggleCell by Delegates.notNull<RadioButtonCell>()
+    private var geckoViewToggleCell by Delegates.notNull<RadioButtonCell>()
     private var webViewToggleCell by Delegates.notNull<RadioButtonCell>()
     private var bingToggleCell by Delegates.notNull<RadioButtonCell>()
     private var contextualWebSearchToggleCell by Delegates.notNull<RadioButtonCell>()
@@ -82,7 +83,9 @@ class SearchQuerySettingsLayout(
 
                             chromeCustomTabsToggleCell = radioButtonCell(key = SearchCheckedItem.CHROME_CUSTOM_TAB, title = chromeCustomTabsTitleText)
 
-                            webViewToggleCell = radioButtonCell(key = SearchCheckedItem.WEB_VIEW, title = webTitleText)
+                            geckoViewToggleCell = radioButtonCell(key = SearchCheckedItem.GECKO_VIEW, title = geckoViewTitleText)
+
+                            webViewToggleCell = radioButtonCell(key = SearchCheckedItem.WEB_VIEW, title = webViewTitleText)
 
                         }
 
@@ -143,11 +146,13 @@ class SearchQuerySettingsLayout(
                 presenter.getSettings()
             }
 
-    override fun updateWebViewChecked(checked: Boolean) = webViewToggleCell.perform { isChecked = checked }
+    override fun updateBrowserChecked(checked: Boolean) = browserToggleCell.perform { isChecked = checked }
 
     override fun updateChromeCustomTabsChecked(checked: Boolean) = chromeCustomTabsToggleCell.perform { isChecked = checked }
 
-    override fun updateBrowserChecked(checked: Boolean) = browserToggleCell.perform { isChecked = checked }
+    override fun updateGeckoViewChecked(checked: Boolean) = geckoViewToggleCell.perform { isChecked = checked }
+
+    override fun updateWebViewChecked(checked: Boolean) = webViewToggleCell.perform { isChecked = checked }
 
     override fun updateBingChecked(checked: Boolean) = bingToggleCell.perform { isChecked = checked }
 

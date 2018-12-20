@@ -8,9 +8,10 @@ interface SearchQuerySettingsLayoutResources {
     val toolbarNavigationIcon: Drawable
     val searchMethodLabel: String
     val searchAddressLabel: String
-    val webTitleText: String
+    val webViewTitleText: String
     val chromeCustomTabsTitleText: String
     val browserTitleText: String
+    val geckoViewTitleText: String
     val bingTitleText: String
     val contextualWebSearchTitleText: String
     val duckDuckGoTitleText: String

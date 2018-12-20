@@ -20,6 +20,7 @@ class SearchQuerySettingsPresenter @Inject constructor(
             view.perform {
                 updateBrowserChecked(preferences.browser)
                 updateChromeCustomTabsChecked(preferences.chromeCustomTab)
+                updateGeckoViewChecked(preferences.geckoView)
                 updateWebViewChecked(preferences.webView)
 
                 val checkedItem = SearchUrlCheckedItem.fromUrl(url = Url(preferences.webUrl))
@@ -32,9 +33,10 @@ class SearchQuerySettingsPresenter @Inject constructor(
     fun toggleSearchApproach(item: SearchCheckedItem) {
         // SearchPreferencesSource already handles toggling off the other items
         when (item) {
-            SearchCheckedItem.WEB_VIEW -> preferences.webView = true
-            SearchCheckedItem.CHROME_CUSTOM_TAB -> preferences.chromeCustomTab = true
             SearchCheckedItem.BROWSER -> preferences.browser = true
+            SearchCheckedItem.CHROME_CUSTOM_TAB -> preferences.chromeCustomTab = true
+            SearchCheckedItem.GECKO_VIEW -> preferences.geckoView = true
+            SearchCheckedItem.WEB_VIEW -> preferences.webView = true
         }
     }
 

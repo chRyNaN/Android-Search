@@ -2,7 +2,8 @@ package com.chrynan.androidsearch.model.toggle
 
 enum class SearchCheckedItem {
 
-    WEB_VIEW,
+    BROWSER,
     CHROME_CUSTOM_TAB,
-    BROWSER
+    GECKO_VIEW,
+    WEB_VIEW
 }

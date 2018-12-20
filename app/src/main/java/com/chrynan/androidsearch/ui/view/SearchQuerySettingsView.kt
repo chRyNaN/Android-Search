@@ -2,11 +2,13 @@ package com.chrynan.androidsearch.ui.view
 
 interface SearchQuerySettingsView {
 
-    fun updateWebViewChecked(checked: Boolean)
+    fun updateBrowserChecked(checked: Boolean)
 
     fun updateChromeCustomTabsChecked(checked: Boolean)
 
-    fun updateBrowserChecked(checked: Boolean)
+    fun updateGeckoViewChecked(checked: Boolean)
+
+    fun updateWebViewChecked(checked: Boolean)
 
     fun updateBingChecked(checked: Boolean)
 
