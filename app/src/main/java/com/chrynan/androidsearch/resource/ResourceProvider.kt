@@ -21,6 +21,9 @@ open class ResourceProvider(private val appContext: AppContext) : ScreenDimensio
     protected fun color(@ColorRes resourceId: ColorResourceId, theme: Resources.Theme = appContext.theme): Lazy<Int> =
             lazy { appContext.resources.getColor(resourceId, theme) }
 
+    protected fun dimenPixelSize(@DimenRes resourceId: DimenResourceId): Lazy<Int> =
+            lazy { appContext.resources.getDimensionPixelSize(resourceId) }
+
     protected fun dimenPixelOffset(@DimenRes resourceId: DimenResourceId): Lazy<Int> =
             lazy { appContext.resources.getDimensionPixelOffset(resourceId) }
 

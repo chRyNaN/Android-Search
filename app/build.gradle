@@ -115,9 +115,9 @@ dependencies {
     //implementation 'com.github.chRyNaN.inline-pixel:android:v0.1.6'
 
     // Android Views DSL
-    implementation 'com.github.chRyNaN:android-views:v0.1.11'
-    implementation 'com.github.chRyNaN.android-views:constraintlayout:v0.1.11'
-    implementation 'com.github.chRyNaN.android-views:design:v0.1.11'
+    implementation 'com.github.chRyNaN:android-views:v0.1.13'
+    implementation 'com.github.chRyNaN.android-views:constraintlayout:v0.1.13'
+    implementation 'com.github.chRyNaN.android-views:design:v0.1.13'
 
     // Stack
     implementation 'com.github.chRyNaN.queue:queue-jvm:v0.1.2'

@@ -3,6 +3,7 @@ package com.chrynan.androidsearch.di.module.activity
 import com.chrynan.androidsearch.di.component.layout.WebLayoutComponent
 import com.chrynan.androidsearch.di.scope.ActivityScope
 import com.chrynan.androidsearch.preference.SearchPreferences
+import com.chrynan.androidsearch.resource.source.WebLayoutResourcesSource
 import com.chrynan.androidsearch.ui.layout.WebLayout
 import com.chrynan.androidsearch.util.AppContext
 import dagger.Module
@@ -17,6 +18,7 @@ internal abstract class WebActivityModule {
         @JvmStatic
         @ActivityScope
         @Provides
-        fun provideWebLayout(appContext: AppContext, preferences: SearchPreferences) = WebLayout(appContext, preferences)
+        fun provideWebLayout(appContext: AppContext, preferences: SearchPreferences, resources: WebLayoutResourcesSource) =
+                WebLayout(appContext = appContext, resources = resources, searchPreferences = preferences)
     }
 }

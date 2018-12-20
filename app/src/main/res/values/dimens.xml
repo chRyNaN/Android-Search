@@ -40,4 +40,6 @@
     <dimen name="custom_url_vertical_margin">@dimen/spacing_xsmall</dimen>
     <dimen name="custom_url_text_size">@dimen/text_size_medium</dimen>
 
+    <dimen name="horizontal_progress_bar_height">8dp</dimen>
+
 </resources>
