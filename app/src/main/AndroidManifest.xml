@@ -32,6 +32,10 @@
             android:name=".ui.activity.SettingsActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".ui.activity.WebActivity"
+            android:screenOrientation="portrait"/>
+
         <receiver android:name=".ui.SearchAppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>

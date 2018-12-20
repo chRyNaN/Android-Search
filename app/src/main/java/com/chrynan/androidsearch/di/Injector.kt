@@ -5,17 +5,21 @@ import com.chrynan.androidsearch.di.component.AppComponent
 import com.chrynan.androidsearch.di.component.DaggerAppComponent
 import com.chrynan.androidsearch.di.component.activity.SearchActivityComponent
 import com.chrynan.androidsearch.di.component.activity.SettingsActivityComponent
+import com.chrynan.androidsearch.di.component.activity.WebActivityComponent
 import com.chrynan.androidsearch.ui.activity.SearchActivity
 import com.chrynan.androidsearch.ui.activity.SettingsActivity
+import com.chrynan.androidsearch.ui.activity.WebActivity
 import com.chrynan.androidsearch.ui.layout.SearchLayout
 import com.chrynan.androidsearch.ui.layout.SearchQuerySettingsLayout
 import com.chrynan.androidsearch.ui.layout.SearchSettingsLayout
+import com.chrynan.androidsearch.ui.layout.WebLayout
 
 object Injector {
 
     private lateinit var appComponent: AppComponent
     private lateinit var searchActivityComponent: SearchActivityComponent
     private lateinit var settingsActivityComponent: SettingsActivityComponent
+    private lateinit var webActivityComponent: WebActivityComponent
 
     fun inject(application: SearchApplication) {
         appComponent = DaggerAppComponent
@@ -42,6 +46,14 @@ object Injector {
         settingsActivityComponent.inject(activity)
     }
 
+    fun inject(activity: WebActivity) {
+        webActivityComponent = appComponent.webActivityBuilder()
+                .activity(activity)
+                .build()
+
+        webActivityComponent.inject(activity)
+    }
+
     fun inject(layout: SearchLayout) {
         searchActivityComponent.searchLayoutBuilder()
                 .build()
@@ -56,6 +68,12 @@ object Injector {
 
     fun inject(layout: SearchSettingsLayout) {
         settingsActivityComponent.searchSettingsLayoutBuilder()
+                .build()
+                .inject(layout)
+    }
+
+    fun inject(layout: WebLayout) {
+        webActivityComponent.webLayoutBuilder()
                 .build()
                 .inject(layout)
     }

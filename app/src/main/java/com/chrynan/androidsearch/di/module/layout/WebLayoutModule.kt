@@ -3,13 +3,13 @@
 package com.chrynan.androidsearch.di.module.layout
 
 import com.chrynan.androidsearch.di.scope.LayoutScope
-import com.chrynan.androidsearch.ui.layout.SearchSettingsLayout
-import com.chrynan.androidsearch.ui.view.SearchSettingsView
+import com.chrynan.androidsearch.ui.layout.WebLayout
+import com.chrynan.androidsearch.ui.view.WebBrowserView
 import dagger.Module
 import dagger.Provides
 
 @Module
-abstract class SearchSettingsLayoutModule {
+abstract class WebLayoutModule {
 
     @Module
     companion object {
@@ -17,6 +17,6 @@ abstract class SearchSettingsLayoutModule {
         @JvmStatic
         @LayoutScope
         @Provides
-        fun provideView(layout: SearchSettingsLayout): SearchSettingsView = layout
+        fun provideView(layout: WebLayout): WebBrowserView = layout
     }
 }

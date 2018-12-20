@@ -2,6 +2,8 @@
 
 package com.chrynan.androidsearch.di.module.activity
 
+import com.chrynan.androidsearch.di.component.layout.SearchQuerySettingsLayoutComponent
+import com.chrynan.androidsearch.di.component.layout.SearchSettingsLayoutComponent
 import com.chrynan.androidsearch.di.scope.ActivityScope
 import com.chrynan.androidsearch.navigator.SearchSettingsNavigator
 import com.chrynan.androidsearch.navigator.source.SearchSettingsNavigatorSource
@@ -14,7 +16,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
-@Module
+@Module(subcomponents = [SearchSettingsLayoutComponent::class, SearchQuerySettingsLayoutComponent::class])
 internal abstract class SettingsActivityModule {
 
     @Module

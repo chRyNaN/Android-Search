@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class SearchQuerySettingsLayoutModule {
+abstract class SearchQuerySettingsLayoutModule {
 
     @Module
     companion object {

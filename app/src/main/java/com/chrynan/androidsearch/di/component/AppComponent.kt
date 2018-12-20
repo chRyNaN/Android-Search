@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import com.chrynan.androidsearch.SearchApplication
 import com.chrynan.androidsearch.di.component.activity.SearchActivityComponent
 import com.chrynan.androidsearch.di.component.activity.SettingsActivityComponent
+import com.chrynan.androidsearch.di.component.activity.WebActivityComponent
 import com.chrynan.androidsearch.di.module.AppModule
 import com.chrynan.androidsearch.di.module.PreferenceModule
 import com.chrynan.androidsearch.di.module.RepositoryModule
@@ -29,6 +30,8 @@ interface AppComponent {
     fun searchActivityBuilder(): SearchActivityComponent.Builder
 
     fun settingsActivityBuilder(): SettingsActivityComponent.Builder
+
+    fun webActivityBuilder(): WebActivityComponent.Builder
 
     fun appContext(): AppContext
 
