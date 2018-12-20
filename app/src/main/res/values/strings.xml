@@ -77,4 +77,6 @@
 
     <string name="settings_custom_url_hint">Enter Search URL</string>
 
+    <string name="menu_item_title_open_in_browser">Open in Browser</string>
+
 </resources>

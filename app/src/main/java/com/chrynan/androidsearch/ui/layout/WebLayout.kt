@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toolbar
+import com.chrynan.androidsearch.R
 import com.chrynan.androidsearch.di.Injector
 import com.chrynan.androidsearch.preference.SearchPreferences
 import com.chrynan.androidsearch.resource.WebLayoutResources
@@ -52,6 +53,7 @@ class WebLayout @Inject constructor(
                             setSubtitleTextColor(toolbarSubtitleTextColor)
                             navigationIcon = toolbarNavigationIcon
                             setNavigationOnClickListener { }
+                            inflateMenu(R.menu.web_layout_menu)
                         }
                     }
                     progressBar = horizontalProgressBar {
