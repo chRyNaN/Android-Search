@@ -23,7 +23,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         private const val KEY_HISTORY = "HISTORY"
         private const val KEY_WEB_ADDRESS = "KEY_WEB_ADDRESS"
         private const val KEY_WEB_VIEW = "WEB_VIEW"
-        private const val KEY_CHROME_CUSTOM_TABS = "CHROME_CUSTOM_TABS"
         private const val KEY_BROWSER = "BROWSER"
         private const val KEY_GECKO_VIEW = "GECKO_VIEW"
         private const val KEY_WEB_URL = "WEB_URL"
@@ -39,7 +38,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         private const val DEFAULT_TYPE_AHEAD = true
         private const val DEFAULT_WEB_ADDRESS_LINK = true
         private const val DEFAULT_WEB_VIEW = false
-        private const val DEFAULT_CHROME_CUSTOM_TABS = false
         private const val DEFAULT_BROWSER = false
         private const val DEFAULT_GECKO_VIEW = true
         private const val DEFAULT_WEB_URL = "" // TODO update this value
@@ -114,18 +112,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
         set(value) {
             sharedPreferences.edit()
                     .putBoolean(KEY_WEB_VIEW, value)
-                    .putBoolean(KEY_CHROME_CUSTOM_TABS, !value)
-                    .putBoolean(KEY_BROWSER, !value)
-                    .putBoolean(KEY_GECKO_VIEW, !value)
-                    .apply()
-        }
-
-    override var chromeCustomTab: Boolean
-        get() = sharedPreferences.getBoolean(KEY_CHROME_CUSTOM_TABS, DEFAULT_CHROME_CUSTOM_TABS)
-        set(value) {
-            sharedPreferences.edit()
-                    .putBoolean(KEY_CHROME_CUSTOM_TABS, value)
-                    .putBoolean(KEY_WEB_VIEW, !value)
                     .putBoolean(KEY_BROWSER, !value)
                     .putBoolean(KEY_GECKO_VIEW, !value)
                     .apply()
@@ -137,7 +123,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
             sharedPreferences.edit()
                     .putBoolean(KEY_BROWSER, value)
                     .putBoolean(KEY_WEB_VIEW, !value)
-                    .putBoolean(KEY_CHROME_CUSTOM_TABS, !value)
                     .putBoolean(KEY_GECKO_VIEW, !value)
                     .apply()
         }
@@ -149,7 +134,6 @@ class SearchPreferencesSource @Inject constructor(private val context: Context) 
                     .putBoolean(KEY_GECKO_VIEW, value)
                     .putBoolean(KEY_BROWSER, !value)
                     .putBoolean(KEY_WEB_VIEW, !value)
-                    .putBoolean(KEY_CHROME_CUSTOM_TABS, !value)
                     .apply()
         }
 

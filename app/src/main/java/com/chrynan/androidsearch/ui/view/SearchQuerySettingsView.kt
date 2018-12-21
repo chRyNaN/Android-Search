@@ -4,8 +4,6 @@ interface SearchQuerySettingsView {
 
     fun updateBrowserChecked(checked: Boolean)
 
-    fun updateChromeCustomTabsChecked(checked: Boolean)
-
     fun updateGeckoViewChecked(checked: Boolean)
 
     fun updateWebViewChecked(checked: Boolean)

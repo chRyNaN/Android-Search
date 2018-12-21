@@ -17,7 +17,6 @@ class SearchQuerySettingsLayoutResourcesSource @Inject constructor(appContext: A
     override val searchMethodLabel by string(R.string.search_approach_label_method)
     override val searchAddressLabel by string(R.string.search_approach_label_address)
     override val webViewTitleText by string(R.string.settings_radio_button_title_web_view)
-    override val chromeCustomTabsTitleText by string(R.string.settings_radio_button_title_chrome_custom_tabs)
     override val browserTitleText by string(R.string.settings_radio_button_title_browser_app)
     override val geckoViewTitleText by string(R.string.settings_radio_button_title_gecko_view)
     override val bingTitleText by string(R.string.settings_radio_button_title_bing)

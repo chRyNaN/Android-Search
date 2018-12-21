@@ -9,7 +9,6 @@ interface SearchQuerySettingsLayoutResources {
     val searchMethodLabel: String
     val searchAddressLabel: String
     val webViewTitleText: String
-    val chromeCustomTabsTitleText: String
     val browserTitleText: String
     val geckoViewTitleText: String
     val bingTitleText: String

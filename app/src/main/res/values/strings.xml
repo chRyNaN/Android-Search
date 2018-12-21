@@ -60,13 +60,11 @@
     <string name="search_approach_label_address">Address</string>
     <string name="search_approach_default_app">Default Search App</string>
     <string name="search_approach_web_view">WebView</string>
-    <string name="search_approach_chrome_custom_tabs">Chrome Custom Tabs</string>
     <string name="search_approach_browser">Browser</string>
     <string name="search_approach_gecko_view">GeckoView</string>
 
     <string name="settings_radio_button_title_search_app">@string/search_approach_default_app</string>
     <string name="settings_radio_button_title_web_view">@string/search_approach_web_view</string>
-    <string name="settings_radio_button_title_chrome_custom_tabs">@string/search_approach_chrome_custom_tabs</string>
     <string name="settings_radio_button_title_browser_app">@string/search_approach_browser</string>
     <string name="settings_radio_button_title_gecko_view">@string/search_approach_gecko_view</string>
     <string name="settings_radio_button_title_bing">Bing</string>

@@ -31,7 +31,6 @@ class SearchSettingsPresenter @Inject constructor(
     val contactPermissions by lazy { listOf(RuntimePermission.READ_CONTACTS) }
 
     private val webView by lazy { context.getString(R.string.search_approach_web_view) }
-    private val chromeCustomTabs by lazy { context.getString(R.string.search_approach_chrome_custom_tabs) }
     private val browser by lazy { context.getString(R.string.search_approach_browser) }
 
     fun getSettings() =
@@ -80,7 +79,6 @@ class SearchSettingsPresenter @Inject constructor(
     private fun getSearchApproach() =
             when {
                 preferences.webView -> webView
-                preferences.chromeCustomTab -> chromeCustomTabs
                 preferences.browser -> browser
                 else -> browser
             }

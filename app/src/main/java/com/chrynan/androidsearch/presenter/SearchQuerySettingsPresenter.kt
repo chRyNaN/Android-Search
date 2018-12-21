@@ -19,7 +19,6 @@ class SearchQuerySettingsPresenter @Inject constructor(
     fun getSettings() =
             view.perform {
                 updateBrowserChecked(preferences.browser)
-                updateChromeCustomTabsChecked(preferences.chromeCustomTab)
                 updateGeckoViewChecked(preferences.geckoView)
                 updateWebViewChecked(preferences.webView)
 
@@ -34,7 +33,6 @@ class SearchQuerySettingsPresenter @Inject constructor(
         // SearchPreferencesSource already handles toggling off the other items
         when (item) {
             SearchCheckedItem.BROWSER -> preferences.browser = true
-            SearchCheckedItem.CHROME_CUSTOM_TAB -> preferences.chromeCustomTab = true
             SearchCheckedItem.GECKO_VIEW -> preferences.geckoView = true
             SearchCheckedItem.WEB_VIEW -> preferences.webView = true
         }

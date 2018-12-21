@@ -41,7 +41,6 @@ class SearchQuerySettingsLayout(
 
     private var scrollLayout by Delegates.notNull<ScrollView>()
     private var browserToggleCell by Delegates.notNull<RadioButtonCell>()
-    private var chromeCustomTabsToggleCell by Delegates.notNull<RadioButtonCell>()
     private var geckoViewToggleCell by Delegates.notNull<RadioButtonCell>()
     private var webViewToggleCell by Delegates.notNull<RadioButtonCell>()
     private var bingToggleCell by Delegates.notNull<RadioButtonCell>()
@@ -80,8 +79,6 @@ class SearchQuerySettingsLayout(
                         val methodGroup = radioButtonCellGroup<SearchCheckedItem> {
 
                             browserToggleCell = radioButtonCell(key = SearchCheckedItem.BROWSER, title = browserTitleText)
-
-                            chromeCustomTabsToggleCell = radioButtonCell(key = SearchCheckedItem.CHROME_CUSTOM_TAB, title = chromeCustomTabsTitleText)
 
                             geckoViewToggleCell = radioButtonCell(key = SearchCheckedItem.GECKO_VIEW, title = geckoViewTitleText)
 
@@ -147,8 +144,6 @@ class SearchQuerySettingsLayout(
             }
 
     override fun updateBrowserChecked(checked: Boolean) = browserToggleCell.perform { isChecked = checked }
-
-    override fun updateChromeCustomTabsChecked(checked: Boolean) = chromeCustomTabsToggleCell.perform { isChecked = checked }
 
     override fun updateGeckoViewChecked(checked: Boolean) = geckoViewToggleCell.perform { isChecked = checked }
 
